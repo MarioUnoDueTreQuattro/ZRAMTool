@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.os.Debug;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -24,15 +23,15 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     static public String sZRAMDirectory;
     static public boolean bShowNotification;
     static public int iDiskNum;
-    static public int iZRAMSize,iZRAMComprDataSize,iZRAMTotalMemoryUsed,iZRAMMaximumUsage;
+    static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
     static public int iZRAMUsage;
     static public int iMaximumZRAMUsage;
     static public int iSwappiness;
     static public int iVFSCachePressure;
     static public int iDiskSize0, iDiskSize1, iDiskSize2, iDiskSize3;
     static public int iOrigDataSize0, iOrigDataSize1, iOrigDataSize2, iOrigDataSize3;
-    static public int iMemUsedTotal0,iMemUsedTotal1,iMemUsedTotal2,iMemUsedTotal3;
-    static public int iComprDataSize0,iComprDataSize1,iComprDataSize2,iComprDataSize3;
+    static public int iMemUsedTotal0, iMemUsedTotal1, iMemUsedTotal2, iMemUsedTotal3;
+    static public int iComprDataSize0, iComprDataSize1, iComprDataSize2, iComprDataSize3;
 
 
     /**
@@ -298,11 +297,14 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                 iMemUsedTotal3 = Integer.parseInt(result3.toString());
                 iComprDataSize3 = Integer.parseInt(result4.toString());
             }
-        } catch (Shell.ShellException e) {
-            // TODO Auto-generated catch block
+        } catch (java.lang.NullPointerException e) {
             e.printStackTrace();
+            if (BuildConfig.DEBUG) Log.d(TAG, "java.lang.NullPointerException");
+        } catch (Shell.ShellException e) {
+            e.printStackTrace();
+            if (BuildConfig.DEBUG) Log.d(TAG, "Shell.ShellException");
         } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: Could not parse " + nfe);
+            if (BuildConfig.DEBUG) Log.d(TAG, "NumberFormatException: can't parse " + nfe);
         } finally {
             try {
 //                r1num = Integer.parseInt(result1.toString());
@@ -318,8 +320,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             }
         }
         iZRAMSize = r1num;
-        iZRAMComprDataSize=r4num;
-        iZRAMTotalMemoryUsed=r2num;
+        iZRAMComprDataSize = r4num;
+        iZRAMTotalMemoryUsed = r2num;
         //textViewTotalSize.setText(getString(R.string.ZRAM_size) + r1num + " MB");
         //textViewTotalMemoryUsed.setText(getString(R.string.ZRAM_total) + r2num + " MB");
         //textViewOrigDataSize.setText(getString(R.string.ZRAM_original) + r3num + " MB");
@@ -332,7 +334,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         //textViewTotalFree.setText("Total free memory: " + iMemory[3] + " MB");
         //textViewTotal.setText("Total memory: " + iMemory[4] + " MB");
         iZRAMUsage = r3num;
-        if (iZRAMUsage > iZRAMMaximumUsage) iZRAMMaximumUsage=iZRAMUsage;
+        if (iZRAMUsage > iZRAMMaximumUsage) iZRAMMaximumUsage = iZRAMUsage;
         if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
         //textViewMaxZRAMUsage.setText("Maximum ZRAM usage: " + iMaximumZRAMUsage + " MB");
 /*

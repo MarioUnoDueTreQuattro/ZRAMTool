@@ -401,7 +401,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
                 sCommand = "echo " + Integer.parseInt(textViewVFSCachePressure.getText().toString()) + " > /proc/sys/vm/vfs_cache_pressure";
                 //sCommand="sysctl -w vm.vfs_cache_pressure=" + Integer.parseInt(textViewVFSCachePressure.getText().toString());
                 Shell.sudo(sCommand);
-                Toast.makeText(this, "ZRAM enabled.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "ZRAM enabled.", Toast.LENGTH_LONG).show();
             } catch (Shell.ShellException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -486,7 +486,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
         }
         protected void onPostExecute(String result) {
             setProgressBarIndeterminateVisibility(false);
-            Toast.makeText(Enable_ZRAM_Activity.this, "ZRAM disabled.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "ZRAM disabled.", Toast.LENGTH_LONG).show();
             buttonApply.setEnabled(true);
             buttonApply.setText("Apply");
             ZRAMToolApp.iRefreshFrequency=iCurrentRefreshFreq;
@@ -496,5 +496,5 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             //Log.d(TAG + result,"");
         }
     }
-};
+}
 

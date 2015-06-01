@@ -20,6 +20,7 @@ import java.io.Reader;
 
 
 public class About extends ActionBarActivity {
+    private static final String TAG = About.class.getSimpleName();
     TextView textUp;//, textViewAppName;
     Button buttonClose;
 
@@ -92,7 +93,7 @@ public class About extends ActionBarActivity {
             fileInputStream.close();
             return sVersion;
         } catch (IOException var3_4) {
-            Log.e((String) "CpuSpyApp", (String) "Problem reading kernel version file");
+            Log.d(TAG, "Problem reading kernel version file.");
             return "";
         }
     }

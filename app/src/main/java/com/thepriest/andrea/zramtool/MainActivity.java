@@ -28,8 +28,7 @@ import java.util.TimerTask;
 public class MainActivity extends ActionBarActivity {
     private static boolean b_isActivityVisible;
     private static final String TAG = MainActivity.class.getSimpleName();
-    ;
-    private static final int TIME_INTERVAL = 2000;
+    private static final int TIME_INTERVAL = 2000; // used for onBackPressed()
     private long mBackPressed;
 
     //Timer timer = new Timer();
@@ -95,7 +94,6 @@ public class MainActivity extends ActionBarActivity {
             Shell.sudo("chmod 644 " + sZRAMDirectory + "/zram0/disksize");
             Shell.sudo("chown system.system " + sZRAMDirectory + "/zram0/disksize");
         } catch (com.thepriest.andrea.zramtool.Shell.ShellException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 */
@@ -184,7 +182,6 @@ public class MainActivity extends ActionBarActivity {
                     Shell.sudo("echo 0 > /proc/sys/vm/swappiness");
                     Toast.makeText(getApplicationContext(), "ZRAM Disabled.", Toast.LENGTH_LONG).show();
                 } catch (Shell.ShellException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -576,7 +573,6 @@ public class MainActivity extends ActionBarActivity {
             }
             */
         } catch (Shell.ShellException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 /*
@@ -589,9 +585,7 @@ public class MainActivity extends ActionBarActivity {
             textViewComprDataSize.setText("IOException");
         }
 */
-
         return 0;
-
     }
 
     private void printZRAMStatus() {

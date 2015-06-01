@@ -183,13 +183,12 @@ public class NotificationService extends Service {
         @Override
         public void run() {
             super.run();
-//            Log.d(TAG, "Updater run");
+//            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
                 try {
                     setNotification();
                     // TODO something
-                    if (BuildConfig.DEBUG) Log.d(TAG, "Updater run..................");
-                    //Log.d(TAG, "Updater run..................");
+                    if (BuildConfig.DEBUG) Log.d(TAG, "Updater run loop..................");
                     this.sleep(ZRAMToolApp.iRefreshFrequency);
                     if (!running) return;
                 } catch (InterruptedException e) {
