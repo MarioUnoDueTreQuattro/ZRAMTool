@@ -105,6 +105,7 @@ public class NotificationService extends Service {
             } catch (UnsupportedOperationException e) {
                 e.printStackTrace();
             }
+        stopForeground(true);
     }
 
     /**
