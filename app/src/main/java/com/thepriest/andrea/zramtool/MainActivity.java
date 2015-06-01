@@ -40,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
             textViewBuffers, textViewCached, textViewTotalFree, textViewTotal;
     TextView textViewDiskNum, textViewVFS_cache_pressure, textViewMaxZRAMUsage;
     Button buttonDisableZRAM, buttonEnableZRAM, buttonCleanMemory, buttonCleanDropCache, buttonCleanAll;
-    ProgressBar progressBarTotalMemoryUsed, progressBarOrigDataSize,progressBarComprDataSize,progressBarMaxZRAMUsage;
+    ProgressBar progressBarTotalMemoryUsed, progressBarOrigDataSize, progressBarComprDataSize, progressBarMaxZRAMUsage;
     static public int iSwappiness, iZRAMSize, iDiskNum, iVFSCachePressure, iZRAMUsage, iMaximumZRAMUsage;
     static public int iRefreshFrequency;
     static public String sZRAMDirectory;
@@ -68,6 +68,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //ZRAMToolApp.printZRAMStatus();
+        //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         Log.d(TAG, "onCreate()");
         //this.setTheme(R.style.Black);
         //Debug.startMethodTracing();
@@ -141,10 +142,10 @@ public class MainActivity extends ActionBarActivity {
 //            }
 //        }
         setContentView(R.layout.activity_main);
-        progressBarTotalMemoryUsed =(ProgressBar)  findViewById(R.id.progressBarTotalMemoryUsed);
-        progressBarOrigDataSize =(ProgressBar)  findViewById(R.id.progressBarOrigDataSize);
-        progressBarComprDataSize =(ProgressBar)  findViewById(R.id.progressBarComprDataSize);
-        progressBarMaxZRAMUsage =(ProgressBar)  findViewById(R.id.progressBarMaxZRAMUsage);
+        progressBarTotalMemoryUsed = (ProgressBar) findViewById(R.id.progressBarTotalMemoryUsed);
+        progressBarOrigDataSize = (ProgressBar) findViewById(R.id.progressBarOrigDataSize);
+        progressBarComprDataSize = (ProgressBar) findViewById(R.id.progressBarComprDataSize);
+        progressBarMaxZRAMUsage = (ProgressBar) findViewById(R.id.progressBarMaxZRAMUsage);
         textViewFreeRam = (TextView) findViewById(R.id.textViewFreeRam);
         textViewBuffers = (TextView) findViewById(R.id.textViewBuffers);
         textViewCached = (TextView) findViewById(R.id.textViewCached);
@@ -699,8 +700,7 @@ public class MainActivity extends ActionBarActivity {
         progressBarMaxZRAMUsage.setProgress(ZRAMToolApp.iMaximumZRAMUsage);
 
 
-
-       // progressBarTotalMemoryUsed, progressBarOrigDataSize,progressBarComprDataSize,progressBarMaxZRAMUsage
+        // progressBarTotalMemoryUsed, progressBarOrigDataSize,progressBarComprDataSize,progressBarMaxZRAMUsage
 
 
 /*
