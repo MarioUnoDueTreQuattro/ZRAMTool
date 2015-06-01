@@ -1,4 +1,3 @@
-// test
 package com.thepriest.andrea.zramtool;
 
 import android.app.ActivityManager;
@@ -25,6 +24,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.TimerTask;
+
+
+/**
+ *
+ */
+
 
 public class MainActivity extends ActionBarActivity {
     private static boolean b_isActivityVisible;
