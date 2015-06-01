@@ -105,6 +105,9 @@ public class NotificationService extends Service {
             } catch (UnsupportedOperationException e) {
                 e.printStackTrace();
             }
+        /**
+         * Remove this service from foreground state, allowing it to be killed if more memory is needed.
+         */
         stopForeground(true);
     }
 
