@@ -1,4 +1,3 @@
-// test
 package com.thepriest.andrea.zramtool;
 
 import android.app.ActivityManager;
