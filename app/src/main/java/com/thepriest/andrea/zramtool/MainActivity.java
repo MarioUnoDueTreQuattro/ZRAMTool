@@ -1,3 +1,4 @@
+// test
 package com.thepriest.andrea.zramtool;
 
 import android.app.ActivityManager;
@@ -30,7 +31,6 @@ public class MainActivity extends ActionBarActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int TIME_INTERVAL = 2000; // used for onBackPressed()
     private long mBackPressed;
-
     //Timer timer = new Timer();
     //RefreshTask refreshTask;
     Handler mHandler;
