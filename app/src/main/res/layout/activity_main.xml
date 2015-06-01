@@ -1,0 +1,286 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context=".MainActivity"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:padding="0dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:text="@string/ZRAM_status"
+            android:id="@+id/textViewStatus"
+            android:textColor="@android:color/primary_text_dark"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="Small Text"
+            android:id="@+id/textViewDiskNum"
+            android:textColor="@android:color/secondary_text_dark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="Small Text"
+            android:id="@+id/textViewTotalSize"
+            android:textColor="@android:color/secondary_text_dark" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+                    android:text="Small Text"
+                    android:id="@+id/textViewTotalMemoryUsed"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:layout_weight="1"/>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progressBarTotalMemoryUsed"
+                    android:layout_weight="1"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+                    android:text="Small Text"
+                    android:id="@+id/textViewOrigDataSize"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:layout_weight="1"/>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progressBarOrigDataSize"
+                    android:layout_weight="1"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+                    android:text="Small Text"
+                    android:id="@+id/textViewComprDataSize"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:layout_weight="1"/>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progressBarComprDataSize"
+                    android:layout_weight="1"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+                    android:text="maximumZRAM"
+                    android:id="@+id/textViewMaxZRAMUsage"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:layout_weight="1"/>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progressBarMaxZRAMUsage"
+                    android:layout_weight="1"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"/>
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="Small Text"
+            android:id="@+id/textViewSwappiness"
+            android:textColor="@android:color/secondary_text_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="VFS_cache_pressure"
+            android:id="@+id/textViewVFS_cache_pressure"
+            android:textColor="@android:color/secondary_text_dark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:text="@string/ZRAM_settings"
+            android:id="@+id/textViewSettings"
+            android:textColor="@android:color/primary_text_dark"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="@style/ButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disableZRAM"
+                android:layout_weight="1"
+                android:id="@+id/buttonDisableZRAM"/>
+
+
+            <Button
+                style="@style/ButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enableZRAM"
+                android:layout_weight="1"
+                android:id="@+id/buttonEnableZRAM"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:text="@string/RAM_Tools"
+            android:id="@+id/textViewRAM"
+            android:textColor="@android:color/primary_text_dark"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="@style/ButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/CleanMemory"
+                android:id="@+id/buttonCleanMemory"
+                android:layout_weight="1"/>
+
+            <Button
+                style="@style/ButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/CleanDropCache"
+                android:id="@+id/buttonCleanDropCache"
+                android:layout_weight="1"/>
+
+            <Button
+                style="@style/ButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/CleanAll"
+                android:id="@+id/buttonCleanAll"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="free ram"
+            android:id="@+id/textViewFreeRam"
+            android:textColor="@android:color/secondary_text_dark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="cache"
+            android:id="@+id/textViewCached"
+            android:textColor="@android:color/secondary_text_dark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="buffers"
+            android:id="@+id/textViewBuffers"
+            android:textColor="@android:color/secondary_text_dark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="total free"
+            android:id="@+id/textViewTotalFree"
+            android:textColor="@android:color/secondary_text_dark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="total"
+            android:id="@+id/textViewTotal"
+            android:textColor="@android:color/secondary_text_dark"/>
+
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
