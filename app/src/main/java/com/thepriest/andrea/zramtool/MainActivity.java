@@ -69,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //ZRAMToolApp.printZRAMStatus();
         Log.d(TAG, "onCreate()");
-        this.setTheme(R.style.Black);
+        //this.setTheme(R.style.Black);
         //Debug.startMethodTracing();
         super.onCreate(savedInstanceState);
         bUpdateStatus = true;

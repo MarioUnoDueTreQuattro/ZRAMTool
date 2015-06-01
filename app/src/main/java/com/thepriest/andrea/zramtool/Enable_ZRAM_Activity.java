@@ -33,7 +33,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
-        this.setTheme(R.style.Black);
+        //this.setTheme(R.style.Black);
         //setProgressBarVisibility(false);
         //setProgressBarIndeterminate(true);
         setContentView(R.layout.activity_enable__zram_);

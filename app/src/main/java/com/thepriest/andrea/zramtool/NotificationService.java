@@ -1,5 +1,6 @@
 package com.thepriest.andrea.zramtool;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -157,9 +158,11 @@ public class NotificationService extends Service {
             Intent targetIntent = new Intent(this, MainActivity.class);
             PendingIntent contentIntent = PendingIntent.getActivity(this, 0, targetIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             appLaunch.setContentIntent(contentIntent);
-            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            //NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             // mNotificationManager.cancelAll();
-            mNotificationManager.notify(0, appLaunch.build());
+            //mNotificationManager.notify(0, appLaunch.build());
+            Notification note= appLaunch.build();
+            startForeground(1337, note);
         }
     }
 
