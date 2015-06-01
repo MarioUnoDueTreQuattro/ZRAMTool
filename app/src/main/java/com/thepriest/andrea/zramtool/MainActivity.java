@@ -60,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
             super.onBackPressed();
             return;
         } else {
-            Toast.makeText(getBaseContext(), "Tap back button twice to hide.\nUse \"Menu->Exit\" to exit.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Tap back button twice to hide.\nUse \"Menu->Exit\" to exit.", Toast.LENGTH_LONG).show();
         }
         mBackPressed = System.currentTimeMillis();
     }
@@ -182,7 +182,7 @@ public class MainActivity extends ActionBarActivity {
                     Shell.sudo("echo 1 > /sys/block/zram3/reset");
                     buttonDisableZRAM.setText(R.string.disableZRAM);
                     Shell.sudo("echo 0 > /proc/sys/vm/swappiness");
-                    Toast.makeText(MainActivity.this, "ZRAM Disabled.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "ZRAM Disabled.", Toast.LENGTH_LONG).show();
                 } catch (Shell.ShellException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -488,7 +488,7 @@ public class MainActivity extends ActionBarActivity {
             e.printStackTrace();
         } finally {
         }
-        Toast.makeText(this, "Memory and Drop Cache cleaned.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Memory and Drop Cache cleaned.", Toast.LENGTH_LONG).show();
         return;
     }
 
@@ -502,7 +502,7 @@ public class MainActivity extends ActionBarActivity {
             e.printStackTrace();
         } finally {
         }
-        Toast.makeText(this, "Drop Cache cleaned.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Drop Cache cleaned.", Toast.LENGTH_LONG).show();
         return;
     }
 
@@ -516,7 +516,7 @@ public class MainActivity extends ActionBarActivity {
             //      Toast.LENGTH_LONG).show();
             activityManager.killBackgroundProcesses(procInfos.get(i).processName);
         }
-        Toast.makeText(this, "Memory cleaned.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Memory cleaned.", Toast.LENGTH_LONG).show();
         return;
     }
 

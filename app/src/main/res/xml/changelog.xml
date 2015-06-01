@@ -21,5 +21,4 @@
         <change>Timer replaced by Handler.</change>
         <change>Fixed onBackPressed() calling onDestroy() when notification is enabled.</change>
     </release>
-
 </changelog>

@@ -81,8 +81,8 @@ public class ChangeLogDialog {
                         +"h1 {color: #bebebe; }"
                         +"li {color: #bebebe; }"
                         +"ul {color: #bebebe; }"
-                        + "h1 { margin-left: 0px; font-size: 12pt; }"
-                        + "li { margin-left: 0px; font-size: 10pt; }"
+                        + "h1 { margin-left: 0px; font-size: 14pt; }"
+                        + "li { margin-left: 0px; font-size: 12pt; }"
                         + "ul { padding-left: 30px;}"
                         + "</style>";
     }
@@ -146,6 +146,7 @@ public class ChangeLogDialog {
 
         //Create webview and load html
         WebView _WebView = new WebView(fActivity);
+        //fActivity.setTheme(R.style.AppTheme);
         _WebView.loadData(_HTML, "text/html", "utf-8");
         AlertDialog.Builder builder = new AlertDialog.Builder(fActivity)
                 .setTitle(_Title)
@@ -155,7 +156,6 @@ public class ChangeLogDialog {
                         dialogInterface.dismiss();
                     }
                 });
-        //fActivity.setTheme(R.style.AppTheme);
         builder.create().show();
     }
 
