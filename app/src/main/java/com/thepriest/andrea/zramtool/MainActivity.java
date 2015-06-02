@@ -24,11 +24,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.TimerTask;
 
-/**
- *
- * /**
- */
-public class MainActivity extends ActionBarActivity {
+    public class MainActivity extends ActionBarActivity {
     private static boolean b_isActivityVisible;
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int TIME_INTERVAL = 2000; // used for onBackPressed()
