@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.TimerTask;
 
-// aaaaaaaaaaaaaaaaabbbbbcc
 public class MainActivity extends ActionBarActivity {
     private static boolean b_isActivityVisible;
     private static final String TAG = MainActivity.class.getSimpleName();
