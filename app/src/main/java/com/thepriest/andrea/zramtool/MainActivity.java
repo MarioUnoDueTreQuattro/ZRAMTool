@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -25,12 +24,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.TimerTask;
 
-
-/**
- * GGGGGGGGGGGG
- */
-
-
+// aaaaaaaaaaaaaaaaabbbbbcc
 public class MainActivity extends ActionBarActivity {
     private static boolean b_isActivityVisible;
     private static final String TAG = MainActivity.class.getSimpleName();
