@@ -387,6 +387,7 @@ import java.util.TimerTask;
         if (id == R.id.action_exit) {
             NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.cancelAll();
+            if (bShowNotification) stopService(new Intent(this, NotificationService.class));
             System.exit(0);
             return true;
         }
