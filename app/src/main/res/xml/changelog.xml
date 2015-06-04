@@ -1,29 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
-    <release version="1.37" versioncode="137">
+    <release
+        version="1.37"
+        versioncode="137">
         <change>ToolBar: added icon and overflow menu.</change>
+        <change>"VFS cache pressure" and "swappiness" are set corectly.</change>
+        <change>Removed "Disable ZRAM" button, renamed "Enable ZRAM" to "Enable/Disable ZRAM".
+        </change>
     </release>
-    <release version="1.36" versioncode="136">
+    <release
+        version="1.36"
+        versioncode="136">
         <change>Added buttons on toolbar.</change>
         <change>Fixed some bugs.</change>
     </release>
-    <release version="1.35" versioncode="135">
+    <release
+        version="1.35"
+        versioncode="135">
         <change>Notification service now use "startForeground": less killable.</change>
     </release>
-    <release version="1.34" versioncode="134">
+    <release
+        version="1.34"
+        versioncode="134">
         <change>Some fixes.</change>
         <change>Notification service label (ZRAMToolNotificationService) in manifest.</change>
     </release>
-    <release version="1.33" versioncode="133">
+    <release
+        version="1.33"
+        versioncode="133">
         <change>Added "Application object".</change>
         <change>Moved functions and objects from activities to "Application object"</change>
         <change>Added service for notification on status bar.</change>
     </release>
-    <release version="1.32" versioncode="132">
+    <release
+        version="1.32"
+        versioncode="132">
         <change>Changes to About dialog.</change>
         <change>Changed size of notification icon from 256x256 to 48x48 pixels.</change>
     </release>
-    <release version="1.31" versioncode="131">
+    <release
+        version="1.31"
+        versioncode="131">
         <change>Added this changelog.</change>
         <change>Timer replaced by Handler.</change>
         <change>Fixed onBackPressed() calling onDestroy() when notification is enabled.</change>
