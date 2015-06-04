@@ -414,12 +414,12 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
     }
 
     class BackgroundThread extends AsyncTask<String, Integer, String> {
-        int iSleepTime = 100;
+        int iSleepTime = 200;
 
         protected void onPreExecute() {
             iCurrentRefreshFreq = ZRAMToolApp.iRefreshFrequency;
-            ZRAMToolApp.iRefreshFrequency = 3600000;
-            if (ZRAMToolApp.bShowNotification) NotificationService.iRefreshFrequency = 3600000;
+            //ZRAMToolApp.iRefreshFrequency = 3600000;
+            //if (ZRAMToolApp.bShowNotification) NotificationService.iRefreshFrequency = 3600000;
             //setProgressBarIndeterminate(true);
             setProgressBarIndeterminateVisibility(true);
             buttonApply.setText("Disabling ZRAM...");
@@ -496,9 +496,9 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             Toast.makeText(getApplicationContext(), "ZRAM disabled.", Toast.LENGTH_LONG).show();
             buttonApply.setEnabled(true);
             buttonApply.setText("Apply");
-            ZRAMToolApp.iRefreshFrequency = iCurrentRefreshFreq;
-            if (ZRAMToolApp.bShowNotification)
-                NotificationService.iRefreshFrequency = iCurrentRefreshFreq;
+            //ZRAMToolApp.iRefreshFrequency = iCurrentRefreshFreq;
+            //if (ZRAMToolApp.bShowNotification)
+            //    NotificationService.iRefreshFrequency = iCurrentRefreshFreq;
             finish();
             //Debug.stopMethodTracing();
             //Log.d(TAG + result,"");
