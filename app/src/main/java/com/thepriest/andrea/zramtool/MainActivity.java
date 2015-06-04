@@ -691,8 +691,8 @@ public class MainActivity extends AppCompatActivity {
         textViewBuffers.setText("Buffers: " + iMemory[1] + " MB");
         textViewTotalFree.setText("Total free memory: " + iMemory[3] + " MB");
         textViewTotal.setText("Total memory: " + iMemory[4] + " MB");
-        iZRAMUsage = r3num;
-        if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
+        iZRAMUsage = ZRAMToolApp.iZRAMUsage;
+        if (iZRAMUsage > iMaximumZRAMUsage) iMaximumZRAMUsage = iZRAMUsage;
         textViewMaxZRAMUsage.setText("Maximum ZRAM usage: " + ZRAMToolApp.iMaximumZRAMUsage + " MB");
         progressBarTotalMemoryUsed.setMax(iZRAMSize);
         progressBarOrigDataSize.setMax(iZRAMSize);
@@ -702,11 +702,7 @@ public class MainActivity extends AppCompatActivity {
         progressBarOrigDataSize.setProgress(ZRAMToolApp.iZRAMUsage);
         progressBarComprDataSize.setProgress(ZRAMToolApp.iZRAMComprDataSize);
         progressBarMaxZRAMUsage.setProgress(ZRAMToolApp.iMaximumZRAMUsage);
-
-
         // progressBarTotalMemoryUsed, progressBarOrigDataSize,progressBarComprDataSize,progressBarMaxZRAMUsage
-
-
 /*
         if (bShowNotification) {
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
