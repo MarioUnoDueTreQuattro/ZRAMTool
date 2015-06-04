@@ -35,12 +35,12 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
         //setProgressBarIndeterminate(true);
         setContentView(R.layout.activity_enable__zram_);
         switchZRAM = (Switch) findViewById(R.id.switchZRAM);
-        if (MainActivity.iZRAMSize > 0) {
+        if (ZRAMToolApp.iZRAMSize > 0) {
             switchZRAM.setChecked(true);
         }
         textViewSize = (EditText) findViewById(R.id.textViewSize);
         textViewSize.setSelectAllOnFocus(true);
-        textViewSize.setText("" + MainActivity.iZRAMSize);
+        textViewSize.setText("" + ZRAMToolApp.iZRAMSize);
         textViewSize.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -69,7 +69,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             }
         });
         seekBarSize = (SeekBar) findViewById(R.id.seekBarSize); // make seekbar object
-        seekBarSize.setProgress(MainActivity.iZRAMSize / 50);
+        seekBarSize.setProgress(ZRAMToolApp.iZRAMSize / 50);
 
         seekBarSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -94,7 +94,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
         });
         textViewSwappiness = (EditText) findViewById(R.id.textViewSwappiness);
         textViewSwappiness.setSelectAllOnFocus(true);
-        textViewSwappiness.setText("" + MainActivity.iSwappiness);
+        textViewSwappiness.setText("" + ZRAMToolApp.iSwappiness);
         textViewSwappiness.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -124,7 +124,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             }
         });
         seekBarSwappiness = (SeekBar) findViewById(R.id.seekBarSwappiness); // make seekbar object
-        seekBarSwappiness.setProgress(MainActivity.iSwappiness);
+        seekBarSwappiness.setProgress(ZRAMToolApp.iSwappiness);
         seekBarSwappiness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
@@ -147,7 +147,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
         });
         textViewSize = (EditText) findViewById(R.id.textViewSize);
         textViewSize.setSelectAllOnFocus(true);
-        textViewSize.setText("" + MainActivity.iZRAMSize);
+        textViewSize.setText("" + ZRAMToolApp.iZRAMSize);
         textViewSize.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -177,7 +177,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             }
         });
         seekBarSize = (SeekBar) findViewById(R.id.seekBarSize); // make seekbar object
-        seekBarSize.setProgress(MainActivity.iZRAMSize);
+        seekBarSize.setProgress(ZRAMToolApp.iZRAMSize);
 
         seekBarSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -202,7 +202,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
         });
         textViewVFSCachePressure = (EditText) findViewById(R.id.textViewVFSCachePressure);
         textViewVFSCachePressure.setSelectAllOnFocus(true);
-        textViewVFSCachePressure.setText("" + MainActivity.iVFSCachePressure);
+        textViewVFSCachePressure.setText("" + ZRAMToolApp.iVFSCachePressure);
         textViewVFSCachePressure.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -232,7 +232,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             }
         });
         seekBarVFSCachePressure = (SeekBar) findViewById(R.id.seekBarVFSCachePressure); // make seekbar object
-        seekBarVFSCachePressure.setProgress(MainActivity.iVFSCachePressure);
+        seekBarVFSCachePressure.setProgress(ZRAMToolApp.iVFSCachePressure);
 
         seekBarVFSCachePressure.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -414,7 +414,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
     }
 
     class BackgroundThread extends AsyncTask<String, Integer, String> {
-        int iSleepTime = 500;
+        int iSleepTime = 100;
 
         protected void onPreExecute() {
             iCurrentRefreshFreq = ZRAMToolApp.iRefreshFrequency;
