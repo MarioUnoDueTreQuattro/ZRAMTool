@@ -8,7 +8,6 @@ import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //ZRAMToolApp.printZRAMStatus();
+        //ZRAMToolApp.updateZRAMStatus();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         Log.d(TAG, "onCreate()");
         //this.setTheme(R.style.Black);
@@ -313,7 +312,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void tick() {
-        if (!ZRAMToolApp.bShowNotification) ZRAMToolApp.printZRAMStatus();
+        if (!ZRAMToolApp.bShowNotification) ZRAMToolApp.updateZRAMStatus();
         printZRAMStatus();
         iUpdatesCount++;
         // textViewVFS_cache_pressure.setText(""+iUpdatesCount);
@@ -621,7 +620,7 @@ public class MainActivity extends AppCompatActivity {
         }
 */
         // if (b_isActivityVisible==false) return;
-        // Log.d(TAG, "printZRAMStatus()");
+        // Log.d(TAG, "updateZRAMStatus()");
 
 
 //        int diskNum = 0;

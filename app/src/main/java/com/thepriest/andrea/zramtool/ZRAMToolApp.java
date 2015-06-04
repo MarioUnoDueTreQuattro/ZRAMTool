@@ -133,7 +133,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         return new File(sZRAMDirectory + "/zram3/disksize").exists();
     }
 
-    public static void printZRAMStatus() {
+    public static void updateZRAMStatus() {
 /*
        try
         {
@@ -155,7 +155,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         }
 */
         // if (b_isActivityVisible==false) return;
-        // Log.d(TAG, "printZRAMStatus()");
+        // Log.d(TAG, "updateZRAMStatus()");
 
         int diskNum = 0;
         if (hasZRAM0() == true) diskNum++;
@@ -359,6 +359,127 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
 */
     }
 
+    public static void updateZRAMStatus2() {
+        // Log.d(TAG, "updateZRAMStatus2()");
+        int diskNum = 0;
+        if (hasZRAM0() == true) diskNum++;
+        if (hasZRAM1() == true) diskNum++;
+        if (hasZRAM2() == true) diskNum++;
+        if (hasZRAM3() == true) diskNum++;
+        iDiskNum = diskNum;
+        try {
+            BufferedReader mounts = new BufferedReader(new FileReader("/proc/sys/vm/swappiness"));
+            String line;
+            while ((line = mounts.readLine()) != null) {
+                iSwappiness = Integer.parseInt(line);
+            }
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "Cannot find...");
+        } catch (IOException e) {
+            Log.d(TAG, "Ran into problems reading...");
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: Could not parse " + nfe);
+        }
+        try {
+            BufferedReader mounts = new BufferedReader(new FileReader("/proc/sys/vm/vfs_cache_pressure"));
+            String line;
+            while ((line = mounts.readLine()) != null) {
+                iVFSCachePressure = Integer.parseInt(line);
+            }
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "Cannot find...");
+            // textViewComprDataSize.setText("FileNotFoundException");
+        } catch (IOException e) {
+            Log.d(TAG, "Ran into problems reading...");
+            // textViewComprDataSize.setText("IOException");
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: Could not parse " + nfe);
+        }
+        Shell shell = new Shell();
+        String result1 = "";
+        String result2 = "";
+        String result3 = "";
+        String result4 = "";
+        int r1num = 0;
+        int r2num = 0;
+        int r3num = 0;
+        int r4num = 0;
+        int ZRAMSizeTot = 0;
+        try {
+            if (hasZRAM0() == true || hasZRAM0() == false) {
+                r1num = getZRAMDiskSize(0);
+                ZRAMSizeTot += r1num;
+                r2num = getZRAMorig_data_size(0);
+                r3num = getZRAMmem_used_total(0);
+                r4num = getZRAMcompr_data_size(0);
+                iDiskSize0 = r1num;
+                iOrigDataSize0 = r2num;
+                iMemUsedTotal0 = r3num;
+                iComprDataSize0 = r4num;
+            }
+            if (hasZRAM1() == true) {
+                r1num = getZRAMDiskSize(1);
+                ZRAMSizeTot += r1num;
+                r2num = getZRAMorig_data_size(1);
+                r3num = getZRAMmem_used_total(1);
+                r4num = getZRAMcompr_data_size(1);
+                iDiskSize0 = r1num;
+                iOrigDataSize0 = r2num;
+                iMemUsedTotal0 = r3num;
+                iComprDataSize0 = r4num;
+            }
+            if (hasZRAM2() == true) {
+                r1num = getZRAMDiskSize(2);
+                ZRAMSizeTot += r1num;
+                r2num = getZRAMorig_data_size(2);
+                r3num = getZRAMmem_used_total(2);
+                r4num = getZRAMcompr_data_size(2);
+                iDiskSize0 = r1num;
+                iOrigDataSize0 = r2num;
+                iMemUsedTotal0 = r3num;
+                iComprDataSize0 = r4num;
+            }
+            if (hasZRAM3() == true) {
+                r1num = getZRAMDiskSize(3);
+                ZRAMSizeTot += r1num;
+                r2num = getZRAMorig_data_size(3);
+                r3num = getZRAMmem_used_total(3);
+                r4num = getZRAMcompr_data_size(3);
+                iDiskSize0 = r1num;
+                iOrigDataSize0 = r2num;
+                iMemUsedTotal0 = r3num;
+                iComprDataSize0 = r4num;
+            }
+        } catch (java.lang.NullPointerException e) {
+            e.printStackTrace();
+            if (BuildConfig.DEBUG) Log.d(TAG, "java.lang.NullPointerException");
+        }
+          catch (NumberFormatException nfe) {
+            if (BuildConfig.DEBUG) Log.d(TAG, "NumberFormatException: can't parse " + nfe);
+        } finally {
+            try {
+                iZRAMSize = ZRAMSizeTot / 1024 / 1024;
+//                r1num = Integer.parseInt(result1.toString());
+                r1num = r1num / 1024 / 1024;
+                //              r2num = Integer.parseInt(result2.toString());
+                r2num = r2num / 1024 / 1024;
+                //            r3num = Integer.parseInt(result3.toString());
+                r3num = r3num / 1024 / 1024;
+                //          r4num = Integer.parseInt(result4.toString());
+                r4num = r4num / 1024 / 1024;
+            } catch (NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+        }
+        //iZRAMSize = r1num;
+        iZRAMComprDataSize = r4num;
+        iZRAMTotalMemoryUsed = r2num;
+        //int iMemory[] = new int[5];
+        //iMemory = getMemoryInfo();
+        iZRAMUsage = r3num;
+        if (iZRAMUsage > iZRAMMaximumUsage) iZRAMMaximumUsage = iZRAMUsage;
+        if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
+    }
     public static int getZRAMDiskSize(int disk) {
         String path = "/sys/devices/virtual/block/zram";
         path += disk;
@@ -378,7 +499,63 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         }
         return disk;
     }
-
+    public static int getZRAMorig_data_size(int disk) {
+        String path = "/sys/devices/virtual/block/zram";
+        path += disk;
+        path += "/orig_data_size";
+        try {
+            BufferedReader mounts = new BufferedReader(new FileReader(path));
+            String line;
+            while ((line = mounts.readLine()) != null) {
+                disk = Integer.parseInt(line);
+            }
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "Cannot find...");
+        } catch (IOException e) {
+            Log.d(TAG, "Ran into problems reading...");
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: Could not parse " + nfe);
+        }
+        return disk;
+    }
+    public static int getZRAMmem_used_total(int disk) {
+        String path = "/sys/devices/virtual/block/zram";
+        path += disk;
+        path += "/mem_used_total";
+        try {
+            BufferedReader mounts = new BufferedReader(new FileReader(path));
+            String line;
+            while ((line = mounts.readLine()) != null) {
+                disk = Integer.parseInt(line);
+            }
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "Cannot find...");
+        } catch (IOException e) {
+            Log.d(TAG, "Ran into problems reading...");
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: Could not parse " + nfe);
+        }
+        return disk;
+    }
+    public static int getZRAMcompr_data_size(int disk) {
+        String path = "/sys/devices/virtual/block/zram";
+        path += disk;
+        path += "/compr_data_size";
+        try {
+            BufferedReader mounts = new BufferedReader(new FileReader(path));
+            String line;
+            while ((line = mounts.readLine()) != null) {
+                disk = Integer.parseInt(line);
+            }
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "Cannot find...");
+        } catch (IOException e) {
+            Log.d(TAG, "Ran into problems reading...");
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: Could not parse " + nfe);
+        }
+        return disk;
+    }
     public static int[] getMemoryInfo() {
         String str1 = "/proc/meminfo";
         String str2;

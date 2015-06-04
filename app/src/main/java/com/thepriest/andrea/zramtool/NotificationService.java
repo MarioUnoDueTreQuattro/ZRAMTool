@@ -149,7 +149,7 @@ public class NotificationService extends Service {
 
     public void setNotification() {
         if (ZRAMToolApp.bShowNotification) {
-            ZRAMToolApp.printZRAMStatus();
+            ZRAMToolApp.updateZRAMStatus();
             iZRAMUsage=ZRAMToolApp.iZRAMUsage;
             iMaximumZRAMUsage=ZRAMToolApp.iMaximumZRAMUsage;
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
