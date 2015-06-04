@@ -24,7 +24,7 @@
     <style name="ButtonTheme" parent="Theme.AppCompat">
 
     </style>
-    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid" >
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar" >
 
         <item name="android:background">#ff222222</item>
         <item name="android:textColor">#ffdddddd</item>
