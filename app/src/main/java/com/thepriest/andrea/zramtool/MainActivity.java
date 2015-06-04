@@ -165,6 +165,7 @@ public class MainActivity extends ActionBarActivity {
         textViewDiskNum = (TextView) findViewById(R.id.textViewDiskNum);
         textViewVFS_cache_pressure = (TextView) findViewById(R.id.textViewVFS_cache_pressure);
         textViewMaxZRAMUsage = (TextView) findViewById(R.id.textViewMaxZRAMUsage);
+/*
         buttonDisableZRAM = (Button) findViewById(R.id.buttonDisableZRAM);
         buttonDisableZRAM.setOnClickListener(new View.OnClickListener() {
 
@@ -194,6 +195,7 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
+*/
 
         buttonEnableZRAM = (Button) findViewById(R.id.buttonEnableZRAM);
         buttonEnableZRAM.setOnClickListener(new View.OnClickListener() {

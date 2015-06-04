@@ -11,14 +11,13 @@
     <string name="ZRAM_compressed">"Compressed data size: "</string>
     <string name="RAM_Tools">RAM tools</string>
     <string name="disableZRAM">Disable ZRAM</string>
-    <string name="enableZRAM">Enable ZRAM</string>
+    <string name="enableZRAM">Enable/Disable ZRAM</string>
     <string name="ZRAM_disk_number">"Disks: "</string>
     <string name="title_activity_enable__zram_">Enable ZRAM</string>
     <string name="CleanMemory">Clean memory</string>
     <string name="CleanDropCache">Clean Drop Cache</string>
     <string name="CleanAll">Clean all</string>
     <string name="title_activity_about">About</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_about">About</string>
     <string name="action_changelog">Change log</string>
