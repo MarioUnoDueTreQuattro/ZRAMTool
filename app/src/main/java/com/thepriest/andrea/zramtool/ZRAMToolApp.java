@@ -236,7 +236,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         int r2num = 0;
         int r3num = 0;
         int r4num = 0;
-        iZRAMSize = 0;
+        int ZRAMSizeTot = 0;
         try {
             if (hasZRAM0() == true || hasZRAM0() == false) {
                 //result1 = Shell.sudo("cat /sys/devices/virtual/block/zram0/disksize");
@@ -246,7 +246,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                 result4 = Shell.sudo("cat /sys/devices/virtual/block/zram0/compr_data_size");
                 //r1num = r1num + Integer.parseInt(result1.toString());
                 r1num = getZRAMDiskSize(0);
-                iZRAMSize += r1num;
+                ZRAMSizeTot += r1num;
                 r2num = r2num + Integer.parseInt(result2.toString());
                 r3num = r3num + Integer.parseInt(result3.toString());
                 r4num = r4num + Integer.parseInt(result4.toString());
@@ -262,7 +262,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                 result2 = Shell.sudo("cat /sys/devices/virtual/block/zram1/mem_used_total");
                 result4 = Shell.sudo("cat /sys/devices/virtual/block/zram1/compr_data_size");
                 r1num = getZRAMDiskSize(1);
-                iZRAMSize += r1num;
+                ZRAMSizeTot += r1num;
                 r2num = r2num + Integer.parseInt(result2.toString());
                 r3num = r3num + Integer.parseInt(result3.toString());
                 r4num = r4num + Integer.parseInt(result4.toString());
@@ -276,7 +276,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                 result2 = Shell.sudo("cat /sys/devices/virtual/block/zram1/mem_used_total");
                 result4 = Shell.sudo("cat /sys/devices/virtual/block/zram1/compr_data_size");
                 r1num = getZRAMDiskSize(2);
-                iZRAMSize += r1num;
+                ZRAMSizeTot += r1num;
                 r2num = r2num + Integer.parseInt(result2.toString());
                 r3num = r3num + Integer.parseInt(result3.toString());
                 r4num = r4num + Integer.parseInt(result4.toString());
@@ -290,7 +290,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                 result2 = Shell.sudo("cat /sys/devices/virtual/block/zram1/mem_used_total");
                 result4 = Shell.sudo("cat /sys/devices/virtual/block/zram1/compr_data_size");
                 r1num = getZRAMDiskSize(3);
-                iZRAMSize += r1num;
+                ZRAMSizeTot += r1num;
                 r2num = r2num + Integer.parseInt(result2.toString());
                 r3num = r3num + Integer.parseInt(result3.toString());
                 r4num = r4num + Integer.parseInt(result4.toString());
@@ -309,7 +309,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             if (BuildConfig.DEBUG) Log.d(TAG, "NumberFormatException: can't parse " + nfe);
         } finally {
             try {
-                iZRAMSize = iZRAMSize / 1024 / 1024;
+                iZRAMSize = ZRAMSizeTot / 1024 / 1024;
 //                r1num = Integer.parseInt(result1.toString());
                 r1num = r1num / 1024 / 1024;
                 //              r2num = Integer.parseInt(result2.toString());
