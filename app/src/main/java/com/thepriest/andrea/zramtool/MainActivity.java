@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -24,7 +25,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.TimerTask;
 
-    public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity {
     private static boolean b_isActivityVisible;
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int TIME_INTERVAL = 2000; // used for onBackPressed()
@@ -70,6 +71,15 @@ import java.util.TimerTask;
         //this.setTheme(R.style.Black);
         //Debug.startMethodTracing();
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        //getSupportActionBar().setIcon(R.drawable.ic_launcher_48);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher_48);
+
+/*
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
+        setSupportActionBar(toolbar);
+*/
         bUpdateStatus = true;
         ZRAMToolApp app = ((ZRAMToolApp) this.getApplication());
         sZRAMDirectory = app.sZRAMDirectory;

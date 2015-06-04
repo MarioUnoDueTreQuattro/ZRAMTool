@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+    <release version="1.37" versioncode="137">
+        <change>ToolBar: added icon and overflow menu.</change>
+    </release>
     <release version="1.36" versioncode="136">
         <change>Added buttons on toolbar.</change>
         <change>Fixed some bugs.</change>
