@@ -1,12 +1,8 @@
 package com.thepriest.andrea.zramtool;
 
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Debug;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -29,6 +25,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
     //TextView textViewSize,textViewSwappiness,textViewVFSCachePressure;
     EditText textViewSize, textViewSwappiness, textViewVFSCachePressure;
     int iCurrentRefreshFreq;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
@@ -72,7 +69,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             }
         });
         seekBarSize = (SeekBar) findViewById(R.id.seekBarSize); // make seekbar object
-        seekBarSize.setProgress(MainActivity.iZRAMSize/50);
+        seekBarSize.setProgress(MainActivity.iZRAMSize / 50);
 
         seekBarSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -264,7 +261,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-                 setZRAM();
+                setZRAM();
 
                 //               finish();
 
@@ -305,6 +302,8 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
     }
 
     public void setZRAM() {
+        String sZRAM = "";
+        String sCommand = "";
         if (switchZRAM.isChecked() == false) {
             new BackgroundThread().execute();
 
@@ -379,8 +378,6 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
                 double dDiskSize = diskSize / MainActivity.iDiskNum + 0.5;
                 diskSize = (int) dDiskSize;
                 diskSize = diskSize * 1024 * 1024;
-                String sZRAM = "";
-                String sCommand = "";
                 for (int iDisk = 0; iDisk < MainActivity.iDiskNum; iDisk++) {
                     sZRAM = "zram" + iDisk;
                     sCommand = "swapoff /dev/block/" + sZRAM;
@@ -396,16 +393,21 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
                     sCommand = "swapon /dev/block/" + sZRAM;
                     Shell.sudo(sCommand);
                 }
+            } catch (Shell.ShellException e) {
+                e.printStackTrace();
+            } catch (java.lang.ArithmeticException e) {
+                e.printStackTrace();
+            }
+            try {
                 sCommand = "echo " + Integer.parseInt(textViewSwappiness.getText().toString()) + " > /proc/sys/vm/swappiness";
                 Shell.sudo(sCommand);
                 sCommand = "echo " + Integer.parseInt(textViewVFSCachePressure.getText().toString()) + " > /proc/sys/vm/vfs_cache_pressure";
                 //sCommand="sysctl -w vm.vfs_cache_pressure=" + Integer.parseInt(textViewVFSCachePressure.getText().toString());
                 Shell.sudo(sCommand);
-                Toast.makeText(getApplicationContext(), "ZRAM enabled.", Toast.LENGTH_LONG).show();
             } catch (Shell.ShellException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            Toast.makeText(getApplicationContext(), "ZRAM enabled.", Toast.LENGTH_LONG).show();
             finish();
         }
         return;
@@ -415,9 +417,9 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
         int iSleepTime = 500;
 
         protected void onPreExecute() {
-            iCurrentRefreshFreq=ZRAMToolApp.iRefreshFrequency;
-            ZRAMToolApp.iRefreshFrequency=3600000;
-            if (ZRAMToolApp.bShowNotification) NotificationService.iRefreshFrequency=3600000;
+            iCurrentRefreshFreq = ZRAMToolApp.iRefreshFrequency;
+            ZRAMToolApp.iRefreshFrequency = 3600000;
+            if (ZRAMToolApp.bShowNotification) NotificationService.iRefreshFrequency = 3600000;
             //setProgressBarIndeterminate(true);
             setProgressBarIndeterminateVisibility(true);
             buttonApply.setText("Disabling ZRAM...");
@@ -463,13 +465,17 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            publishProgress(100);
-/*
-            for(int i=0; i<10; i++){
-                Integer in = new Integer(i);
-                publishProgress(i);
+            try {
+                String sCommand = "";
+                sCommand = "echo " + Integer.parseInt(textViewSwappiness.getText().toString()) + " > /proc/sys/vm/swappiness";
+                Shell.sudo(sCommand);
+                sCommand = "echo " + Integer.parseInt(textViewVFSCachePressure.getText().toString()) + " > /proc/sys/vm/vfs_cache_pressure";
+                //sCommand="sysctl -w vm.vfs_cache_pressure=" + Integer.parseInt(textViewVFSCachePressure.getText().toString());
+                Shell.sudo(sCommand);
+            } catch (Shell.ShellException e) {
+                e.printStackTrace();
             }
-*/
+            publishProgress(100);
             return "You are at PostExecute";
         }
 
@@ -484,13 +490,15 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
                 //Log.d(TAG,"You are in progress update ... " + a[0]);
             }
         }
+
         protected void onPostExecute(String result) {
             setProgressBarIndeterminateVisibility(false);
             Toast.makeText(getApplicationContext(), "ZRAM disabled.", Toast.LENGTH_LONG).show();
             buttonApply.setEnabled(true);
             buttonApply.setText("Apply");
-            ZRAMToolApp.iRefreshFrequency=iCurrentRefreshFreq;
-            if (ZRAMToolApp.bShowNotification) NotificationService.iRefreshFrequency=iCurrentRefreshFreq;
+            ZRAMToolApp.iRefreshFrequency = iCurrentRefreshFreq;
+            if (ZRAMToolApp.bShowNotification)
+                NotificationService.iRefreshFrequency = iCurrentRefreshFreq;
             finish();
             //Debug.stopMethodTracing();
             //Log.d(TAG + result,"");
