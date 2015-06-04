@@ -75,7 +75,6 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         //getSupportActionBar().setIcon(R.drawable.ic_launcher_48);
         getSupportActionBar().setLogo(R.drawable.ic_launcher_96);
-
 /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
         setSupportActionBar(toolbar);

@@ -3,7 +3,7 @@
     <release
         version="1.37"
         versioncode="137">
-        <change>ToolBar: added icon and overflow menu.</change>
+        <change>ToolBar: added icon.</change>
         <change>"VFS cache pressure" and "swappiness" are set (and shown?) correctly.</change>
         <change>Removed "Disable ZRAM" button, renamed "Enable ZRAM" to "Enable/Disable ZRAM".
         </change>
