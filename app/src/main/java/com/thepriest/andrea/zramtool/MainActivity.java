@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         //Debug.startMethodTracing();
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_launcher_96);
 /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
