@@ -236,66 +236,68 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         int r2num = 0;
         int r3num = 0;
         int r4num = 0;
+        iZRAMSize = 0;
         try {
             if (hasZRAM0() == true || hasZRAM0() == false) {
-                result1 = Shell.sudo("cat /sys/devices/virtual/block/zram0/disksize");
+                //result1 = Shell.sudo("cat /sys/devices/virtual/block/zram0/disksize");
                 //result2 = Shell.sudo("cat /sys/devices/virtual/block/zram0/size");
                 result3 = Shell.sudo("cat /sys/devices/virtual/block/zram0/orig_data_size");
                 result2 = Shell.sudo("cat /sys/devices/virtual/block/zram0/mem_used_total");
                 result4 = Shell.sudo("cat /sys/devices/virtual/block/zram0/compr_data_size");
-                r1num = r1num + Integer.parseInt(result1.toString());
+                //r1num = r1num + Integer.parseInt(result1.toString());
+                r1num = getZRAMDiskSize(0);
+                iZRAMSize += r1num;
                 r2num = r2num + Integer.parseInt(result2.toString());
                 r3num = r3num + Integer.parseInt(result3.toString());
                 r4num = r4num + Integer.parseInt(result4.toString());
-                iDiskSize0 = Integer.parseInt(result1.toString());
+                iDiskSize0 = r1num;
                 iOrigDataSize0 = Integer.parseInt(result2.toString());
                 iMemUsedTotal0 = Integer.parseInt(result3.toString());
                 iComprDataSize0 = Integer.parseInt(result4.toString());
             }
             if (hasZRAM1() == true) {
-                result1 = Shell.sudo("cat /sys/devices/virtual/block/zram1/disksize");
+                //result1 = Shell.sudo("cat /sys/devices/virtual/block/zram1/disksize");
                 //result2 = Shell.sudo("cat /sys/devices/virtual/block/zram0/size");
                 result3 = Shell.sudo("cat /sys/devices/virtual/block/zram1/orig_data_size");
                 result2 = Shell.sudo("cat /sys/devices/virtual/block/zram1/mem_used_total");
                 result4 = Shell.sudo("cat /sys/devices/virtual/block/zram1/compr_data_size");
-                r1num = r1num + Integer.parseInt(result1.toString());
+                r1num = getZRAMDiskSize(1);
+                iZRAMSize += r1num;
                 r2num = r2num + Integer.parseInt(result2.toString());
                 r3num = r3num + Integer.parseInt(result3.toString());
                 r4num = r4num + Integer.parseInt(result4.toString());
-                iDiskSize1 = Integer.parseInt(result1.toString());
+                iDiskSize1 = r1num;
                 iOrigDataSize1 = Integer.parseInt(result2.toString());
                 iMemUsedTotal1 = Integer.parseInt(result3.toString());
                 iComprDataSize1 = Integer.parseInt(result4.toString());
             }
             if (hasZRAM2() == true) {
-                result1 = Shell.sudo("cat /sys/devices/virtual/block/zram2/disksize");
-                //result2 = Shell.sudo("cat /sys/devices/virtual/block/zram0/size");
-                result3 = Shell.sudo("cat /sys/devices/virtual/block/zram2/orig_data_size");
-                result2 = Shell.sudo("cat /sys/devices/virtual/block/zram2/mem_used_total");
-                result4 = Shell.sudo("cat /sys/devices/virtual/block/zram2/compr_data_size");
-                r1num = r1num + Integer.parseInt(result1.toString());
+                result3 = Shell.sudo("cat /sys/devices/virtual/block/zram1/orig_data_size");
+                result2 = Shell.sudo("cat /sys/devices/virtual/block/zram1/mem_used_total");
+                result4 = Shell.sudo("cat /sys/devices/virtual/block/zram1/compr_data_size");
+                r1num = getZRAMDiskSize(2);
+                iZRAMSize += r1num;
                 r2num = r2num + Integer.parseInt(result2.toString());
                 r3num = r3num + Integer.parseInt(result3.toString());
                 r4num = r4num + Integer.parseInt(result4.toString());
-                iDiskSize2 = Integer.parseInt(result1.toString());
-                iOrigDataSize2 = Integer.parseInt(result2.toString());
-                iMemUsedTotal2 = Integer.parseInt(result3.toString());
-                iComprDataSize2 = Integer.parseInt(result4.toString());
+                iDiskSize2 = r1num;
+                iOrigDataSize1 = Integer.parseInt(result2.toString());
+                iMemUsedTotal1 = Integer.parseInt(result3.toString());
+                iComprDataSize1 = Integer.parseInt(result4.toString());
             }
             if (hasZRAM3() == true) {
-                result1 = Shell.sudo("cat /sys/devices/virtual/block/zram3/disksize");
-                //result2 = Shell.sudo("cat /sys/devices/virtual/block/zram0/size");
-                result3 = Shell.sudo("cat /sys/devices/virtual/block/zram3/orig_data_size");
-                result2 = Shell.sudo("cat /sys/devices/virtual/block/zram3/mem_used_total");
-                result4 = Shell.sudo("cat /sys/devices/virtual/block/zram3/compr_data_size");
-                r1num = r1num + Integer.parseInt(result1.toString());
+                result3 = Shell.sudo("cat /sys/devices/virtual/block/zram1/orig_data_size");
+                result2 = Shell.sudo("cat /sys/devices/virtual/block/zram1/mem_used_total");
+                result4 = Shell.sudo("cat /sys/devices/virtual/block/zram1/compr_data_size");
+                r1num = getZRAMDiskSize(3);
+                iZRAMSize += r1num;
                 r2num = r2num + Integer.parseInt(result2.toString());
                 r3num = r3num + Integer.parseInt(result3.toString());
                 r4num = r4num + Integer.parseInt(result4.toString());
-                iDiskSize3 = Integer.parseInt(result1.toString());
-                iOrigDataSize3 = Integer.parseInt(result2.toString());
-                iMemUsedTotal3 = Integer.parseInt(result3.toString());
-                iComprDataSize3 = Integer.parseInt(result4.toString());
+                iDiskSize3 = r1num;
+                iOrigDataSize1 = Integer.parseInt(result2.toString());
+                iMemUsedTotal1 = Integer.parseInt(result3.toString());
+                iComprDataSize1 = Integer.parseInt(result4.toString());
             }
         } catch (java.lang.NullPointerException e) {
             e.printStackTrace();
@@ -307,6 +309,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             if (BuildConfig.DEBUG) Log.d(TAG, "NumberFormatException: can't parse " + nfe);
         } finally {
             try {
+                iZRAMSize = iZRAMSize / 1024 / 1024;
 //                r1num = Integer.parseInt(result1.toString());
                 r1num = r1num / 1024 / 1024;
                 //              r2num = Integer.parseInt(result2.toString());
@@ -319,7 +322,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                 System.out.println("Could not parse " + nfe);
             }
         }
-        iZRAMSize = r1num;
+        //iZRAMSize = r1num;
         iZRAMComprDataSize = r4num;
         iZRAMTotalMemoryUsed = r2num;
         //textViewTotalSize.setText(getString(R.string.ZRAM_size) + r1num + " MB");
@@ -354,6 +357,26 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             mNotificationManager.notify(0, appLaunch.build());
         }
 */
+    }
+
+    public static int getZRAMDiskSize(int disk) {
+        String path = "/sys/devices/virtual/block/zram";
+        path += disk;
+        path += "/disksize";
+        try {
+            BufferedReader mounts = new BufferedReader(new FileReader(path));
+            String line;
+            while ((line = mounts.readLine()) != null) {
+                disk = Integer.parseInt(line);
+            }
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "Cannot find...");
+        } catch (IOException e) {
+            Log.d(TAG, "Ran into problems reading...");
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: Could not parse " + nfe);
+        }
+        return disk;
     }
 
     public static int[] getMemoryInfo() {

@@ -187,7 +187,6 @@ public class NotificationService extends Service {
             while (true) {
                 try {
                     setNotification();
-                    // TODO something
                     if (BuildConfig.DEBUG) Log.d(TAG, "Updater run loop..................");
                     this.sleep(ZRAMToolApp.iRefreshFrequency);
                     if (!running) return;

@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +26,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.TimerTask;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     private static boolean b_isActivityVisible;
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int TIME_INTERVAL = 2000; // used for onBackPressed()
