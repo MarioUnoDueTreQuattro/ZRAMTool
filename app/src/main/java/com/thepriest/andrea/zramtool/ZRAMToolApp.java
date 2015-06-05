@@ -25,7 +25,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
     static public int iZRAMUsage;
-   // static public int iMaximumZRAMUsage;
+    // static public int iMaximumZRAMUsage;
     static public int iSwappiness;
     static public int iVFSCachePressure;
     static public int iDiskSize0, iDiskSize1, iDiskSize2, iDiskSize3;
@@ -391,17 +391,17 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                 iZRAMStatus = getZRAMStatus(1);
                 r1num = iZRAMStatus[0];
                 ZRAMSizeTot += r1num;
-                r2num+= iZRAMStatus[2];
-                r3num+= iZRAMStatus[1];
-                r4num+= iZRAMStatus[3];
+                r2num += iZRAMStatus[2];
+                r3num += iZRAMStatus[1];
+                r4num += iZRAMStatus[3];
             }
             if (hasZRAM2() == true) {
                 iZRAMStatus = getZRAMStatus(2);
                 r1num = iZRAMStatus[0];
                 ZRAMSizeTot += r1num;
-                r2num+= iZRAMStatus[2];
-                r3num+= iZRAMStatus[1];
-                r4num+= iZRAMStatus[3];
+                r2num += iZRAMStatus[2];
+                r3num += iZRAMStatus[1];
+                r4num += iZRAMStatus[3];
             }
             if (hasZRAM3() == true) {
                 iZRAMStatus = getZRAMStatus(3);
@@ -595,7 +595,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         //iMemory = getMemoryInfo();
         iZRAMUsage = r3num;
         if (iZRAMUsage > iZRAMMaximumUsage) iZRAMMaximumUsage = iZRAMUsage;
-      //  if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
+        //  if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
     }
 
     public static int getZRAMDiskSize(int disk) {
@@ -695,6 +695,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             while ((line = mounts.readLine()) != null) {
                 iResult = Integer.parseInt(line);
             }
+            mounts.close();
         } catch (FileNotFoundException e) {
             Log.d(TAG, "Cannot find...");
         } catch (IOException e) {
@@ -712,6 +713,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             while ((line = mounts.readLine()) != null) {
                 iResult = Integer.parseInt(line);
             }
+            mounts.close();
         } catch (FileNotFoundException e) {
             Log.d(TAG, "Cannot find...");
         } catch (IOException e) {
@@ -729,6 +731,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             while ((line = mounts.readLine()) != null) {
                 iResult = Integer.parseInt(line);
             }
+            mounts.close();
         } catch (FileNotFoundException e) {
             Log.d(TAG, "Cannot find...");
         } catch (IOException e) {
@@ -746,6 +749,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             while ((line = mounts.readLine()) != null) {
                 iResult = Integer.parseInt(line);
             }
+            mounts.close();
         } catch (FileNotFoundException e) {
             Log.d(TAG, "Cannot find...");
         } catch (IOException e) {
