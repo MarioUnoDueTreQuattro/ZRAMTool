@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private long mBackPressed;
     //Timer timer = new Timer();
     //RefreshTask refreshTask;
+    //ScrollView scrollView;
     Handler mHandler;
     //TimerTask timerTask;
     TextView textViewTotalSize, textViewTotalMemoryUsed, textViewOrigDataSize, textViewComprDataSize, textViewSwappiness, textViewFreeRam,
@@ -146,6 +148,8 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        }
         setContentView(R.layout.activity_main);
+//        scrollView = (ScrollView) findViewById(R.id.scrollView);
+//        scrollView.setBackgroundColor(R.color.bright_foreground_material_light);
         progressBarTotalMemoryUsed = (ProgressBar) findViewById(R.id.progressBarTotalMemoryUsed);
         progressBarOrigDataSize = (ProgressBar) findViewById(R.id.progressBarOrigDataSize);
         progressBarComprDataSize = (ProgressBar) findViewById(R.id.progressBarComprDataSize);

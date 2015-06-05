@@ -18,7 +18,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Black">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -32,7 +32,7 @@
         <activity
             android:name=".Enable_ZRAM_Activity"
             android:label="@string/title_activity_enable__zram_"
-            android:theme="@style/Black"
+
             >
         </activity>
         <activity
