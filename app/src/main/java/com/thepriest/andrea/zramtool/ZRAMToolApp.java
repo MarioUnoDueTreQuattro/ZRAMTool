@@ -696,62 +696,36 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                 iResult = Integer.parseInt(line);
             }
             mounts.close();
-        } catch (FileNotFoundException e) {
-            Log.d(TAG, "Cannot find...");
-        } catch (IOException e) {
-            Log.d(TAG, "Ran into problems reading...");
-        } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: Could not parse " + nfe);
-        }
-        iZRAMStatus[0] = iResult;
-        path = "/sys/devices/virtual/block/zram";
-        path += disk;
-        path += "/orig_data_size";
-        try {
-            BufferedReader mounts = new BufferedReader(new FileReader(path));
-            String line;
+            iZRAMStatus[0] = iResult;
+            path = "/sys/devices/virtual/block/zram";
+            path += disk;
+            path += "/orig_data_size";
+
+            mounts = new BufferedReader(new FileReader(path));
+            while ((line = mounts.readLine()) != null) {
+                iResult = Integer.parseInt(line);
+            }
+            mounts.close();
+            path = "/sys/devices/virtual/block/zram";
+            iZRAMStatus[1] = iResult;
+            path += disk;
+            path += "/mem_used_total";
+            mounts = new BufferedReader(new FileReader(path));
+            while ((line = mounts.readLine()) != null) {
+                iResult = Integer.parseInt(line);
+            }
+            mounts.close();
+            iZRAMStatus[2] = iResult;
+            path = "/sys/devices/virtual/block/zram";
+            path += disk;
+            path += "/compr_data_size";
+            mounts = new BufferedReader(new FileReader(path));
             while ((line = mounts.readLine()) != null) {
                 iResult = Integer.parseInt(line);
             }
             mounts.close();
         } catch (FileNotFoundException e) {
-            Log.d(TAG, "Cannot find...");
-        } catch (IOException e) {
-            Log.d(TAG, "Ran into problems reading...");
-        } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: Could not parse " + nfe);
-        }
-        path = "/sys/devices/virtual/block/zram";
-        iZRAMStatus[1] = iResult;
-        path += disk;
-        path += "/mem_used_total";
-        try {
-            BufferedReader mounts = new BufferedReader(new FileReader(path));
-            String line;
-            while ((line = mounts.readLine()) != null) {
-                iResult = Integer.parseInt(line);
-            }
-            mounts.close();
-        } catch (FileNotFoundException e) {
-            Log.d(TAG, "Cannot find...");
-        } catch (IOException e) {
-            Log.d(TAG, "Ran into problems reading...");
-        } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: Could not parse " + nfe);
-        }
-        iZRAMStatus[2] = iResult;
-        path = "/sys/devices/virtual/block/zram";
-        path += disk;
-        path += "/compr_data_size";
-        try {
-            BufferedReader mounts = new BufferedReader(new FileReader(path));
-            String line;
-            while ((line = mounts.readLine()) != null) {
-                iResult = Integer.parseInt(line);
-            }
-            mounts.close();
-        } catch (FileNotFoundException e) {
-            Log.d(TAG, "Cannot find...");
+            Log.d(TAG, "Cannot find ZRAM...");
         } catch (IOException e) {
             Log.d(TAG, "Ran into problems reading...");
         } catch (NumberFormatException nfe) {
