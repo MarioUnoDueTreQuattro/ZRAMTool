@@ -25,7 +25,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
     static public int iZRAMUsage;
-    static public int iMaximumZRAMUsage;
+   // static public int iMaximumZRAMUsage;
     static public int iSwappiness;
     static public int iVFSCachePressure;
     static public int iDiskSize0, iDiskSize1, iDiskSize2, iDiskSize3;
@@ -338,7 +338,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         //textViewTotal.setText("Total memory: " + iMemory[4] + " MB");
         iZRAMUsage = r3num;
         if (iZRAMUsage > iZRAMMaximumUsage) iZRAMMaximumUsage = iZRAMUsage;
-        if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
+        //if (r3num > iZRAMMaximumUsage) iZRAMMaximumUsage = r3num;
         //textViewMaxZRAMUsage.setText("Maximum ZRAM usage: " + iMaximumZRAMUsage + " MB");
 /*
         if (bShowNotification) {
@@ -357,6 +357,124 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             mNotificationManager.notify(0, appLaunch.build());
         }
 */
+    }
+
+    public static void updateZRAMStatus3() {
+        // Log.d(TAG, "updateZRAMStatus2()");
+        int diskNum = 0;
+        if (hasZRAM0() == true) diskNum++;
+        if (hasZRAM1() == true) diskNum++;
+        if (hasZRAM2() == true) diskNum++;
+        if (hasZRAM3() == true) diskNum++;
+        iDiskNum = diskNum;
+        getSwappiness();
+        getVFSCachePressure();
+        int r1num = 0;
+        int r2num = 0;
+        int r3num = 0;
+        int r4num = 0;
+        int ZRAMSizeTot = 0;
+        try {
+            if (hasZRAM0() == true || hasZRAM0() == false) {
+                iZRAMStatus = getZRAMStatus(0);
+                r1num = iZRAMStatus[0];
+                ZRAMSizeTot += r1num;
+                r2num = iZRAMStatus[2];
+                r3num = iZRAMStatus[1];
+                r4num = iZRAMStatus[3];
+                iDiskSize0 = r1num;
+                iOrigDataSize0 = r2num;
+                iMemUsedTotal0 = r3num;
+                iComprDataSize0 = r4num;
+            }
+            if (hasZRAM1() == true) {
+                iZRAMStatus = getZRAMStatus(1);
+                r1num = iZRAMStatus[0];
+                ZRAMSizeTot += r1num;
+                r2num+= iZRAMStatus[2];
+                r3num+= iZRAMStatus[1];
+                r4num+= iZRAMStatus[3];
+            }
+            if (hasZRAM2() == true) {
+                iZRAMStatus = getZRAMStatus(2);
+                r1num = iZRAMStatus[0];
+                ZRAMSizeTot += r1num;
+                r2num+= iZRAMStatus[2];
+                r3num+= iZRAMStatus[1];
+                r4num+= iZRAMStatus[3];
+            }
+            if (hasZRAM3() == true) {
+                iZRAMStatus = getZRAMStatus(3);
+                r1num = iZRAMStatus[0];
+                ZRAMSizeTot += r1num;
+                r2num += iZRAMStatus[2];
+                r3num += iZRAMStatus[1];
+                r4num += iZRAMStatus[3];
+            }
+        } catch (java.lang.NullPointerException e) {
+            e.printStackTrace();
+            if (BuildConfig.DEBUG) Log.d(TAG, "java.lang.NullPointerException");
+        } catch (NumberFormatException nfe) {
+            if (BuildConfig.DEBUG) Log.d(TAG, "NumberFormatException: can't parse " + nfe);
+        } finally {
+            try {
+                iZRAMSize = ZRAMSizeTot / 1024 / 1024;
+//                r1num = Integer.parseInt(result1.toString());
+                r1num = r1num / 1024 / 1024;
+                //              r2num = Integer.parseInt(result2.toString());
+                r2num = r2num / 1024 / 1024;
+                //            r3num = Integer.parseInt(result3.toString());
+                r3num = r3num / 1024 / 1024;
+                //          r4num = Integer.parseInt(result4.toString());
+                r4num = r4num / 1024 / 1024;
+            } catch (NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+        }
+        //iZRAMSize = r1num;
+        iZRAMComprDataSize = r4num;
+        iZRAMTotalMemoryUsed = r2num;
+        //int iMemory[] = new int[5];
+        //iMemory = getMemoryInfo();
+        iZRAMUsage = r3num;
+        if (iZRAMUsage > iZRAMMaximumUsage) iZRAMMaximumUsage = iZRAMUsage;
+        //if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
+
+    }
+
+    private static void getVFSCachePressure() {
+        try {
+            BufferedReader mounts = new BufferedReader(new FileReader("/proc/sys/vm/vfs_cache_pressure"));
+            String line;
+            while ((line = mounts.readLine()) != null) {
+                iVFSCachePressure = Integer.parseInt(line);
+            }
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "Cannot find...");
+            // textViewComprDataSize.setText("FileNotFoundException");
+        } catch (IOException e) {
+            Log.d(TAG, "Ran into problems reading...");
+            // textViewComprDataSize.setText("IOException");
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: Could not parse " + nfe);
+        }
+    }
+
+    private static void getSwappiness() {
+        try {
+            BufferedReader mounts = new BufferedReader(new FileReader("/proc/sys/vm/swappiness"));
+            String line;
+            while ((line = mounts.readLine()) != null) {
+                iSwappiness = Integer.parseInt(line);
+            }
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "Cannot find...");
+        } catch (IOException e) {
+            Log.d(TAG, "Ran into problems reading...");
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: Could not parse " + nfe);
+        }
+
     }
 
     public static void updateZRAMStatus2() {
@@ -409,8 +527,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             if (hasZRAM0() == true || hasZRAM0() == false) {
                 r1num = getZRAMDiskSize(0);
                 ZRAMSizeTot += r1num;
-                r2num = getZRAMorig_data_size(0);
-                r3num = getZRAMmem_used_total(0);
+                r3num = getZRAMorig_data_size(0);
+                r2num = getZRAMmem_used_total(0);
                 r4num = getZRAMcompr_data_size(0);
                 iDiskSize0 = r1num;
                 iOrigDataSize0 = r2num;
@@ -420,9 +538,9 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             if (hasZRAM1() == true) {
                 r1num = getZRAMDiskSize(1);
                 ZRAMSizeTot += r1num;
-                r2num = getZRAMorig_data_size(1);
-                r3num = getZRAMmem_used_total(1);
-                r4num = getZRAMcompr_data_size(1);
+                r3num += getZRAMorig_data_size(1);
+                r2num += getZRAMmem_used_total(1);
+                r4num += getZRAMcompr_data_size(1);
                 iDiskSize0 = r1num;
                 iOrigDataSize0 = r2num;
                 iMemUsedTotal0 = r3num;
@@ -431,9 +549,9 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             if (hasZRAM2() == true) {
                 r1num = getZRAMDiskSize(2);
                 ZRAMSizeTot += r1num;
-                r2num = getZRAMorig_data_size(2);
-                r3num = getZRAMmem_used_total(2);
-                r4num = getZRAMcompr_data_size(2);
+                r3num += getZRAMorig_data_size(2);
+                r2num += getZRAMmem_used_total(2);
+                r4num += getZRAMcompr_data_size(2);
                 iDiskSize0 = r1num;
                 iOrigDataSize0 = r2num;
                 iMemUsedTotal0 = r3num;
@@ -442,9 +560,9 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             if (hasZRAM3() == true) {
                 r1num = getZRAMDiskSize(3);
                 ZRAMSizeTot += r1num;
-                r2num = getZRAMorig_data_size(3);
-                r3num = getZRAMmem_used_total(3);
-                r4num = getZRAMcompr_data_size(3);
+                r3num += getZRAMorig_data_size(3);
+                r2num += getZRAMmem_used_total(3);
+                r4num += getZRAMcompr_data_size(3);
                 iDiskSize0 = r1num;
                 iOrigDataSize0 = r2num;
                 iMemUsedTotal0 = r3num;
@@ -477,7 +595,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         //iMemory = getMemoryInfo();
         iZRAMUsage = r3num;
         if (iZRAMUsage > iZRAMMaximumUsage) iZRAMMaximumUsage = iZRAMUsage;
-        if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
+      //  if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
     }
 
     public static int getZRAMDiskSize(int disk) {
@@ -540,7 +658,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         return disk;
     }
 
-       public static int getZRAMcompr_data_size(int disk) {
+    public static int getZRAMcompr_data_size(int disk) {
         String path = "/sys/devices/virtual/block/zram";
         path += disk;
         path += "/compr_data_size";
@@ -567,6 +685,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
      * @return array containing the data of the specified ZRAM disk.
      */
     public static int[] getZRAMStatus(int disk) {
+        int iResult = 0;
         String path = "/sys/devices/virtual/block/zram";
         path += disk;
         path += "/disksize";
@@ -574,7 +693,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             BufferedReader mounts = new BufferedReader(new FileReader(path));
             String line;
             while ((line = mounts.readLine()) != null) {
-                disk = Integer.parseInt(line);
+                iResult = Integer.parseInt(line);
             }
         } catch (FileNotFoundException e) {
             Log.d(TAG, "Cannot find...");
@@ -583,7 +702,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: Could not parse " + nfe);
         }
-        iZRAMStatus[0]=disk;
+        iZRAMStatus[0] = iResult;
         path = "/sys/devices/virtual/block/zram";
         path += disk;
         path += "/orig_data_size";
@@ -591,23 +710,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             BufferedReader mounts = new BufferedReader(new FileReader(path));
             String line;
             while ((line = mounts.readLine()) != null) {
-                disk = Integer.parseInt(line);
-            }
-        } catch (FileNotFoundException e) {
-            Log.d(TAG, "Cannot find...");
-        } catch (IOException e) {
-            Log.d(TAG, "Ran into problems reading...");
-        } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: Could not parse " + nfe);
-        }path = "/sys/devices/virtual/block/zram";
-        iZRAMStatus[1]=disk;
-        path += disk;
-        path += "/mem_used_total";
-        try {
-            BufferedReader mounts = new BufferedReader(new FileReader(path));
-            String line;
-            while ((line = mounts.readLine()) != null) {
-                disk = Integer.parseInt(line);
+                iResult = Integer.parseInt(line);
             }
         } catch (FileNotFoundException e) {
             Log.d(TAG, "Cannot find...");
@@ -616,7 +719,24 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: Could not parse " + nfe);
         }
-        iZRAMStatus[2]=disk;
+        path = "/sys/devices/virtual/block/zram";
+        iZRAMStatus[1] = iResult;
+        path += disk;
+        path += "/mem_used_total";
+        try {
+            BufferedReader mounts = new BufferedReader(new FileReader(path));
+            String line;
+            while ((line = mounts.readLine()) != null) {
+                iResult = Integer.parseInt(line);
+            }
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "Cannot find...");
+        } catch (IOException e) {
+            Log.d(TAG, "Ran into problems reading...");
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: Could not parse " + nfe);
+        }
+        iZRAMStatus[2] = iResult;
         path = "/sys/devices/virtual/block/zram";
         path += disk;
         path += "/compr_data_size";
@@ -624,7 +744,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             BufferedReader mounts = new BufferedReader(new FileReader(path));
             String line;
             while ((line = mounts.readLine()) != null) {
-                disk = Integer.parseInt(line);
+                iResult = Integer.parseInt(line);
             }
         } catch (FileNotFoundException e) {
             Log.d(TAG, "Cannot find...");
@@ -633,7 +753,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: Could not parse " + nfe);
         }
-        iZRAMStatus[3]=disk;
+        iZRAMStatus[3] = iResult;
         return iZRAMStatus;
     }
 

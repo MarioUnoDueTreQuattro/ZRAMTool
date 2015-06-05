@@ -316,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void tick() {
-        if (!ZRAMToolApp.bShowNotification) ZRAMToolApp.updateZRAMStatus();
+        if (!ZRAMToolApp.bShowNotification) ZRAMToolApp.updateZRAMStatus3();
         printZRAMStatus();
         iUpdatesCount++;
         // textViewVFS_cache_pressure.setText(""+iUpdatesCount);
@@ -696,7 +696,7 @@ public class MainActivity extends AppCompatActivity {
         textViewTotal.setText("Total memory: " + iMemory[4] + " MB");
         iZRAMUsage = ZRAMToolApp.iZRAMUsage;
         if (iZRAMUsage > iMaximumZRAMUsage) iMaximumZRAMUsage = iZRAMUsage;
-        textViewMaxZRAMUsage.setText("Maximum ZRAM usage: " + ZRAMToolApp.iMaximumZRAMUsage + " MB");
+        textViewMaxZRAMUsage.setText("Maximum ZRAM usage: " + ZRAMToolApp.iZRAMMaximumUsage + " MB");
         progressBarTotalMemoryUsed.setMax(iZRAMSize);
         progressBarOrigDataSize.setMax(iZRAMSize);
         progressBarComprDataSize.setMax(iZRAMSize);
@@ -704,7 +704,7 @@ public class MainActivity extends AppCompatActivity {
         progressBarTotalMemoryUsed.setProgress(ZRAMToolApp.iZRAMTotalMemoryUsed);
         progressBarOrigDataSize.setProgress(ZRAMToolApp.iZRAMUsage);
         progressBarComprDataSize.setProgress(ZRAMToolApp.iZRAMComprDataSize);
-        progressBarMaxZRAMUsage.setProgress(ZRAMToolApp.iMaximumZRAMUsage);
+        progressBarMaxZRAMUsage.setProgress(ZRAMToolApp.iZRAMMaximumUsage);
         // progressBarTotalMemoryUsed, progressBarOrigDataSize,progressBarComprDataSize,progressBarMaxZRAMUsage
 /*
         if (bShowNotification) {

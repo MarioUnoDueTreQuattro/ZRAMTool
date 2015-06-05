@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
     <release
+        version="1.38"
+        versioncode="138">
+        <change>More "BufferedReader" instead of "Shell.sudo".</change>
+    </release>
+    <release
         version="1.37"
         versioncode="137">
         <change>Use "BufferedReader" instead of "Shell.sudo" to retrieve ZRAM informations.</change>
