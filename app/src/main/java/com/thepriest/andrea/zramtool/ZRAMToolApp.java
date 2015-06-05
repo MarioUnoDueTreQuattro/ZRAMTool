@@ -32,7 +32,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     static public int iOrigDataSize0, iOrigDataSize1, iOrigDataSize2, iOrigDataSize3;
     static public int iMemUsedTotal0, iMemUsedTotal1, iMemUsedTotal2, iMemUsedTotal3;
     static public int iComprDataSize0, iComprDataSize1, iComprDataSize2, iComprDataSize3;
-
+    public static int iZRAMStatus[] = new int[4];
 
     /**
      * Called when the application is starting, before any activity, service,
@@ -540,7 +540,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         return disk;
     }
 
-    public static int getZRAMcompr_data_size(int disk) {
+       public static int getZRAMcompr_data_size(int disk) {
         String path = "/sys/devices/virtual/block/zram";
         path += disk;
         path += "/compr_data_size";
@@ -561,13 +561,12 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     }
 
     /**
-     * TODO
+     * Get ZRAM information of the specified ZRAM disk and returns an array containing the data.
      *
-     * @param disk
-     * @return
+     * @param disk ZRAM disk.
+     * @return array containing the data of the specified ZRAM disk.
      */
     public static int[] getZRAMStatus(int disk) {
-        int status[] = new int[4];
         String path = "/sys/devices/virtual/block/zram";
         path += disk;
         path += "/disksize";
@@ -584,6 +583,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: Could not parse " + nfe);
         }
+        iZRAMStatus[0]=disk;
         path = "/sys/devices/virtual/block/zram";
         path += disk;
         path += "/orig_data_size";
@@ -600,6 +600,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: Could not parse " + nfe);
         }path = "/sys/devices/virtual/block/zram";
+        iZRAMStatus[1]=disk;
         path += disk;
         path += "/mem_used_total";
         try {
@@ -614,7 +615,9 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             Log.d(TAG, "Ran into problems reading...");
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: Could not parse " + nfe);
-        }path = "/sys/devices/virtual/block/zram";
+        }
+        iZRAMStatus[2]=disk;
+        path = "/sys/devices/virtual/block/zram";
         path += disk;
         path += "/compr_data_size";
         try {
@@ -630,7 +633,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: Could not parse " + nfe);
         }
-        return status;
+        iZRAMStatus[3]=disk;
+        return iZRAMStatus;
     }
 
     public static int[] getMemoryInfo() {
