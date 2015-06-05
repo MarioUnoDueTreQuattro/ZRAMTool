@@ -329,8 +329,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         //textViewTotalMemoryUsed.setText(getString(R.string.ZRAM_total) + r2num + " MB");
         //textViewOrigDataSize.setText(getString(R.string.ZRAM_original) + r3num + " MB");
         //textViewComprDataSize.setText(getString(R.string.ZRAM_compressed) + r4num + " MB");
-        int iMemory[] = new int[5];
-        iMemory = getMemoryInfo();
+        //int iMemory[] = new int[5];
+        //iMemory = getMemoryInfo();
         //textViewFreeRam.setText("Free memory: " + iMemory[0] + " MB");
         //textViewCached.setText("Cached: " + iMemory[2] + " MB");
         //textViewBuffers.setText("Buffers: " + iMemory[1] + " MB");
