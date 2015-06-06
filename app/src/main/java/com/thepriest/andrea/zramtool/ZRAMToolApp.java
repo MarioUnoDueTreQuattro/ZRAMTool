@@ -24,6 +24,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     static public boolean bShowNotification;
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
+    static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory;
     static public int iZRAMUsage;
     // static public int iMaximumZRAMUsage;
     static public int iSwappiness;
@@ -439,6 +440,24 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         iZRAMUsage = r3num;
         if (iZRAMUsage > iZRAMMaximumUsage) iZRAMMaximumUsage = iZRAMUsage;
         //if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
+
+    }
+
+    public static void updateRAMStatus() {
+        int iMemory[] = new int[5];
+        iMemory = getMemoryInfo();
+        iFreeMemory = iMemory[0];
+        iCachedMemory = iMemory[2];
+        iBuffersMemory = iMemory[1];
+        iTotalFreeMemory = iMemory[3];
+        iTotalMemory = iMemory[4];
+/*
+        textViewFreeRam.setText("Free memory: " + iMemory[0] + " MB");
+        textViewCached.setText("Cached: " + iMemory[2] + " MB");
+        textViewBuffers.setText("Buffers: " + iMemory[1] + " MB");
+        textViewTotalFree.setText("Total free memory: " + iMemory[3] + " MB");
+        textViewTotal.setText("Total memory: " + iMemory[4] + " MB");
+*/
 
     }
 

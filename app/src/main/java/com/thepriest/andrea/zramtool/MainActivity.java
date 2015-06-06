@@ -316,7 +316,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void tick() {
-        if (!ZRAMToolApp.bShowNotification) ZRAMToolApp.updateZRAMStatus3();
+        ZRAMToolApp.updateZRAMStatus3();
+        ZRAMToolApp.updateRAMStatus();
         printZRAMStatus();
         iUpdatesCount++;
         // textViewVFS_cache_pressure.setText(""+iUpdatesCount);
@@ -687,13 +688,13 @@ public class MainActivity extends AppCompatActivity {
         textViewTotalMemoryUsed.setText(getString(R.string.ZRAM_total) + ZRAMToolApp.iZRAMTotalMemoryUsed + " MB");
         textViewOrigDataSize.setText(getString(R.string.ZRAM_original) + ZRAMToolApp.iZRAMUsage + " MB");
         textViewComprDataSize.setText(getString(R.string.ZRAM_compressed) + ZRAMToolApp.iZRAMComprDataSize + " MB");
-        int iMemory[] = new int[5];
-        iMemory = getMemoryInfo();
-        textViewFreeRam.setText("Free memory: " + iMemory[0] + " MB");
-        textViewCached.setText("Cached: " + iMemory[2] + " MB");
-        textViewBuffers.setText("Buffers: " + iMemory[1] + " MB");
-        textViewTotalFree.setText("Total free memory: " + iMemory[3] + " MB");
-        textViewTotal.setText("Total memory: " + iMemory[4] + " MB");
+//        int iMemory[] = new int[5];
+//        iMemory = getMemoryInfo();
+        textViewFreeRam.setText("Free memory: " + ZRAMToolApp.iFreeMemory + " MB");
+        textViewCached.setText("Cached: " + ZRAMToolApp.iCachedMemory + " MB");
+        textViewBuffers.setText("Buffers: " + ZRAMToolApp.iBuffersMemory + " MB");
+        textViewTotalFree.setText("Total free memory: " + ZRAMToolApp.iTotalFreeMemory + " MB");
+        textViewTotal.setText("Total memory: " + ZRAMToolApp.iTotalMemory + " MB");
         iZRAMUsage = ZRAMToolApp.iZRAMUsage;
         if (iZRAMUsage > iMaximumZRAMUsage) iMaximumZRAMUsage = iZRAMUsage;
         textViewMaxZRAMUsage.setText("Maximum ZRAM usage: " + ZRAMToolApp.iZRAMMaximumUsage + " MB");
