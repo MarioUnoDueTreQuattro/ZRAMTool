@@ -6,6 +6,8 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
@@ -183,7 +185,12 @@ public class NotificationService extends Service {
             // Send data to NotificationView Class
             intent.putExtra("title", "strtitle");
             intent.putExtra("text", "strtext");
+            remoteViews.setTextViewText(R.id.textViewRAM, "Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
+            remoteViews.setTextViewText(R.id.textViewZRAM, "ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
+            Resources res = this.getResources();
+            //appLaunch.setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_launcher_96));
+            appLaunch.setTicker("Launched ZRAMTool background service to update notification...");
             appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
             appLaunch.setContentText("Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
             appLaunch.setContentTitle("ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
@@ -193,8 +200,6 @@ public class NotificationService extends Service {
             Intent targetIntent = new Intent(this, MainActivity.class);
             PendingIntent contentIntent = PendingIntent.getActivity(this, 0, targetIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             appLaunch.setContentIntent(contentIntent);
-            remoteViews.setTextViewText(R.id.textViewRAM, "ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
-            //remoteViews.setTextViewText(R.id.text, getString(R.string.customnotificationtext));
             appLaunch.setContent(remoteViews);
             //NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             // mNotificationManager.cancelAll();
