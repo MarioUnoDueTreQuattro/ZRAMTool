@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/seekBarSize"
-                android:max="1000"/>
+                android:max="20"/>
 
             <Space
                 android:layout_width="20px"
@@ -133,7 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/seekBarSwappiness"
-                android:max="100"
+                android:max="20"
                 android:indeterminate="false"/>
 
             <Space
@@ -183,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/seekBarVFSCachePressure"
-                android:max="1000"
+                android:max="100"
                 android:indeterminate="false"/>
 
             <Space

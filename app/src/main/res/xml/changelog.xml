@@ -5,6 +5,7 @@
         versioncode="139">
         <change>Moved, again, functions and objects from activities to "Application object"</change>
         <change>Changed notification.</change>
+        <change>Seekbars in "Enable_ZRAM_Activity" use steps.</change>
     </release>
     <release
         version="1.38"

@@ -52,20 +52,20 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
                     ((View) v).setSelected(true);
-                seekBarSize.setProgress(Integer.parseInt(textViewSize.getText().toString()));
+                seekBarSize.setProgress(Integer.parseInt(textViewSize.getText().toString())/50);
             }
         });
         textViewSize.setOnKeyListener(new TextView.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                seekBarSize.setProgress(Integer.parseInt(textViewSize.getText().toString()));
+                seekBarSize.setProgress(Integer.parseInt(textViewSize.getText().toString())/50);
                 return false;
             }
 
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
                     ((View) v).setSelected(true);
-                seekBarSize.setProgress(Integer.parseInt(textViewSize.getText().toString()));
+                seekBarSize.setProgress(Integer.parseInt(textViewSize.getText().toString())/50);
             }
         });
         seekBarSize = (SeekBar) findViewById(R.id.seekBarSize); // make seekbar object
@@ -88,7 +88,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // TODO Auto-generated method stub
                 //Toast.makeText(Enable_ZRAM_Activity.this,"" + seekBarSize.getProgress(), Toast.LENGTH_SHORT).show();
-                if (fromUser) textViewSize.setText("" + seekBarSize.getProgress());
+                if (fromUser) textViewSize.setText("" + seekBarSize.getProgress()*50);
                 textViewSize.setSelection(textViewSize.getText().length(), textViewSize.getText().length());
             }
         });
@@ -106,25 +106,25 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
                     ((View) v).setSelected(true);
-                seekBarSwappiness.setProgress(Integer.parseInt(textViewSwappiness.getText().toString()));
+                seekBarSwappiness.setProgress(Integer.parseInt(textViewSwappiness.getText().toString())/5);
             }
         });
         textViewSwappiness.setOnKeyListener(new TextView.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (textViewSwappiness.getText().length() > 0)
-                    seekBarSwappiness.setProgress(Integer.parseInt(textViewSwappiness.getText().toString()));
+                    seekBarSwappiness.setProgress(Integer.parseInt(textViewSwappiness.getText().toString())/5);
                 return false;
             }
 
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
                     ((View) v).setSelected(true);
-                seekBarSwappiness.setProgress(Integer.parseInt(textViewSwappiness.getText().toString()));
+                seekBarSwappiness.setProgress(Integer.parseInt(textViewSwappiness.getText().toString())/5);
             }
         });
         seekBarSwappiness = (SeekBar) findViewById(R.id.seekBarSwappiness); // make seekbar object
-        seekBarSwappiness.setProgress(ZRAMToolApp.iSwappiness);
+        seekBarSwappiness.setProgress(ZRAMToolApp.iSwappiness/5);
         seekBarSwappiness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
@@ -140,64 +140,9 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // TODO Auto-generated method stub
-                if (fromUser) textViewSwappiness.setText("" + seekBarSwappiness.getProgress());
+                if (fromUser) textViewSwappiness.setText("" + seekBarSwappiness.getProgress()*5);
                 textViewSwappiness.setSelection(textViewSwappiness.getText().length(), textViewSwappiness.getText().length());
 
-            }
-        });
-        textViewSize = (EditText) findViewById(R.id.textViewSize);
-        textViewSize.setSelectAllOnFocus(true);
-        textViewSize.setText("" + ZRAMToolApp.iZRAMSize);
-        textViewSize.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                textViewSize.setSelection(textViewSize.getText().length(), textViewSize.getText().length());
-            }
-        });
-        textViewSize.setOnFocusChangeListener(new TextView.OnFocusChangeListener() {
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus)
-                    ((View) v).setSelected(true);
-                seekBarSize.setProgress(Integer.parseInt(textViewSize.getText().toString()));
-            }
-        });
-        textViewSize.setOnKeyListener(new TextView.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (textViewSize.getText().length() > 0)
-                    seekBarSize.setProgress(Integer.parseInt(textViewSize.getText().toString()));
-                return false;
-            }
-
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus)
-                    ((View) v).setSelected(true);
-                seekBarSize.setProgress(Integer.parseInt(textViewSize.getText().toString()));
-            }
-        });
-        seekBarSize = (SeekBar) findViewById(R.id.seekBarSize); // make seekbar object
-        seekBarSize.setProgress(ZRAMToolApp.iZRAMSize);
-
-        seekBarSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
-                //       textViewSize.setText("" + seekBarSize.getProgress() );
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
-            }
-
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // TODO Auto-generated method stub
-                //Toast.makeText(Enable_ZRAM_Activity.this,"" + seekBarSize.getProgress(), Toast.LENGTH_SHORT).show();
-                if (fromUser) textViewSize.setText("" + seekBarSize.getProgress());
-                textViewSize.setSelection(textViewSize.getText().length(), textViewSize.getText().length());
             }
         });
         textViewVFSCachePressure = (EditText) findViewById(R.id.textViewVFSCachePressure);
@@ -214,25 +159,25 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
                     ((View) v).setSelected(true);
-                seekBarVFSCachePressure.setProgress(Integer.parseInt(textViewVFSCachePressure.getText().toString()));
+                seekBarVFSCachePressure.setProgress(Integer.parseInt(textViewVFSCachePressure.getText().toString())/10);
             }
         });
         textViewVFSCachePressure.setOnKeyListener(new TextView.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (textViewVFSCachePressure.getText().length() > 0)
-                    seekBarVFSCachePressure.setProgress(Integer.parseInt(textViewVFSCachePressure.getText().toString()));
+                    seekBarVFSCachePressure.setProgress(Integer.parseInt(textViewVFSCachePressure.getText().toString())/10);
                 return false;
             }
 
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
                     ((View) v).setSelected(true);
-                seekBarVFSCachePressure.setProgress(Integer.parseInt(textViewVFSCachePressure.getText().toString()));
+                seekBarVFSCachePressure.setProgress(Integer.parseInt(textViewVFSCachePressure.getText().toString())/10);
             }
         });
         seekBarVFSCachePressure = (SeekBar) findViewById(R.id.seekBarVFSCachePressure); // make seekbar object
-        seekBarVFSCachePressure.setProgress(ZRAMToolApp.iVFSCachePressure);
+        seekBarVFSCachePressure.setProgress(ZRAMToolApp.iVFSCachePressure/10);
 
         seekBarVFSCachePressure.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -252,7 +197,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
                 // TODO Auto-generated method stub
                 //Toast.makeText(Enable_ZRAM_Activity.this,"" + seekBarSize.getProgress(), Toast.LENGTH_SHORT).show();
                 if (fromUser)
-                    textViewVFSCachePressure.setText("" + seekBarVFSCachePressure.getProgress());
+                    textViewVFSCachePressure.setText("" + seekBarVFSCachePressure.getProgress()*10);
                 textViewVFSCachePressure.setSelection(textViewVFSCachePressure.getText().length(), textViewVFSCachePressure.getText().length());
             }
         });
