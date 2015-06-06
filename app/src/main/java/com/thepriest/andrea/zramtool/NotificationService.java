@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 /**
  * Created by Andrea on 29/05/2015.
@@ -147,12 +148,12 @@ public class NotificationService extends Service {
         return null;
     }
 
-    public void setNotification() {
+    public void setNotification2() {
         if (ZRAMToolApp.bShowNotification) {
             ZRAMToolApp.updateZRAMStatus3();
             ZRAMToolApp.updateRAMStatus();
-            iZRAMUsage=ZRAMToolApp.iZRAMUsage;
-            iMaximumZRAMUsage=ZRAMToolApp.iZRAMMaximumUsage;
+            iZRAMUsage = ZRAMToolApp.iZRAMUsage;
+            iMaximumZRAMUsage = ZRAMToolApp.iZRAMMaximumUsage;
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
             appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
             appLaunch.setContentText("Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
@@ -166,7 +167,39 @@ public class NotificationService extends Service {
             //NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             // mNotificationManager.cancelAll();
             //mNotificationManager.notify(0, appLaunch.build());
-            Notification note= appLaunch.build();
+            Notification note = appLaunch.build();
+            startForeground(1337, note);
+        }
+    }
+
+    public void setNotification() {
+        if (ZRAMToolApp.bShowNotification) {
+            ZRAMToolApp.updateZRAMStatus3();
+            ZRAMToolApp.updateRAMStatus();
+            iZRAMUsage = ZRAMToolApp.iZRAMUsage;
+            iMaximumZRAMUsage = ZRAMToolApp.iZRAMMaximumUsage;
+            RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.notification_layout);
+            Intent intent = new Intent(this, NotificationView.class);
+            // Send data to NotificationView Class
+            intent.putExtra("title", "strtitle");
+            intent.putExtra("text", "strtext");
+            NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
+            appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
+            appLaunch.setContentText("Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
+            appLaunch.setContentTitle("ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
+            //appLaunch.setAutoCancel(true);
+            appLaunch.setOngoing(true);
+            appLaunch.setUsesChronometer(true);
+            Intent targetIntent = new Intent(this, MainActivity.class);
+            PendingIntent contentIntent = PendingIntent.getActivity(this, 0, targetIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            appLaunch.setContentIntent(contentIntent);
+            remoteViews.setTextViewText(R.id.textViewRAM, "ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
+            //remoteViews.setTextViewText(R.id.text, getString(R.string.customnotificationtext));
+            appLaunch.setContent(remoteViews);
+            //NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            // mNotificationManager.cancelAll();
+            //mNotificationManager.notify(0, appLaunch.build());
+            Notification note = appLaunch.build();
             startForeground(1337, note);
         }
     }
