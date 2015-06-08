@@ -709,11 +709,11 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
      */
     public static int[] getZRAMStatus(int disk) {
         int iResult = 0;
-        String path = "/sys/devices/virtual/block/zram";
-        path += disk;
-        path += "/disksize";
+        String path;
         try {
-            BufferedReader mounts = new BufferedReader(new FileReader(path));
+            path = "/sys/devices/virtual/block/zram";
+            path += disk;
+            path += "/disksize";BufferedReader mounts = new BufferedReader(new FileReader(path));
             String line;
             while ((line = mounts.readLine()) != null) {
                 iResult = Integer.parseInt(line);
@@ -723,7 +723,6 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             path = "/sys/devices/virtual/block/zram";
             path += disk;
             path += "/orig_data_size";
-
             mounts = new BufferedReader(new FileReader(path));
             while ((line = mounts.readLine()) != null) {
                 iResult = Integer.parseInt(line);
