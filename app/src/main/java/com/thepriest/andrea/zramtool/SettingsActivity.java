@@ -86,6 +86,8 @@ public class SettingsActivity extends PreferenceActivity {
         //bindPreferenceSummaryToValue(findPreference("example_list"));
         bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
         bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+        //bindPreferenceSummaryToValue(findPreference("double_back_to_exit"));
+
     }
 
     /**
@@ -263,9 +265,9 @@ public class SettingsActivity extends PreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
+            bindPreferenceSummaryToValue(findPreference("double_back_to_exit"));
             bindPreferenceSummaryToValue(findPreference("refresh_frequency"));
             bindPreferenceSummaryToValue(findPreference("pref_ZRAM_directory"));
-            //bindPreferenceSummaryToValue(findPreference("example_text"));
             //bindPreferenceSummaryToValue(findPreference("example_list"));
         }
     }
@@ -304,6 +306,7 @@ public class SettingsActivity extends PreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
+       //     bindPreferenceSummaryToValue(findPreference("double_back_to_exit"));
             bindPreferenceSummaryToValue(findPreference("sync_frequency"));
         }
     }

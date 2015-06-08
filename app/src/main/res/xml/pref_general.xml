@@ -25,9 +25,14 @@
         android:key="enable_notification"
         android:title="@string/pref_title_enable_notification"/>
 
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:dependency="enable_notification"
+        android:key="enable_advanced_notification"
+        android:title="@string/pref_title_enable_advanced_notification"/>
+
     <ListPreference
         android:defaultValue="5"
-        android:dependency="enable_notification"
         android:entries="@array/pref_refresh_frequency_titles"
         android:entryValues="@array/pref_refresh_frequency_values"
         android:key="refresh_frequency"
@@ -37,9 +42,8 @@
 
     <CheckBoxPreference
         android:defaultValue="false"
-        android:dependency="enable_notification"
-        android:key="enable_advanced_notification"
-        android:title="@string/pref_title_enable_advanced_notification"/>
+        android:key="double_back_to_exit"
+        android:title="@string/pref_title_double_back_to_exit"/>
 
     <ListPreference
         android:defaultValue="-1"

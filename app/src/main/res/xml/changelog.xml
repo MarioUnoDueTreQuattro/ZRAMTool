@@ -5,6 +5,7 @@
         versioncode="140">
         <change>Advanced notification (alpha) selectable in preferences.</change>
         <change>Preferences use "android:dependency".</change>
+        <change>Option for twice back button to exit.</change>
     </release>
     <release
         version="1.39"

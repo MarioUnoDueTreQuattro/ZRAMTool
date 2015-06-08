@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,18 +50,24 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
-            //super.onBackPressed();
+        if (ZRAMToolApp.bDoubleBackToExit) {
+            if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+                //super.onBackPressed();
 //            if (bShowNotification) moveTaskToBack(true);
 //            else super.onBackPressed();
-            //finish();
-            //System.exit(0);
+                //finish();
+                //System.exit(0);
+                super.onBackPressed();
+                return;
+            } else {
+                Toast.makeText(getApplicationContext(), "Tap back button twice to hide.\nUse \"Menu->Exit\" to exit.", Toast.LENGTH_LONG).show();
+            }
+            mBackPressed = System.currentTimeMillis();
+        } else {
             super.onBackPressed();
             return;
-        } else {
-            Toast.makeText(getApplicationContext(), "Tap back button twice to hide.\nUse \"Menu->Exit\" to exit.", Toast.LENGTH_LONG).show();
+
         }
-        mBackPressed = System.currentTimeMillis();
     }
 
     @Override

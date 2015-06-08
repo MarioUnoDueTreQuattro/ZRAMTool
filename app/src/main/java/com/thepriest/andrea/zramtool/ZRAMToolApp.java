@@ -21,7 +21,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     SharedPreferences prefs;
     static public int iRefreshFrequency;
     static public String sZRAMDirectory;
-    static public boolean bShowNotification,bShowAdvancedNotification;
+    static public boolean bShowNotification,bShowAdvancedNotification,bDoubleBackToExit;
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
     static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory;
@@ -72,7 +72,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         else stopService(new Intent(this, NotificationService.class));
         bShowAdvancedNotification = prefs.getBoolean("enable_advanced_notification", false);
         Log.d(TAG, "enable_advanced_notification= " + bShowAdvancedNotification);
-
+        bDoubleBackToExit = prefs.getBoolean("double_back_to_exit", false);
+        Log.d(TAG, "double_back_to_exit= " + bDoubleBackToExit);
     }
 
 
@@ -119,6 +120,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             stopService(new Intent(this, NotificationService.class));
         }
         bShowAdvancedNotification = prefs.getBoolean("enable_advanced_notification", false);
+        bDoubleBackToExit = prefs.getBoolean("double_back_to_exit", false);
     }
 
     public static boolean hasZRAM0() {
