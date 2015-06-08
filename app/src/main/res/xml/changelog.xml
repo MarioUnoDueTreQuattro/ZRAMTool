@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
     <release
+        version="1.40"
+        versioncode="140">
+        <change>Advanced notification (alpha) selectable in preferences.</change>
+        <change>Preferences use "android:dependency".</change>
+    </release>
+    <release
         version="1.39"
         versioncode="139">
         <change>Moved, again, functions and objects from activities to "Application object"</change>
