@@ -30,28 +30,29 @@
                     android:layout_height="wrap_content"
                     android:text="RAMFree"
                     android:id="@+id/textViewRAMFree"
-                    android:textSize="@dimen/abc_text_size_medium_material"/>
+                    android:textSize="@dimen/abc_text_size_large_material"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="RAM"
                     android:id="@+id/textViewRAMDetails"
-                    android:textSize="@dimen/abc_text_size_medium_material"/>
+                    android:textSize="@dimen/abc_text_size_small_material"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ZRAM"
                     android:id="@+id/textViewZRAM"
-                    android:textSize="@dimen/abc_text_size_medium_material"/>
+                    android:textSize="@dimen/abc_text_size_large_material"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="invisible">
 
                 <Button
                     style="@style/ButtonTheme"
