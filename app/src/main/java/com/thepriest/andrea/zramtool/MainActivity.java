@@ -60,10 +60,11 @@ public class MainActivity extends AppCompatActivity {
                 super.onBackPressed();
                 return;
             } else {
-                Toast.makeText(getApplicationContext(), "Tap back button twice to hide.\nUse \"Menu->Exit\" to exit.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Tap back button twice to hide.\nUse Exit button to exit.", Toast.LENGTH_LONG).show();
             }
             mBackPressed = System.currentTimeMillis();
         } else {
+            Toast.makeText(getApplicationContext(), "Use Exit button to exit.", Toast.LENGTH_LONG).show();
             super.onBackPressed();
             return;
 
