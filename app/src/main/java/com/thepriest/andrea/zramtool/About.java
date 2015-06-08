@@ -22,7 +22,7 @@ import java.io.Reader;
 public class About extends ActionBarActivity {
     private static final String TAG = About.class.getSimpleName();
     TextView textUp;//, textViewAppName;
-    Button buttonClose;
+    Button buttonClose,buttonChangelog;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -56,7 +56,19 @@ public class About extends ActionBarActivity {
                 finish();
             }
         });
+        buttonChangelog = (Button) findViewById(R.id.buttonChangelog);
+        buttonChangelog.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                showChangelog();
+            }
+        });
+    }
+
+    private void showChangelog() {
+        ChangeLogDialog _ChangelogDialog = new ChangeLogDialog(this);
+        _ChangelogDialog.show();
     }
 
     @Override

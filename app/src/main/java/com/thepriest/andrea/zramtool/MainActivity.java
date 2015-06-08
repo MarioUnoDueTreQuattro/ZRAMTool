@@ -410,12 +410,14 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, About.class));
             return true;
         }
+/*
         if (id == R.id.action_changelog) {
 //Launch change log dialog
             ChangeLogDialog _ChangelogDialog = new ChangeLogDialog(this);
             _ChangelogDialog.show();
             return true;
         }
+*/
         return super.onOptionsItemSelected(item);
     }
 
