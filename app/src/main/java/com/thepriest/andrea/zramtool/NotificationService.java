@@ -7,7 +7,6 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
@@ -150,7 +149,7 @@ public class NotificationService extends Service {
         return null;
     }
 
-    public void setNotification2() {
+    public void setNotification() {
         if (ZRAMToolApp.bShowNotification) {
             ZRAMToolApp.updateZRAMStatus3();
             ZRAMToolApp.updateRAMStatus();
@@ -174,7 +173,7 @@ public class NotificationService extends Service {
         }
     }
 
-    public void setNotification() {
+    public void setNotification2() {
         if (ZRAMToolApp.bShowNotification) {
             ZRAMToolApp.updateZRAMStatus3();
             ZRAMToolApp.updateRAMStatus();
@@ -185,7 +184,8 @@ public class NotificationService extends Service {
             // Send data to NotificationView Class
             intent.putExtra("title", "strtitle");
             intent.putExtra("text", "strtext");
-            remoteViews.setTextViewText(R.id.textViewRAM, "Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
+            remoteViews.setTextViewText(R.id.textViewRAMFree, "Total Free: " + ZRAMToolApp.iTotalFreeMemory);
+            remoteViews.setTextViewText(R.id.textViewRAMDetails, "Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
             remoteViews.setTextViewText(R.id.textViewZRAM, "ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
             Resources res = this.getResources();
@@ -201,6 +201,8 @@ public class NotificationService extends Service {
             PendingIntent contentIntent = PendingIntent.getActivity(this, 0, targetIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             appLaunch.setContentIntent(contentIntent);
             appLaunch.setContent(remoteViews);
+//            PendingIntent buttonIntent = PendingIntent.getActivity(this, 0, targetIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//            remoteViews.setOnClickPendingIntent(R.id.buttonCleanAll, buttonIntent);
             //NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             // mNotificationManager.cancelAll();
             //mNotificationManager.notify(0, appLaunch.build());
@@ -225,7 +227,8 @@ public class NotificationService extends Service {
 //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
                 try {
-                    setNotification();
+                    if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
+                    else setNotification();
                     if (BuildConfig.DEBUG) Log.d(TAG, "Updater run loop..................");
                     this.sleep(ZRAMToolApp.iRefreshFrequency);
                     if (!running) return;

@@ -4,16 +4,65 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RAM"
-        android:id="@+id/textViewRAM"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZRAM"
-        android:id="@+id/textViewZRAM"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RAMFree"
+                android:id="@+id/textViewRAMFree"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RAM"
+                android:id="@+id/textViewRAMDetails"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ZRAM"
+                android:id="@+id/textViewZRAM"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="@style/ButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/CleanMemory"
+                android:id="@+id/button3"
+                android:layout_weight="1"/>
+
+            <Button
+                style="@style/ButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/CleanDropCache"
+                android:id="@+id/button4"
+                android:layout_weight="1"/>
+
+            <Button
+                style="@style/ButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/CleanAll"
+                android:id="@+id/button5"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
