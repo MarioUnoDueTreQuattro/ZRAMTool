@@ -22,11 +22,12 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     private static final String TAG = ZRAMToolApp.class.getSimpleName();
     SharedPreferences prefs;
     static public int iRefreshFrequency;
-    static public String sZRAMDirectory,sLanguage;
-    static public boolean bShowNotification,bShowAdvancedNotification,bDoubleBackToExit;
+    static public String sZRAMDirectory, sLanguage;
+    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit;
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
-    static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory,  iMinFreeMemory, iMaxFreeMemory;;
+    static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory, iMinFreeMemory, iMaxFreeMemory;
+    ;
     static public int iZRAMUsage;
     // static public int iMaximumZRAMUsage;
     static public int iSwappiness;
@@ -37,6 +38,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     static public int iComprDataSize0, iComprDataSize1, iComprDataSize2, iComprDataSize3;
     public static int iZRAMStatus[] = new int[4];
     public static int iMemory[] = new int[5];
+    public static int memory[] = new int[5];
 
     /**
      * Called when the application is starting, before any activity, service,
@@ -79,7 +81,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "enable_advanced_notification= " + bShowAdvancedNotification);
         bDoubleBackToExit = prefs.getBoolean("double_back_to_exit", false);
         Log.d(TAG, "double_back_to_exit= " + bDoubleBackToExit);
-        sLanguage =prefs.getString("language", "en");
+        sLanguage = prefs.getString("language", "en");
         Locale locale = new Locale(sLanguage);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -133,7 +135,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         }
         bShowAdvancedNotification = prefs.getBoolean("enable_advanced_notification", false);
         bDoubleBackToExit = prefs.getBoolean("double_back_to_exit", false);
-        sLanguage =prefs.getString("language", "en");
+        sLanguage = prefs.getString("language", "en");
         Locale locale = new Locale(sLanguage);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -385,7 +387,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
 */
     }
 
-    public static void updateZRAMStatus3() {
+    public static void updateStatus() {
         // Log.d(TAG, "updateZRAMStatus2()");
         int diskNum = 0;
         if (hasZRAM0() == true) diskNum++;
@@ -465,7 +467,43 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         iZRAMUsage = r3num;
         if (iZRAMUsage > iZRAMMaximumUsage) iZRAMMaximumUsage = iZRAMUsage;
         //if (r3num > iMaximumZRAMUsage) iMaximumZRAMUsage = r3num;
-
+        String str1 = "/proc/meminfo";
+        String str2;
+        String[] arrayOfString;
+        // int memory[] = new int[5];
+        try {
+            FileReader localFileReader = new FileReader(str1);
+            BufferedReader localBufferedReader = new BufferedReader(localFileReader, 8192);
+            str2 = localBufferedReader.readLine();//meminfo
+            arrayOfString = str2.split("\\s+");
+            iMemory[4] = Integer.valueOf(arrayOfString[1]).intValue();
+            iMemory[4] = iMemory[4] / 1024;
+            str2 = localBufferedReader.readLine();//meminfo
+            arrayOfString = str2.split("\\s+");
+            iMemory[0] = Integer.valueOf(arrayOfString[1]).intValue();
+            iMemory[0] = iMemory[0] / 1024;
+            str2 = localBufferedReader.readLine();//meminfo
+            arrayOfString = str2.split("\\s+");
+            iMemory[1] = Integer.valueOf(arrayOfString[1]).intValue();
+            iMemory[1] = iMemory[1] / 1024;
+            str2 = localBufferedReader.readLine();//meminfo
+            arrayOfString = str2.split("\\s+");
+            iMemory[2] = Integer.valueOf(arrayOfString[1]).intValue();
+            iMemory[2] = iMemory[2] / 1024;
+            iMemory[3] = iMemory[0] + iMemory[1] + iMemory[2];
+            localBufferedReader.close();
+        } catch (IOException e) {
+        }
+        iFreeMemory = iMemory[0];
+        iCachedMemory = iMemory[2];
+        iBuffersMemory = iMemory[1];
+        iTotalFreeMemory = iMemory[3];
+        iTotalMemory = iMemory[4];
+        if (iMinFreeMemory == 0) iMinFreeMemory = iTotalFreeMemory;
+        if (iTotalFreeMemory > iMaxFreeMemory)
+            iMaxFreeMemory = iTotalFreeMemory;
+        if (iTotalFreeMemory < iMinFreeMemory)
+            iMinFreeMemory = iTotalFreeMemory;
     }
 
     public static void updateRAMStatus() {
@@ -481,14 +519,6 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             iMaxFreeMemory = iTotalFreeMemory;
         if (iTotalFreeMemory < iMinFreeMemory)
             iMinFreeMemory = iTotalFreeMemory;
-/*
-        textViewFreeRam.setText("Free memory: " + iMemory[0] + " MB");
-        textViewCached.setText("Cached: " + iMemory[2] + " MB");
-        textViewBuffers.setText("Buffers: " + iMemory[1] + " MB");
-        textViewTotalFree.setText("Total free memory: " + iMemory[3] + " MB");
-        textViewTotal.setText("Total memory: " + iMemory[4] + " MB");
-*/
-
     }
 
     private static void getVFSCachePressure() {
@@ -739,7 +769,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         try {
             path = "/sys/devices/virtual/block/zram";
             path += disk;
-            path += "/disksize";BufferedReader mounts = new BufferedReader(new FileReader(path));
+            path += "/disksize";
+            BufferedReader mounts = new BufferedReader(new FileReader(path));
             String line;
             while ((line = mounts.readLine()) != null) {
                 iResult = Integer.parseInt(line);
@@ -787,32 +818,27 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         String str1 = "/proc/meminfo";
         String str2;
         String[] arrayOfString;
-        int memory[] = new int[5];
+        // int memory[] = new int[5];
         try {
             FileReader localFileReader = new FileReader(str1);
             BufferedReader localBufferedReader = new BufferedReader(localFileReader, 8192);
             str2 = localBufferedReader.readLine();//meminfo
             arrayOfString = str2.split("\\s+");
-/*
-            for (String num : arrayOfString) {
-               System.out.println(num + "\t");
-            }
-*/
-            memory[4] = Integer.valueOf(arrayOfString[1]).intValue();
-            memory[4] = memory[4] / 1024;
+            iMemory[4] = Integer.valueOf(arrayOfString[1]).intValue();
+            iMemory[4] = iMemory[4] / 1024;
             str2 = localBufferedReader.readLine();//meminfo
             arrayOfString = str2.split("\\s+");
-            memory[0] = Integer.valueOf(arrayOfString[1]).intValue();
-            memory[0] = memory[0] / 1024;
+            iMemory[0] = Integer.valueOf(arrayOfString[1]).intValue();
+            iMemory[0] = iMemory[0] / 1024;
             str2 = localBufferedReader.readLine();//meminfo
             arrayOfString = str2.split("\\s+");
-            memory[1] = Integer.valueOf(arrayOfString[1]).intValue();
-            memory[1] = memory[1] / 1024;
+            iMemory[1] = Integer.valueOf(arrayOfString[1]).intValue();
+            iMemory[1] = iMemory[1] / 1024;
             str2 = localBufferedReader.readLine();//meminfo
             arrayOfString = str2.split("\\s+");
-            memory[2] = Integer.valueOf(arrayOfString[1]).intValue();
-            memory[2] = memory[2] / 1024;
-            memory[3] = memory[0] + memory[1] + memory[2];
+            iMemory[2] = Integer.valueOf(arrayOfString[1]).intValue();
+            iMemory[2] = iMemory[2] / 1024;
+            iMemory[3] = iMemory[0] + iMemory[1] + iMemory[2];
             localBufferedReader.close();
         } catch (IOException e) {
         }

@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setSubtitle(versionName);
         //getSupportActionBar().setWindowTitle("wind");
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.ic_launcher_64);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher_96);
 /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
         setSupportActionBar(toolbar);
@@ -327,8 +327,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void tick() {
-        ZRAMToolApp.updateZRAMStatus3();
-        ZRAMToolApp.updateRAMStatus();
+        ZRAMToolApp.updateStatus();
+        //ZRAMToolApp.updateRAMStatus();
         printZRAMStatus();
         iUpdatesCount++;
         // textViewVFS_cache_pressure.setText(""+iUpdatesCount);

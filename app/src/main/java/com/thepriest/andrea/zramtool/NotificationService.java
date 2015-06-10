@@ -151,8 +151,8 @@ public class NotificationService extends Service {
 
     public void setNotification() {
         if (ZRAMToolApp.bShowNotification) {
-            ZRAMToolApp.updateZRAMStatus3();
-            ZRAMToolApp.updateRAMStatus();
+            ZRAMToolApp.updateStatus();
+            //ZRAMToolApp.updateRAMStatus();
             iZRAMUsage = ZRAMToolApp.iZRAMUsage;
             iMaximumZRAMUsage = ZRAMToolApp.iZRAMMaximumUsage;
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
@@ -177,8 +177,8 @@ public class NotificationService extends Service {
 
     public void setNotification2() {
         if (ZRAMToolApp.bShowNotification) {
-            ZRAMToolApp.updateZRAMStatus3();
-            ZRAMToolApp.updateRAMStatus();
+            ZRAMToolApp.updateStatus();
+            //ZRAMToolApp.updateRAMStatus();
             iZRAMUsage = ZRAMToolApp.iZRAMUsage;
             iMaximumZRAMUsage = ZRAMToolApp.iZRAMMaximumUsage;
             RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.notification_layout);
@@ -194,6 +194,12 @@ public class NotificationService extends Service {
             //appLaunch.setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_launcher_96));
             appLaunch.setTicker(getString(R.string.Launched_ZRAMTool_background_service));
             appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
+/*
+            byte [] encodeByte= Base64.decode(":", Base64.DEFAULT);
+            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            Drawable d = new BitmapDrawable(bitmap);
+            appLaunch.setLargeIcon(bitmap);
+*/
             appLaunch.setContentText( getString(R.string.Total_Free) + ZRAMToolApp.iTotalFreeMemory + getString(R.string._Free) + ZRAMToolApp.iFreeMemory + getString(R.string._Cached) + ZRAMToolApp.iCachedMemory + getString(R.string._Buffers) + ZRAMToolApp.iBuffersMemory);
             appLaunch.setContentTitle(getString(R.string.ZRAM_used) + iZRAMUsage + getString(R.string._Max_ZRAM) + iMaximumZRAMUsage);
             //appLaunch.setAutoCancel(true);
