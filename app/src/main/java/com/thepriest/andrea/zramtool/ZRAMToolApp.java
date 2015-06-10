@@ -36,6 +36,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     static public int iMemUsedTotal0, iMemUsedTotal1, iMemUsedTotal2, iMemUsedTotal3;
     static public int iComprDataSize0, iComprDataSize1, iComprDataSize2, iComprDataSize3;
     public static int iZRAMStatus[] = new int[4];
+    public static int iMemory[] = new int[5];
 
     /**
      * Called when the application is starting, before any activity, service,
@@ -468,7 +469,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     }
 
     public static void updateRAMStatus() {
-        int iMemory[] = new int[5];
+        //int iMemory[] = new int[5];
         iMemory = getMemoryInfo();
         iFreeMemory = iMemory[0];
         iCachedMemory = iMemory[2];

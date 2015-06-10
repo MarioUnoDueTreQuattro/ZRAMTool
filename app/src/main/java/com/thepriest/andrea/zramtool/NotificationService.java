@@ -161,7 +161,7 @@ public class NotificationService extends Service {
             //appLaunch.setContentTitle("ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
             appLaunch.setContentText( getString(R.string.Total_Free) + ZRAMToolApp.iTotalFreeMemory + getString(R.string._Free) + ZRAMToolApp.iFreeMemory + getString(R.string._Cached) + ZRAMToolApp.iCachedMemory + getString(R.string._Buffers) + ZRAMToolApp.iBuffersMemory);
             appLaunch.setContentTitle(getString(R.string.ZRAM_used) + iZRAMUsage + getString(R.string._Max_ZRAM) + iMaximumZRAMUsage);
-             //appLaunch.setAutoCancel(true);
+            //appLaunch.setAutoCancel(true);
             appLaunch.setOngoing(true);
             appLaunch.setUsesChronometer(true);
             Intent targetIntent = new Intent(this, MainActivity.class);
