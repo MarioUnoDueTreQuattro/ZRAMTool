@@ -45,8 +45,8 @@
     <string name="Total_Free">"Total Free: "</string>
     <string name="Free">"Free: "</string>
     <string name="ZRAM_used">"ZRAM used: "</string>
-    <string name="_Max_ZRAM">" - Max ZRAM: "</string>
+    <string name="_Max_ZRAM" translatable="false">" - Max ZRAM: "</string>
     <string name="_Free">" - Free: "</string>
-    <string name="_Cached">" - Cache: "</string>
-    <string name="_Buffers">" - Buffers: "</string>
+    <string name="_Cached" translatable="false">" - Cache: "</string>
+    <string name="_Buffers" translatable="false">" - Buffers: "</string>
 </resources>

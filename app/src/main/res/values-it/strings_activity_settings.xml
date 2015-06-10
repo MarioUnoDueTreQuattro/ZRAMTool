@@ -62,7 +62,14 @@
         <item>60</item>
         <item>-1</item>
     </string-array>
-
+    <string-array name="pref_language_titles">
+        <item>English</item>
+        <item>Italiano</item>
+    </string-array>
+    <string-array name="pref_language_values">
+        <item>en</item>
+        <item>it</item>
+    </string-array>
 
     <string-array name="pref_sync_frequency_titles">
         <item>1 second</item>
