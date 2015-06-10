@@ -42,10 +42,10 @@ public class About extends ActionBarActivity {
 */
         textUp = (TextView) findViewById(R.id.textUp);
         int versionCode = BuildConfig.VERSION_CODE;
-        String aboutText = "Programming: ThePriest\nMade in Italy\n\nVersion: ";
+        String aboutText = getString(R.string.programming_version_info);
         String versionName = BuildConfig.VERSION_NAME;
         aboutText += versionName;
-        aboutText += "\n\nKernel version: " + getKernelVersion() + "\n";
+        aboutText += getString(R.string.kernel_version) + getKernelVersion() + "\n";
         //aboutText+="\n\n" + "zram (also called zRAM and, initially, compcache) is a Linux kernel feature that provides a form of virtual memory compression.";
         textUp.setText(aboutText);
         buttonClose = (Button) findViewById(R.id.buttonClose);

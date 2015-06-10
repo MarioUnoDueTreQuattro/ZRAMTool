@@ -52,4 +52,6 @@
     <string name="Minimum_free_memory">"Minimum free memory: "</string>
     <string name="Maximum_free_memory">"Maximum free memory: "</string>
     <string name="RAM_Status">RAM status</string>
+    <string name="programming_version_info">"Programming: ThePriest\nMade in Italy\n\nVersion: "</string>
+    <string name="kernel_version">"\n\nKernel version: "</string>
 </resources>
