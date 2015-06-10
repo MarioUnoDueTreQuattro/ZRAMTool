@@ -10,10 +10,10 @@
 	<string name="RAM_Tools">Strumenti per la RAM</string>
 	<string name="disableZRAM">Disattiva ZRAM</string>
 	<string name="enableZRAM">Abilita/disabilita ZRAM</string>
-	<string name="ZRAM_disk_number">"Dischi:"</string>
+	<string name="ZRAM_disk_number">"Dischi: "</string>
 	<string name="title_activity_enable__zram_">Abilita ZRAM</string>
 	<string name="CleanMemory">Pulire memoria</string>
-	<string name="CleanDropCache">Pulire la Drop Cache</string>
+	<string name="CleanDropCache">Pulire Drop Cache</string>
 	<string name="CleanAll">Pulire tutto</string>
 	<string name="title_activity_about">Circa</string>
 	<string name="hello_world">Salve, mondo!</string>
@@ -22,7 +22,7 @@
 	<string name="changelog_close">Chiudere</string>
 	<string name="enable_disable_zram">Abilita/disabilita ZRAM:</string>
 	<string name="changelog">Registro delle modifiche...</string>
-	<string name="close">Chiudere</string>
+	<string name="close">Chiudi</string>
 	<string name="apply">Applica</string>
 	<string name="problem_reading_kernel_version">Problema di lettura file di versione del kernel.</string>
 	<string name="could_not_load_change_log">Impossibile caricare il registro delle modifiche</string>
@@ -34,5 +34,10 @@
 	<string name="Memory_and_Drop_Cache_cleaned">Memoria e Drop Cache puliti.</string>
 	<string name="Memory_cleaned">Memoria pulita.</string>
 	<string name="Launched_ZRAMTool_background_service">Lanciato servizio in background di ZRAMTool per l\'aggiornamento della notifica ...</string>
+	<string name="ZRAM_compressed">Dimensione compressa dei dati: </string>
+	<string name="ZRAM_original">Dimensione originale dei dat: </string>
+	<string name="ZRAM_size">Dimensione totale dei dischi: </string>
+	<string name="ZRAM_total">Memoria totale usata: </string>
+	<string name="pref_title_language">Lingua</string>
 
 </resources>

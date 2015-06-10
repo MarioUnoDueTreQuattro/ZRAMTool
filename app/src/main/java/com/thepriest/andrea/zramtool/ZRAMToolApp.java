@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.res.Configuration;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -12,6 +13,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * Created by Andrea on 29/05/2015.
@@ -20,7 +22,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     private static final String TAG = ZRAMToolApp.class.getSimpleName();
     SharedPreferences prefs;
     static public int iRefreshFrequency;
-    static public String sZRAMDirectory;
+    static public String sZRAMDirectory,sLanguage;
     static public boolean bShowNotification,bShowAdvancedNotification,bDoubleBackToExit;
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
@@ -74,6 +76,13 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "enable_advanced_notification= " + bShowAdvancedNotification);
         bDoubleBackToExit = prefs.getBoolean("double_back_to_exit", false);
         Log.d(TAG, "double_back_to_exit= " + bDoubleBackToExit);
+        sLanguage =prefs.getString("language", "en");
+        Locale locale = new Locale(sLanguage);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
     }
 
 
@@ -121,6 +130,13 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         }
         bShowAdvancedNotification = prefs.getBoolean("enable_advanced_notification", false);
         bDoubleBackToExit = prefs.getBoolean("double_back_to_exit", false);
+        sLanguage =prefs.getString("language", "en");
+        Locale locale = new Locale(sLanguage);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
     }
 
     public static boolean hasZRAM0() {

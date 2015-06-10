@@ -5,10 +5,10 @@
     <string name="ZRAM_status">ZRAM status</string>
     <string name="ZRAM_settings">ZRAM settings</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="ZRAM_size" translatable="false">"Total size of disks: "</string>
-    <string name="ZRAM_total" translatable="false">"Total memory used: "</string>
-    <string name="ZRAM_original" translatable="false">"Original data size: "</string>
-    <string name="ZRAM_compressed" translatable="false">"Compressed data size: "</string>
+    <string name="ZRAM_size">"Total size of disks: "</string>
+    <string name="ZRAM_total">"Total memory used: "</string>
+    <string name="ZRAM_original">"Original data size: "</string>
+    <string name="ZRAM_compressed">"Compressed data size: "</string>
     <string name="RAM_Tools">RAM tools</string>
     <string name="disableZRAM">Disable ZRAM</string>
     <string name="enableZRAM">Enable/Disable ZRAM</string>
