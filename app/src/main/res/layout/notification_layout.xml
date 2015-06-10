@@ -13,12 +13,15 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:id="@+id/imageView2"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"/>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <LinearLayout
                 android:orientation="vertical"
@@ -30,21 +33,24 @@
                     android:layout_height="wrap_content"
                     android:text="RAMFree"
                     android:id="@+id/textViewRAMFree"
-                    android:textSize="@dimen/abc_text_size_large_material"/>
+                    android:textSize="@dimen/abc_text_size_large_material"
+                    android:textColor="@android:color/white"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="RAM"
                     android:id="@+id/textViewRAMDetails"
-                    android:textSize="@dimen/abc_text_size_small_material"/>
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textColor="@android:color/white"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ZRAM"
                     android:id="@+id/textViewZRAM"
-                    android:textSize="@dimen/abc_text_size_large_material"/>
+                    android:textSize="@dimen/abc_text_size_large_material"
+                    android:textColor="@android:color/white"/>
 
             </LinearLayout>
 
