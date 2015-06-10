@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">ZRAM Tool</string>
+	<string name="action_settings">Impostazioni</string>
+	<string name="action_exit">Uscita</string>
+	<string name="ZRAM_status">Stato ZRAM</string>
+	<string name="ZRAM_settings">Impostazioni ZRAM</string>
+	<string name="title_activity_settings">Impostazioni</string>
+	<string name="RAM_Tools">Strumenti per la RAM</string>
+	<string name="disableZRAM">Disattiva ZRAM</string>
+	<string name="enableZRAM">Abilita/disabilita ZRAM</string>
+	<string name="ZRAM_disk_number">"Dischi:"</string>
+	<string name="title_activity_enable__zram_">Abilita ZRAM</string>
+	<string name="CleanMemory">Pulire memoria</string>
+	<string name="CleanDropCache">Pulire la Drop Cache</string>
+	<string name="CleanAll">Pulire tutto</string>
+	<string name="title_activity_about">Circa</string>
+	<string name="hello_world">Salve, mondo!</string>
+	<string name="action_about">Circa</string>
+	<string name="action_changelog">Registro delle modifiche</string>
+	<string name="changelog_close">Chiudere</string>
+	<string name="enable_disable_zram">Abilita/disabilita ZRAM:</string>
+	<string name="changelog">Registro delle modifiche...</string>
+	<string name="close">Chiudere</string>
+	<string name="apply">Applica</string>
+	<string name="problem_reading_kernel_version">Problema di lettura file di versione del kernel.</string>
+	<string name="could_not_load_change_log">Impossibile caricare il registro delle modifiche</string>
+	<string name="ZRAM_enabled">ZRAM abilitato.</string>
+	<string name="Disabling_ZRAM">Disattivazione ZRAM...</string>
+	<string name="ZRAM_disabled">ZRAM disabilitato.</string>
+	<string name="Tap_back_button">Toccare il pulsante indietro due volte per nascondere.\nUsa il pulsante di uscita per uscire.</string>
+	<string name="Use_Exit_button_to_exit">Utilizzare il tasto Uscita per uscire.</string>
+	<string name="Memory_and_Drop_Cache_cleaned">Memoria e Drop Cache puliti.</string>
+	<string name="Memory_cleaned">Memoria pulita.</string>
+	<string name="Launched_ZRAMTool_background_service">Lanciato servizio in background di ZRAMTool per l\'aggiornamento della notifica ...</string>
+
+</resources>
