@@ -4,7 +4,7 @@
         version="1.41"
         versioncode="141">
         <change>Hardcoded strings converted to strings.xml</change>
-        <change>Initial translation to italian.</change>
+        <change>Translations support, language option in settings to select italian or english.</change>
     </release>
     <release
         version="1.40"
