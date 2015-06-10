@@ -46,14 +46,14 @@
                 style="@style/ButtonTheme"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Changelog..."
+                android:text="@string/changelog"
                 android:id="@+id/buttonChangelog"/>
 
             <Button
                 style="@style/ButtonTheme"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Close"
+                android:text="@string/close"
                 android:id="@+id/buttonClose"/>
         </LinearLayout>
     </ScrollView>

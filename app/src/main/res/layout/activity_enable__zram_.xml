@@ -30,7 +30,7 @@
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enable/Disable ZRAM: "
+                android:text="@string/enable_disable_zram"
                 android:id="@+id/switchZRAM"
                 android:checked="false"
                 android:textAppearance="@android:style/TextAppearance.Medium"
@@ -195,7 +195,7 @@
                 style="@style/ButtonTheme"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Apply"
+                android:text="@string/apply"
                 android:id="@+id/buttonApply"/>
         </LinearLayout>
     </ScrollView>

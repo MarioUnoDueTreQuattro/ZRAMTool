@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
                 super.onBackPressed();
                 return;
             } else {
-                Toast.makeText(getApplicationContext(), "Tap back button twice to hide.\nUse Exit button to exit.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.Tap_back_button), Toast.LENGTH_LONG).show();
             }
             mBackPressed = System.currentTimeMillis();
         } else {
-            Toast.makeText(getApplicationContext(), "Use Exit button to exit.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.Use_Exit_button_to_exit), Toast.LENGTH_LONG).show();
             super.onBackPressed();
             return;
 
@@ -507,7 +507,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         } finally {
         }
-        Toast.makeText(getApplicationContext(), "Memory and Drop Cache cleaned.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.Memory_and_Drop_Cache_cleaned), Toast.LENGTH_LONG).show();
         return;
     }
 
@@ -535,7 +535,7 @@ public class MainActivity extends AppCompatActivity {
             //      Toast.LENGTH_LONG).show();
             activityManager.killBackgroundProcesses(procInfos.get(i).processName);
         }
-        Toast.makeText(getApplicationContext(), "Memory cleaned.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.Memory_cleaned), Toast.LENGTH_LONG).show();
         return;
     }
 

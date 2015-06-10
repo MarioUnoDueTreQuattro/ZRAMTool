@@ -140,7 +140,7 @@ public class ChangeLogDialog {
         //Check for empty changelog
         if (_HTML.equals("") == true) {
             //Could not load change log, message user and exit void
-            Toast.makeText(fActivity, "Could not load change log", Toast.LENGTH_SHORT).show();
+            Toast.makeText(fActivity, fActivity.getString(R.string.could_not_load_change_log), Toast.LENGTH_SHORT).show();
             return;
         }
 

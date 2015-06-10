@@ -105,7 +105,7 @@ public class About extends ActionBarActivity {
             fileInputStream.close();
             return sVersion;
         } catch (IOException var3_4) {
-            Log.d(TAG, "Problem reading kernel version file.");
+            Log.d(TAG, getString(R.string.problem_reading_kernel_version));
             return "";
         }
     }

@@ -23,4 +23,18 @@
     <string name="action_changelog">Change log</string>
     <string name="title_changelog">ZRAM Tool</string>
     <string name="changelog_close">Close</string>
+    <string name="enable_disable_zram">Enable/Disable ZRAM:</string>
+    <string name="changelog">Changelog...</string>
+    <string name="close">Close</string>
+    <string name="apply">Apply</string>
+    <string name="problem_reading_kernel_version">Problem reading kernel version file.</string>
+    <string name="could_not_load_change_log">Could not load change log</string>
+    <string name="ZRAM_enabled">ZRAM enabled.</string>
+    <string name="Disabling_ZRAM">Disabling ZRAM...</string>
+    <string name="ZRAM_disabled">ZRAM disabled.</string>
+    <string name="Tap_back_button">Tap back button twice to hide.\nUse Exit button to exit.</string>
+    <string name="Use_Exit_button_to_exit">Use Exit button to exit.</string>
+    <string name="Memory_and_Drop_Cache_cleaned">Memory and Drop Cache cleaned.</string>
+    <string name="Memory_cleaned">Memory cleaned.</string>
+    <string name="Launched_ZRAMTool_background_service">Launched ZRAMTool background service to update notification...</string>
 </resources>

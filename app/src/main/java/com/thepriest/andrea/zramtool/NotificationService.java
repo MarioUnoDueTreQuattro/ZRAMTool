@@ -190,7 +190,7 @@ public class NotificationService extends Service {
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
             Resources res = this.getResources();
             //appLaunch.setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_launcher_96));
-            appLaunch.setTicker("Launched ZRAMTool background service to update notification...");
+            appLaunch.setTicker(getString(R.string.Launched_ZRAMTool_background_service));
             appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
             appLaunch.setContentText("Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
             appLaunch.setContentTitle("ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);

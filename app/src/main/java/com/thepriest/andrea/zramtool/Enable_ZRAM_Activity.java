@@ -352,7 +352,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             } catch (Shell.ShellException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(getApplicationContext(), "ZRAM enabled.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.ZRAM_enabled), Toast.LENGTH_LONG).show();
             finish();
         }
         return;
@@ -367,7 +367,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             //if (ZRAMToolApp.bShowNotification) NotificationService.iRefreshFrequency = 3600000;
             //setProgressBarIndeterminate(true);
             setProgressBarIndeterminateVisibility(true);
-            buttonApply.setText("Disabling ZRAM...");
+            buttonApply.setText(getString(R.string.Disabling_ZRAM));
             buttonApply.setEnabled(false);
             // Log.d(TAG, "On pre Exceute......");
         }
@@ -427,7 +427,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
         protected void onProgressUpdate(Integer... a) {
             try {
                 Thread.sleep(100);
-                buttonApply.setText("Disabling ZRAM... " + a[0] + "%");
+                buttonApply.setText(getString(R.string.Disabling_ZRAM) + a[0] + "%");
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -438,9 +438,9 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
 
         protected void onPostExecute(String result) {
             setProgressBarIndeterminateVisibility(false);
-            Toast.makeText(getApplicationContext(), "ZRAM disabled.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.ZRAM_disabled), Toast.LENGTH_LONG).show();
             buttonApply.setEnabled(true);
-            buttonApply.setText("Apply");
+            buttonApply.setText(getString(R.string.apply));
             //ZRAMToolApp.iRefreshFrequency = iCurrentRefreshFreq;
             //if (ZRAMToolApp.bShowNotification)
             //    NotificationService.iRefreshFrequency = iCurrentRefreshFreq;
