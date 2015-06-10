@@ -34,10 +34,11 @@
 	<string name="Memory_and_Drop_Cache_cleaned">Memoria e Drop Cache puliti.</string>
 	<string name="Memory_cleaned">Memoria pulita.</string>
 	<string name="Launched_ZRAMTool_background_service">Lanciato servizio in background di ZRAMTool per l\'aggiornamento della notifica ...</string>
-	<string name="ZRAM_compressed">Dimensione compressa dei dati: </string>
-	<string name="ZRAM_original">Dimensione originale dei dat: </string>
-	<string name="ZRAM_size">Dimensione totale dei dischi: </string>
-	<string name="ZRAM_total">Memoria totale usata: </string>
+	<string name="ZRAM_compressed">"Dimensione compressa dei dati: "</string>
+	<string name="ZRAM_original">"Dimensione originale dei dati: "</string>
+	<string name="ZRAM_size">"Dimensione totale dei dischi: "</string>
+	<string name="ZRAM_total">"Memoria totale usata: "</string>
 	<string name="pref_title_language">Lingua</string>
-
+	<string name="Maximum_ZRAM_usage">"Picco della ZRAM: "</string>
+	<string name="Total_size_all_disks">"Dimensione totale (tutti i dischi): "</string>
 </resources>

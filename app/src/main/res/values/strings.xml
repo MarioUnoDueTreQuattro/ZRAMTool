@@ -37,4 +37,6 @@
     <string name="Memory_and_Drop_Cache_cleaned">Memory and Drop Cache cleaned.</string>
     <string name="Memory_cleaned">Memory cleaned.</string>
     <string name="Launched_ZRAMTool_background_service">Launched ZRAMTool background service to update notification...</string>
+    <string name="Maximum_ZRAM_usage">"Maximum ZRAM usage: "</string>
+    <string name="Total_size_all_disks">"Total size (all disks): "</string>
 </resources>

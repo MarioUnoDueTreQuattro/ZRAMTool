@@ -705,7 +705,7 @@ public class MainActivity extends AppCompatActivity {
         textViewTotal.setText("Total memory: " + ZRAMToolApp.iTotalMemory + " MB");
         iZRAMUsage = ZRAMToolApp.iZRAMUsage;
         if (iZRAMUsage > iMaximumZRAMUsage) iMaximumZRAMUsage = iZRAMUsage;
-        textViewMaxZRAMUsage.setText("Maximum ZRAM usage: " + ZRAMToolApp.iZRAMMaximumUsage + " MB");
+        textViewMaxZRAMUsage.setText(getString(R.string.Maximum_ZRAM_usage) + ZRAMToolApp.iZRAMMaximumUsage + " MB");
         progressBarTotalMemoryUsed.setMax(iZRAMSize);
         progressBarOrigDataSize.setMax(iZRAMSize);
         progressBarComprDataSize.setMax(iZRAMSize);
