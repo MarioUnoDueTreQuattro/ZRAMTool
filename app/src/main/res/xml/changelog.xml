@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
     <release
+        version="1.41"
+        versioncode="141">
+        <change>Hardcoded strings converted to strings.xml</change>
+        <change>Initial translation to italian.</change>
+    </release>
+    <release
         version="1.40"
         versioncode="140">
         <change>Advanced notification (alpha) selectable in preferences.</change>
