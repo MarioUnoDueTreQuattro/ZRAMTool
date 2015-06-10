@@ -80,8 +80,11 @@ public class MainActivity extends AppCompatActivity {
         //Debug.startMethodTracing();
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.ic_launcher_96);
+        String versionName = BuildConfig.VERSION_NAME;
+        getSupportActionBar().setSubtitle(versionName);
+        //getSupportActionBar().setWindowTitle("wind");
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher_64);
 /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
         setSupportActionBar(toolbar);
