@@ -157,9 +157,11 @@ public class NotificationService extends Service {
             iMaximumZRAMUsage = ZRAMToolApp.iZRAMMaximumUsage;
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
             appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
-            appLaunch.setContentText("Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
-            appLaunch.setContentTitle("ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
-            //appLaunch.setAutoCancel(true);
+            //appLaunch.setContentText("Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
+            //appLaunch.setContentTitle("ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
+            appLaunch.setContentText( getString(R.string.Total_Free) + ZRAMToolApp.iTotalFreeMemory + getString(R.string._Free) + ZRAMToolApp.iFreeMemory + getString(R.string._Cached) + ZRAMToolApp.iCachedMemory + getString(R.string._Buffers) + ZRAMToolApp.iBuffersMemory);
+            appLaunch.setContentTitle(getString(R.string.ZRAM_used) + iZRAMUsage + getString(R.string._Max_ZRAM) + iMaximumZRAMUsage);
+             //appLaunch.setAutoCancel(true);
             appLaunch.setOngoing(true);
             appLaunch.setUsesChronometer(true);
             Intent targetIntent = new Intent(this, MainActivity.class);
@@ -184,16 +186,16 @@ public class NotificationService extends Service {
             // Send data to NotificationView Class
             intent.putExtra("title", "strtitle");
             intent.putExtra("text", "strtext");
-            remoteViews.setTextViewText(R.id.textViewRAMFree, "Total Free: " + ZRAMToolApp.iTotalFreeMemory);
-            remoteViews.setTextViewText(R.id.textViewRAMDetails, "Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
-            remoteViews.setTextViewText(R.id.textViewZRAM, "ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
+            remoteViews.setTextViewText(R.id.textViewRAMFree, getString(R.string.Total_Free) + ZRAMToolApp.iTotalFreeMemory);
+            remoteViews.setTextViewText(R.id.textViewRAMDetails, getString(R.string.Free) + ZRAMToolApp.iFreeMemory +getString(R.string._Cached) + ZRAMToolApp.iCachedMemory + getString(R.string._Buffers) + ZRAMToolApp.iBuffersMemory);
+            remoteViews.setTextViewText(R.id.textViewZRAM, getString(R.string.ZRAM_used) + iZRAMUsage + getString(R.string._Max_ZRAM) + iMaximumZRAMUsage);
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
             Resources res = this.getResources();
             //appLaunch.setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_launcher_96));
             appLaunch.setTicker(getString(R.string.Launched_ZRAMTool_background_service));
             appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
-            appLaunch.setContentText("Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
-            appLaunch.setContentTitle("ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
+            appLaunch.setContentText( getString(R.string.Total_Free) + ZRAMToolApp.iTotalFreeMemory + getString(R.string._Free) + ZRAMToolApp.iFreeMemory + getString(R.string._Cached) + ZRAMToolApp.iCachedMemory + getString(R.string._Buffers) + ZRAMToolApp.iBuffersMemory);
+            appLaunch.setContentTitle(getString(R.string.ZRAM_used) + iZRAMUsage + getString(R.string._Max_ZRAM) + iMaximumZRAMUsage);
             //appLaunch.setAutoCancel(true);
             appLaunch.setOngoing(true);
             appLaunch.setUsesChronometer(true);

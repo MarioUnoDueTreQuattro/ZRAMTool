@@ -172,7 +172,7 @@
                     android:singleLine="true"
                     android:text="150"
                     android:textAppearance="@android:style/TextAppearance.Large"
-                "/>
+                    />
 
                 <TextView
                     android:id="@+id/textView7"

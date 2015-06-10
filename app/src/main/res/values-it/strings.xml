@@ -41,4 +41,11 @@
 	<string name="pref_title_language">Lingua</string>
 	<string name="Maximum_ZRAM_usage">"Picco della ZRAM: "</string>
 	<string name="Total_size_all_disks">"Dimensione totale (tutti i dischi): "</string>
+	<string name="free_memory">"Memoria libera: "</string>
+	<string name="Total_free_memory">"Memoria libera totale: "</string>
+	<string name="Total_memory">"Memoria totale: "</string>
+	<string name="ZRAM_used">"ZRAM usata: "</string>
+	<string name="Free">"Libera: "</string>
+	<string name="Total_Free">"Libera totale: "</string>
+	<string name="_Free">" - Libera: "</string>
 </resources>

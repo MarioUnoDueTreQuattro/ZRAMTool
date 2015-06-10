@@ -698,11 +698,11 @@ public class MainActivity extends AppCompatActivity {
         textViewComprDataSize.setText(getString(R.string.ZRAM_compressed) + ZRAMToolApp.iZRAMComprDataSize + " MB");
 //        int iMemory[] = new int[5];
 //        iMemory = getMemoryInfo();
-        textViewFreeRam.setText("Free memory: " + ZRAMToolApp.iFreeMemory + " MB");
-        textViewCached.setText("Cached: " + ZRAMToolApp.iCachedMemory + " MB");
+        textViewFreeRam.setText(getString(R.string.free_memory) + ZRAMToolApp.iFreeMemory + " MB");
+        textViewCached.setText("Cache: " + ZRAMToolApp.iCachedMemory + " MB");
         textViewBuffers.setText("Buffers: " + ZRAMToolApp.iBuffersMemory + " MB");
-        textViewTotalFree.setText("Total free memory: " + ZRAMToolApp.iTotalFreeMemory + " MB");
-        textViewTotal.setText("Total memory: " + ZRAMToolApp.iTotalMemory + " MB");
+        textViewTotalFree.setText(getString(R.string.Total_free_memory) + ZRAMToolApp.iTotalFreeMemory + " MB");
+        textViewTotal.setText(getString(R.string.Total_memory) + ZRAMToolApp.iTotalMemory + " MB");
         iZRAMUsage = ZRAMToolApp.iZRAMUsage;
         if (iZRAMUsage > iMaximumZRAMUsage) iMaximumZRAMUsage = iZRAMUsage;
         textViewMaxZRAMUsage.setText(getString(R.string.Maximum_ZRAM_usage) + ZRAMToolApp.iZRAMMaximumUsage + " MB");

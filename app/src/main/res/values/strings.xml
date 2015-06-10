@@ -39,4 +39,14 @@
     <string name="Launched_ZRAMTool_background_service">Launched ZRAMTool background service to update notification...</string>
     <string name="Maximum_ZRAM_usage">"Maximum ZRAM usage: "</string>
     <string name="Total_size_all_disks">"Total size (all disks): "</string>
+    <string name="free_memory">"Free memory: "</string>
+    <string name="Total_free_memory">"Total free memory: "</string>
+    <string name="Total_memory">"Total memory: "</string>
+    <string name="Total_Free">"Total Free: "</string>
+    <string name="Free">"Free: "</string>
+    <string name="ZRAM_used">"ZRAM used: "</string>
+    <string name="_Max_ZRAM">" - Max ZRAM: "</string>
+    <string name="_Free">" - Free: "</string>
+    <string name="_Cached">" - Cache: "</string>
+    <string name="_Buffers">" - Buffers: "</string>
 </resources>
