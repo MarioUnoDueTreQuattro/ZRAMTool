@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:text="RAMFree"
                     android:id="@+id/textViewRAMFree"
-                    android:textSize="@dimen/abc_text_size_large_material"
+                    android:textSize="@dimen/abc_text_size_medium_material"
                     android:textColor="@android:color/white"/>
 
                 <TextView
@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:text="ZRAM"
                     android:id="@+id/textViewZRAM"
-                    android:textSize="@dimen/abc_text_size_large_material"
+                    android:textSize="@dimen/abc_text_size_medium_material"
                     android:textColor="@android:color/white"/>
 
             </LinearLayout>
@@ -65,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:text="@string/CleanMemory"
-                    android:id="@+id/button3"
+                    android:id="@+id/buttonCleanMemory"
                     android:layout_weight="1"/>
 
                 <Button
@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:text="@string/CleanDropCache"
-                    android:id="@+id/button4"
+                    android:id="@+id/buttonCleanDropCache"
                     android:layout_weight="1"/>
 
                 <Button
@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:text="@string/CleanAll"
-                    android:id="@+id/button5"
+                    android:id="@+id/buttonCleanAll"
                     android:layout_weight="1"/>
 
             </LinearLayout>
