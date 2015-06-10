@@ -42,6 +42,11 @@
             android:label="@string/title_activity_about"
             android:theme="@style/Theme.AppCompat.Dialog">
         </activity>
+        <activity
+            android:name=".NotificationView"
+            android:label="@string/title_activity_NotificationView"
+           >
+        </activity>
 
         <service
             android:name=".NotificationService"
