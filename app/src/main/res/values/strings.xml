@@ -49,4 +49,7 @@
     <string name="_Free">" - Free: "</string>
     <string name="_Cached" translatable="false">" - Cache: "</string>
     <string name="_Buffers" translatable="false">" - Buffers: "</string>
+    <string name="Minimum_free_memory">"Minimum free memory: "</string>
+    <string name="Maximum_free_memory">"Maximum free memory: "</string>
+    <string name="RAM_Status">RAM status</string>
 </resources>

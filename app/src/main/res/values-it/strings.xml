@@ -48,4 +48,7 @@
 	<string name="Free">"Libera: "</string>
 	<string name="Total_Free">"Libera totale: "</string>
 	<string name="_Free">" - Libera: "</string>
+	<string name="Maximum_free_memory">"Livello massimo di memoria libera: "</string>
+	<string name="Minimum_free_memory">"Livello minimo di memoria libera: "</string>
+	<string name="RAM_Status">Stato della RAM </string>
 </resources>

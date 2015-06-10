@@ -26,7 +26,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     static public boolean bShowNotification,bShowAdvancedNotification,bDoubleBackToExit;
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
-    static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory;
+    static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory,  iMinFreeMemory, iMaxFreeMemory;;
     static public int iZRAMUsage;
     // static public int iMaximumZRAMUsage;
     static public int iSwappiness;
@@ -51,6 +51,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         super.onCreate();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         Log.d(TAG, "onCreate");
+        iMinFreeMemory = 0;
+        iMaxFreeMemory = 0;
         sZRAMDirectory = "/sys/devices/virtual/block";
         // Read SharedPreferences
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -473,6 +475,11 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         iBuffersMemory = iMemory[1];
         iTotalFreeMemory = iMemory[3];
         iTotalMemory = iMemory[4];
+        if (iMinFreeMemory == 0) iMinFreeMemory = iTotalFreeMemory;
+        if (iTotalFreeMemory > iMaxFreeMemory)
+            iMaxFreeMemory = iTotalFreeMemory;
+        if (iTotalFreeMemory < iMinFreeMemory)
+            iMinFreeMemory = iTotalFreeMemory;
 /*
         textViewFreeRam.setText("Free memory: " + iMemory[0] + " MB");
         textViewCached.setText("Cached: " + iMemory[2] + " MB");

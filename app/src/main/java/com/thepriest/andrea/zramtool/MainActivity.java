@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Handler mHandler;
     //TimerTask timerTask;
     TextView textViewTotalSize, textViewTotalMemoryUsed, textViewOrigDataSize, textViewComprDataSize, textViewSwappiness, textViewFreeRam,
-            textViewBuffers, textViewCached, textViewTotalFree, textViewTotal;
+            textViewBuffers, textViewCached, textViewTotalFree, textViewTotal, textViewMinFreeRAM, textViewMaxFreeRAM;
     TextView textViewDiskNum, textViewVFS_cache_pressure, textViewMaxZRAMUsage;
     Button buttonDisableZRAM, buttonEnableZRAM, buttonCleanMemory, buttonCleanDropCache, buttonCleanAll;
     ProgressBar progressBarTotalMemoryUsed, progressBarOrigDataSize, progressBarComprDataSize, progressBarMaxZRAMUsage;
@@ -173,6 +173,8 @@ public class MainActivity extends AppCompatActivity {
         textViewDiskNum = (TextView) findViewById(R.id.textViewDiskNum);
         textViewVFS_cache_pressure = (TextView) findViewById(R.id.textViewVFS_cache_pressure);
         textViewMaxZRAMUsage = (TextView) findViewById(R.id.textViewMaxZRAMUsage);
+        textViewMinFreeRAM = (TextView) findViewById(R.id.textViewMinFreeRAM);
+        textViewMaxFreeRAM = (TextView) findViewById(R.id.textViewMaxFreeRAM);
 /*
         buttonDisableZRAM = (Button) findViewById(R.id.buttonDisableZRAM);
         buttonDisableZRAM.setOnClickListener(new View.OnClickListener() {
@@ -702,6 +704,9 @@ public class MainActivity extends AppCompatActivity {
         textViewCached.setText("Cache: " + ZRAMToolApp.iCachedMemory + " MB");
         textViewBuffers.setText("Buffers: " + ZRAMToolApp.iBuffersMemory + " MB");
         textViewTotalFree.setText(getString(R.string.Total_free_memory) + ZRAMToolApp.iTotalFreeMemory + " MB");
+
+        textViewMinFreeRAM.setText(getString(R.string.Minimum_free_memory) + ZRAMToolApp.iMinFreeMemory + " MB");
+        textViewMaxFreeRAM.setText(getString(R.string.Maximum_free_memory) + ZRAMToolApp.iMaxFreeMemory + " MB");
         textViewTotal.setText(getString(R.string.Total_memory) + ZRAMToolApp.iTotalMemory + " MB");
         iZRAMUsage = ZRAMToolApp.iZRAMUsage;
         if (iZRAMUsage > iMaximumZRAMUsage) iMaximumZRAMUsage = iZRAMUsage;
