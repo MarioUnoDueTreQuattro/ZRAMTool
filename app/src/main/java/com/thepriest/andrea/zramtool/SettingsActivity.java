@@ -90,6 +90,7 @@ public class SettingsActivity extends PreferenceActivity {
        // bindPreferenceSummaryToValue(findPreference("MemoryLimitToDropCache"));
         bindPreferenceSummaryToValue(findPreference("memory_limit_to_drop_cache"));
 
+       // bindPreferenceSummaryToValue(findPreference("enable_auto_drop_cache"));
 
 
     }

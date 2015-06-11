@@ -12,7 +12,6 @@ import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 /**
  * Created by Andrea on 29/05/2015.
@@ -22,7 +21,7 @@ public class NotificationService extends Service {
     private Updater updater;
     public boolean bIsRunning = false;
     static public int iRefreshFrequency;
-    static public int iZRAMUsage, iMaximumZRAMUsage;
+    static public int iZRAMUsage, iMaximumZRAMUsage, iCounter;
 
     /**
      * Called by the system every time a client explicitly starts the service by calling
@@ -121,6 +120,7 @@ public class NotificationService extends Service {
     public void onCreate() {
         Log.d(TAG, "onCreate");
         super.onCreate();
+        iCounter = 0;
         updater = new Updater();
     }
 
@@ -239,14 +239,17 @@ public class NotificationService extends Service {
         @Override
         public void run() {
             super.run();
+            iCounter++;
 //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
                 if (BuildConfig.DEBUG) Log.d(TAG, "Updater run loop..................");
                 try {
                     if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
                     else setNotification();
-                    if (ZRAMToolApp.iTotalFreeMemory < ZRAMToolApp.iMemoryLimitToDropCache && ZRAMToolApp.bEnableDropCache)
+                    if (ZRAMToolApp.iTotalFreeMemory < ZRAMToolApp.iMemoryLimitToDropCache && ZRAMToolApp.bEnableDropCache && iCounter > 5) {
+                        iCounter = 0;
                         cleanDropCache();
+                    }
                     this.sleep(ZRAMToolApp.iRefreshFrequency);
                     if (!running) return;
                 } catch (InterruptedException e) {
@@ -266,7 +269,8 @@ public class NotificationService extends Service {
             e.printStackTrace();
         } finally {
         }
-        Toast.makeText(getApplicationContext(), "Drop Cache cleaned.", Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, "Drop Cache cleaned.", Toast.LENGTH_LONG).show();
+        if (BuildConfig.DEBUG) Log.d(TAG, "cleanDropCache");
         return;
     }
 }
