@@ -120,7 +120,7 @@ public class NotificationService extends Service {
     public void onCreate() {
         Log.d(TAG, "onCreate");
         super.onCreate();
-        iCounter = 0;
+        iCounter = 6; //more than 5... so cleanDropCache() is called
         updater = new Updater();
     }
 
@@ -239,10 +239,10 @@ public class NotificationService extends Service {
         @Override
         public void run() {
             super.run();
-            iCounter++;
-//            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
+       //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
                 if (BuildConfig.DEBUG) Log.d(TAG, "Updater run loop..................");
+                iCounter++;
                 try {
                     if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
                     else setNotification();
