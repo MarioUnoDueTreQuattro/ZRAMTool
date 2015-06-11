@@ -329,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void tick() {
-        ZRAMToolApp.updateStatus();
+        if (!bShowNotification) ZRAMToolApp.updateStatus();
         //ZRAMToolApp.updateRAMStatus();
         printZRAMStatus();
         iUpdatesCount++;

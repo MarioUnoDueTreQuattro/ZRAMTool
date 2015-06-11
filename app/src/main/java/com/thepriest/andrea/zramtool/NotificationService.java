@@ -249,7 +249,7 @@ public class NotificationService extends Service {
                         iCounter = 0;
                         cleanDropCache();
                     }
-                    sleep(ZRAMToolApp.iRefreshFrequency);
+                    Updater.sleep(ZRAMToolApp.iRefreshFrequency);
                     if (!running) return;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
