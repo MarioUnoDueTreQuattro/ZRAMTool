@@ -12,6 +12,7 @@ import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 /**
  * Created by Andrea on 29/05/2015.
@@ -240,10 +241,11 @@ public class NotificationService extends Service {
             super.run();
 //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
+                if (BuildConfig.DEBUG) Log.d(TAG, "Updater run loop..................");
                 try {
                     if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
                     else setNotification();
-                    if (BuildConfig.DEBUG) Log.d(TAG, "Updater run loop..................");
+                    if(ZRAMToolApp.iTotalFreeMemory< ZRAMToolApp.iMemoryLimitToDropCache) cleanDropCache();
                     this.sleep(ZRAMToolApp.iRefreshFrequency);
                     if (!running) return;
                 } catch (InterruptedException e) {
@@ -253,5 +255,17 @@ public class NotificationService extends Service {
         }
     }
 
-
+    private void cleanDropCache() {
+        String result1 = "";
+        try {
+            result1 = Shell.sudo("sync");
+            result1 = Shell.sudo("echo 3 > /proc/sys/vm/drop_caches");
+        } catch (Shell.ShellException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+        }
+        Toast.makeText(getApplicationContext(), "Drop Cache cleaned.", Toast.LENGTH_LONG).show();
+        return;
+    }
 }

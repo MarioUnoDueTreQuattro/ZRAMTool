@@ -31,6 +31,14 @@
         android:key="enable_advanced_notification"
         android:title="@string/pref_title_enable_advanced_notification"/>
 
+    <EditTextPreference
+        android:numeric="integer"
+        android:dependency="enable_notification"
+        android:key="memory_limit_to_drop_cache"
+        android:title="@string/title_edittext_MemoryLimitToDropCache"
+        android:summary="@string/summary_edittext_MemoryLimitToDropCache"
+        android:dialogTitle="@string/dialog_title_MemoryLimitToDropCache" />
+
     <ListPreference
         android:defaultValue="5"
         android:entries="@array/pref_refresh_frequency_titles"
@@ -63,7 +71,7 @@
         android:positiveButtonText="@null"
         android:title="@string/pref_title_language"/>
 
-    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+      <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
 

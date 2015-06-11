@@ -87,6 +87,10 @@ public class SettingsActivity extends PreferenceActivity {
         bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
         bindPreferenceSummaryToValue(findPreference("sync_frequency"));
         //bindPreferenceSummaryToValue(findPreference("double_back_to_exit"));
+       // bindPreferenceSummaryToValue(findPreference("MemoryLimitToDropCache"));
+        bindPreferenceSummaryToValue(findPreference("memory_limit_to_drop_cache"));
+
+
 
     }
 
@@ -268,6 +272,7 @@ public class SettingsActivity extends PreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("double_back_to_exit"));
             bindPreferenceSummaryToValue(findPreference("refresh_frequency"));
             bindPreferenceSummaryToValue(findPreference("pref_ZRAM_directory"));
+            //bindPreferenceSummaryToValue(findPreference("memory_limit_to_drop_cache"));
             //bindPreferenceSummaryToValue(findPreference("example_list"));
         }
     }

@@ -39,6 +39,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public static int iZRAMStatus[] = new int[4];
     public static int iMemory[] = new int[5];
     public static int memory[] = new int[5];
+    public static int iMemoryLimitToDropCache;
 
     /**
      * Called when the application is starting, before any activity, service,
@@ -88,6 +89,9 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
+        iMemoryLimitToDropCache=prefs.getInt("memory_limit_to_drop_cache",128);
+        Log.d(TAG, "MemoryLimitToDropCache= " + iMemoryLimitToDropCache);
+
     }
 
 
@@ -142,6 +146,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
+        iMemoryLimitToDropCache=prefs.getInt("memory_limit_to_drop_cache",128);
+
     }
 
     public static boolean hasZRAM0() {
