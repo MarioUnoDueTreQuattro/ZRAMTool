@@ -193,7 +193,13 @@ public class NotificationService extends Service {
             Resources res = this.getResources();
             //appLaunch.setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_launcher_96));
             appLaunch.setTicker(getString(R.string.Launched_ZRAMTool_background_service));
-            appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
+            //appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
+            String sDrawable="m";
+            int iDrawable=(ZRAMToolApp.iTotalFreeMemory/5)*5;
+            sDrawable+=iDrawable;
+            int drawableResourceId = this.getResources().getIdentifier(sDrawable, "drawable", this.getPackageName());
+            appLaunch.setSmallIcon(drawableResourceId);
+
 /*
             byte [] encodeByte= Base64.decode(":", Base64.DEFAULT);
             Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
