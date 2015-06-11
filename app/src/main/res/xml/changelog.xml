@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
     <release
+        version="1.42"
+        versioncode="142">
+        <change>UI changes.</change>
+    </release>
+    <release
         version="1.41"
         versioncode="141">
         <change>Hardcoded strings converted to strings.xml</change>

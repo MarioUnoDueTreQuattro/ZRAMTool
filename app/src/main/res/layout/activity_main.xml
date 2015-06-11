@@ -26,14 +26,29 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-            android:text="@string/ZRAM_status"
-            android:id="@+id/textViewStatus"
-            android:textColor="@android:color/primary_text_dark"
-            android:paddingBottom="10dp"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                android:text="@string/ZRAM_status"
+                android:id="@+id/textViewStatus"
+                android:textColor="@android:color/primary_text_dark"
+                android:paddingBottom="10dp"
+                android:layout_weight="1"/>
+
+            <Button
+                style="@style/ButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enableZRAM"
+                android:layout_weight="1"
+                android:id="@+id/buttonEnableZRAM"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -172,39 +187,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-            android:text="@string/ZRAM_settings"
-            android:id="@+id/textViewSettings"
-            android:textColor="@android:color/primary_text_dark"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            Button
-                style="@style/ButtonTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/disableZRAM"
-                android:layout_weight="1"
-                android:id="@+id/buttonDisableZRAM"/>
-
-
-            <Button
-                style="@style/ButtonTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/enableZRAM"
-                android:layout_weight="1"
-                android:id="@+id/buttonEnableZRAM"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
             android:text="@string/RAM_Status"
             android:id="@+id/textViewRAMStatus"
             android:textColor="@android:color/primary_text_dark"
@@ -266,16 +248,6 @@
             android:text="total"
             android:id="@+id/textViewTotal"
             android:textColor="@android:color/secondary_text_dark"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-            android:text="@string/RAM_Tools"
-            android:id="@+id/textViewRAM"
-            android:textColor="@android:color/primary_text_dark"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"/>
 
         <LinearLayout
             android:orientation="horizontal"
