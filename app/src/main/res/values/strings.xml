@@ -56,8 +56,5 @@
     <string name="RAM_Status">RAM</string>
     <string name="programming_version_info">"Programming: ThePriest\nMade in Italy\n\nVersion: "</string>
     <string name="kernel_version">"\n\nKernel version: "</string>
-    <string name="title_edittext_MemoryLimitToDropCache">Memory limit to "drop cache"</string>
-    <string name="summary_edittext_MemoryLimitToDropCache">Limit in MB</string>
-    <string name="dialog_title_MemoryLimitToDropCache">Limit in MB</string>
 
 </resources>
