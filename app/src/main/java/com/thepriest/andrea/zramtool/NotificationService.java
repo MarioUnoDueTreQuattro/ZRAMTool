@@ -6,7 +6,6 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
@@ -239,7 +238,7 @@ public class NotificationService extends Service {
         @Override
         public void run() {
             super.run();
-       //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
+            //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
                 if (BuildConfig.DEBUG) Log.d(TAG, "Updater run loop..................");
                 iCounter++;
@@ -250,7 +249,7 @@ public class NotificationService extends Service {
                         iCounter = 0;
                         cleanDropCache();
                     }
-                    this.sleep(ZRAMToolApp.iRefreshFrequency);
+                    sleep(ZRAMToolApp.iRefreshFrequency);
                     if (!running) return;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -260,10 +259,10 @@ public class NotificationService extends Service {
     }
 
     private void cleanDropCache() {
-        String result1 = "";
+        //String result1 = "";
         try {
-            result1 = Shell.sudo("sync");
-            result1 = Shell.sudo("echo 3 > /proc/sys/vm/drop_caches");
+            Shell.sudo("sync");
+            Shell.sudo("echo 3 > /proc/sys/vm/drop_caches");
         } catch (Shell.ShellException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -271,6 +270,5 @@ public class NotificationService extends Service {
         }
         // Toast.makeText(this, "Drop Cache cleaned.", Toast.LENGTH_LONG).show();
         if (BuildConfig.DEBUG) Log.d(TAG, "cleanDropCache");
-        return;
     }
 }
