@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
     <release
+        version="1.43"
+        versioncode="143">
+        <change>Added option to auto-clean drop cache with configurable limit in MB.</change>
+    </release>
+    <release
         version="1.42"
         versioncode="142">
         <change>Notification icon now show available memory.</change>
