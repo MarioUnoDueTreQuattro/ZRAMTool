@@ -26,29 +26,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-                android:text="@string/ZRAM_status"
-                android:id="@+id/textViewStatus"
-                android:textColor="@android:color/primary_text_dark"
-                android:paddingBottom="10dp"
-                android:layout_weight="1"/>
-
-            <Button
-                style="@style/ButtonTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/enableZRAM"
-                android:layout_weight="1"
-                android:id="@+id/buttonEnableZRAM"/>
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:text="@string/ZRAM_status"
+            android:id="@+id/textViewStatus"
+            android:textColor="@android:color/primary_text_dark"
+            android:paddingBottom="10dp"
+            android:layout_weight="1"/>
 
         <TextView
             android:layout_width="wrap_content"

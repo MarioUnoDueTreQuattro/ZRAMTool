@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ZRAM Tool</string>
     <string name="action_settings">Settings</string>
+    <string name="action_configure_zram">Configura ZRAM</string>
     <string name="action_exit">Exit</string>
     <string name="ZRAM_status">ZRAM</string>
     <string name="ZRAM_settings">ZRAM settings</string>
@@ -13,7 +14,7 @@
     <string name="disableZRAM">Disable ZRAM</string>
     <string name="enableZRAM">Set ZRAM</string>
     <string name="ZRAM_disk_number">"Disks: "</string>
-    <string name="title_activity_enable__zram_">Enable ZRAM</string>
+    <string name="title_activity_enable__zram_">Enable/Disable ZRAM</string>
     <string name="CleanMemory">Clean memory</string>
     <string name="CleanDropCache">Clean Drop Cache</string>
     <string name="CleanAll">Clean all</string>
@@ -24,7 +25,7 @@
     <string name="action_changelog">Change log</string>
     <string name="title_changelog" translatable="false">ZRAM Tool</string>
     <string name="changelog_close">Close</string>
-    <string name="enable_disable_zram">Set ZRAM</string>
+    <string name="enable_disable_zram">Enable/Disable ZRAM:</string>
     <string name="changelog">Changelog...</string>
     <string name="close">Close</string>
     <string name="apply">Apply</string>

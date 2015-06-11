@@ -210,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         });
 */
 
+/*
         buttonEnableZRAM = (Button) findViewById(R.id.buttonEnableZRAM);
         buttonEnableZRAM.setOnClickListener(new View.OnClickListener() {
 
@@ -218,6 +219,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Enable_ZRAM_Activity.class));
             }
         });
+*/
         buttonCleanMemory = (Button) findViewById(R.id.buttonCleanMemory);
         buttonCleanMemory.setOnClickListener(new View.OnClickListener() {
 
@@ -419,6 +421,10 @@ public class MainActivity extends AppCompatActivity {
         }
         if (id == R.id.action_about) {
             startActivity(new Intent(this, About.class));
+            return true;
+        }
+        if (id == R.id.action_configure_zram) {
+            startActivity(new Intent(MainActivity.this, Enable_ZRAM_Activity.class));
             return true;
         }
 /*
