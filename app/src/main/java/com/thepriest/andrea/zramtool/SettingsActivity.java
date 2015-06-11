@@ -66,32 +66,30 @@ public class SettingsActivity extends PreferenceActivity {
         addPreferencesFromResource(R.xml.pref_general);
 
         // Add 'notifications' preferences, and a corresponding header.
-        PreferenceCategory fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_notifications);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_notification);
+//        PreferenceCategory fakeHeader = new PreferenceCategory(this);
+//        fakeHeader.setTitle(R.string.pref_header_notifications);
+//        getPreferenceScreen().addPreference(fakeHeader);
+//        addPreferencesFromResource(R.xml.pref_notification);
 
         // Add 'data and sync' preferences, and a corresponding header.
-        fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_data_sync);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_data_sync);
+//        fakeHeader = new PreferenceCategory(this);
+//        fakeHeader.setTitle(R.string.pref_header_data_sync);
+//        getPreferenceScreen().addPreference(fakeHeader);
+//        addPreferencesFromResource(R.xml.pref_data_sync);
 
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
         // their values. When their values change, their summaries are updated
         // to reflect the new value, per the Android Design guidelines.
-        bindPreferenceSummaryToValue(findPreference("refresh_frequency"));
-        bindPreferenceSummaryToValue(findPreference("pref_ZRAM_directory"));
         //bindPreferenceSummaryToValue(findPreference("example_text"));
         //bindPreferenceSummaryToValue(findPreference("example_list"));
-        bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
-        bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+      //  bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
+       // bindPreferenceSummaryToValue(findPreference("sync_frequency"));
         //bindPreferenceSummaryToValue(findPreference("double_back_to_exit"));
        // bindPreferenceSummaryToValue(findPreference("MemoryLimitToDropCache"));
         bindPreferenceSummaryToValue(findPreference("memory_limit_to_drop_cache"));
-
+        bindPreferenceSummaryToValue(findPreference("refresh_frequency"));
+        bindPreferenceSummaryToValue(findPreference("pref_ZRAM_directory"));
        // bindPreferenceSummaryToValue(findPreference("enable_auto_drop_cache"));
-
 
     }
 
@@ -293,7 +291,7 @@ public class SettingsActivity extends PreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
+           // bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
         }
     }
 
@@ -313,7 +311,7 @@ public class SettingsActivity extends PreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
        //     bindPreferenceSummaryToValue(findPreference("double_back_to_exit"));
-            bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+          //  bindPreferenceSummaryToValue(findPreference("sync_frequency"));
         }
     }
 }
