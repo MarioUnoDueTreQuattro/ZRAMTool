@@ -23,7 +23,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     SharedPreferences prefs;
     static public int iRefreshFrequency;
     static public String sZRAMDirectory, sLanguage;
-    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit;
+    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit,bEnableDropCache;
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
     static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory, iMinFreeMemory, iMaxFreeMemory;
@@ -82,15 +82,18 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "enable_advanced_notification= " + bShowAdvancedNotification);
         bDoubleBackToExit = prefs.getBoolean("double_back_to_exit", false);
         Log.d(TAG, "double_back_to_exit= " + bDoubleBackToExit);
+        bEnableDropCache= prefs.getBoolean("enable_auto_drop_cache", false);
+        Log.d(TAG, "bEnableDropCache= " + bEnableDropCache);
+        prefString = prefs.getString("memory_limit_to_drop_cache", "128");
+        ipref = Integer.parseInt(prefString);
+        iMemoryLimitToDropCache = ipref;
+        Log.d(TAG, "memory_limit_to_drop_cache= " + iMemoryLimitToDropCache);
         sLanguage = prefs.getString("language", "en");
         Locale locale = new Locale(sLanguage);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,
-                getBaseContext().getResources().getDisplayMetrics());
-        iMemoryLimitToDropCache=prefs.getInt("memory_limit_to_drop_cache",128);
-        Log.d(TAG, "MemoryLimitToDropCache= " + iMemoryLimitToDropCache);
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
     }
 
@@ -139,6 +142,10 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         }
         bShowAdvancedNotification = prefs.getBoolean("enable_advanced_notification", false);
         bDoubleBackToExit = prefs.getBoolean("double_back_to_exit", false);
+        bEnableDropCache= prefs.getBoolean("enable_auto_drop_cache", false);
+        prefString = prefs.getString("memory_limit_to_drop_cache", "128");
+        ipref = Integer.parseInt(prefString);
+        iMemoryLimitToDropCache = ipref;
         sLanguage = prefs.getString("language", "en");
         Locale locale = new Locale(sLanguage);
         Locale.setDefault(locale);
@@ -146,7 +153,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
-        iMemoryLimitToDropCache=prefs.getInt("memory_limit_to_drop_cache",128);
+        //iMemoryLimitToDropCache = prefs.getInt("memory_limit_to_drop_cache", 128);
+
 
     }
 

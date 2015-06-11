@@ -31,9 +31,15 @@
         android:key="enable_advanced_notification"
         android:title="@string/pref_title_enable_advanced_notification"/>
 
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:dependency="enable_notification"
+        android:key="enable_auto_drop_cache"
+        android:title="@string/pref_title_enable_auto_drop_cache"/>
+
     <EditTextPreference
         android:numeric="integer"
-        android:dependency="enable_notification"
+        android:dependency="enable_auto_drop_cache"
         android:key="memory_limit_to_drop_cache"
         android:title="@string/title_edittext_MemoryLimitToDropCache"
         android:summary="@string/summary_edittext_MemoryLimitToDropCache"

@@ -111,5 +111,6 @@
     <string name="pref_title_enable_notification">Enable notification</string>
     <string name="pref_title_enable_advanced_notification">Advanced notification</string>
     <string name="pref_title_double_back_to_exit">Twice back button to exit</string>
+    <string name="pref_title_enable_auto_drop_cache">Automatic drop cache</string>
 
 </resources>
