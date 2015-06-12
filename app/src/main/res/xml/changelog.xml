@@ -3,6 +3,7 @@
     <release
         version="1.44"
         versioncode="1440">
+        <change>Added receiver for RECEIVE_BOOT_COMPLETED to restart on boot when notification is enabled.</change>
         <change>Added option, linked to the "auto clean drop cache" to limit number of recent app, execeeding apps will be killed.</change>
     </release>
     <release
