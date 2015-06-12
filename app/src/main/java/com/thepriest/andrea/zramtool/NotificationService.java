@@ -279,7 +279,7 @@ public class NotificationService extends Service {
         final List<ActivityManager.RecentTaskInfo> recentTasks = activityManager.getRecentTasks(30, 0);
         final int count = recentTasks.size();
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
-        Log.d(TAG, "cleanRecents() count= " + count);
+        Log.d(TAG, "cleanRecents() count= " + count + " limit is "+ ZRAMToolApp.iProcessLimit);
         if (count > ZRAMToolApp.iProcessLimit)
             for (int i = ZRAMToolApp.iProcessLimit; i < count; i++) {
                 Intent intent = recentTasks.get(i).baseIntent;
