@@ -54,4 +54,7 @@
 	<string name="programming_version_info">"Programmazione: ThePriest\nMade in Italy\n\nVersione: "</string>
 	<string name="kernel_version">"\n\nVersione del Kernel: "</string>
 	<string name="action_configure_zram">Configura ZRAM</string>
+	<string name="dialog_title_process_limit">Limite dei processi</string>
+	<string name="summary_edittext_process_limit">Limite dei processi</string>
+	<string name="title_edittext_process_limit">Limite dei processi</string>
 </resources>
