@@ -243,7 +243,7 @@ public class NotificationService extends Service {
             super.run();
             //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
-                if (BuildConfig.DEBUG) Log.d(TAG, "Updater run loop..................");
+                if (BuildConfig.DEBUG) Log.d(TAG, "NotificationService Updater run loop........");
                 iCounter++;
                 try {
                     if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
