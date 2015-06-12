@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class BootCompleteReceiver extends BroadcastReceiver {
@@ -17,7 +18,8 @@ public class BootCompleteReceiver extends BroadcastReceiver {
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
             Log.d(TAG, "RECEIVE_BOOT_COMPLETED");;
             Boolean autoRestart = false;
-            SharedPreferences sp = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+            //SharedPreferences sp = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
             autoRestart = sp.getBoolean("enable_notification", false);
             if (autoRestart) {
                 Log.d(TAG, "RECEIVE_BOOT_COMPLETED -> startActivity NotificationService");
