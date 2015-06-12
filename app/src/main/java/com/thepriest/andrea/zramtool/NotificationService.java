@@ -1,5 +1,6 @@
 package com.thepriest.andrea.zramtool;
 
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,6 +12,8 @@ import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
+
+import java.util.List;
 
 /**
  * Created by Andrea on 29/05/2015.
@@ -259,16 +262,40 @@ public class NotificationService extends Service {
     }
 
     private void cleanDropCache() {
-        //String result1 = "";
         try {
             Shell.sudo("sync");
             Shell.sudo("echo 3 > /proc/sys/vm/drop_caches");
         } catch (Shell.ShellException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
         }
         // Toast.makeText(this, "Drop Cache cleaned.", Toast.LENGTH_LONG).show();
         if (BuildConfig.DEBUG) Log.d(TAG, "cleanDropCache");
+    }
+    private  void  cleanRecents() {
+       // final  PackageManager manager = getPackageManager();
+        int MAX_RECENT_TASKS=30;
+        final ActivityManager tasksManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        final List<ActivityManager.RecentTaskInfo> recentTasks = tasksManager.getRecentTasks(
+                MAX_RECENT_TASKS, 0);
+
+        final  int  count = recentTasks.size();
+        //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
+
+        for  (int  i = count - 1; i >= 0; i--) {
+           // final  Intent intent = recentTasks.get(i).baseIntent;
+//            if  (Intent.ACTION_MAIN.equals(intent.getAction()) &&
+   //                 !intent.hasCategory(Intent.CATEGORY_HOME)) {
+
+//                ApplicationInfo info = getApplicationInfo(manager, intent);
+//                if  (info != null) {
+//                    info.intent = intent;
+//                    if  (!mFavorites.contains(info)) {
+//                        recents.add(info);
+//                    }
+//                }
+            }
+   //     }
+  //      mApplicationsStack.setRecents(recents);
     }
 }

@@ -27,7 +27,6 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
     static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory, iMinFreeMemory, iMaxFreeMemory;
-    ;
     static public int iZRAMUsage;
     // static public int iMaximumZRAMUsage;
     static public int iSwappiness;
