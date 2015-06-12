@@ -284,7 +284,7 @@ public class NotificationService extends Service {
         String sRecentPackageName = "";
         boolean bProcIsInRecentLimit = true;
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
-        Log.d(TAG, "cleanRecents() count= " + recentCount + " limit is " + ZRAMToolApp.iProcessLimit);
+        Log.d(TAG, "cleanRecents() count= " + recentCount + " - Process limit is " + ZRAMToolApp.iProcessLimit);
         for (int i = 0; i < procCount; i++) {
             //if (procInfos.get(i).processName.equals("com.android.music")) {
             //Toast.makeText(null, "music is running",
@@ -294,19 +294,17 @@ public class NotificationService extends Service {
             for (int iRec = 0; iRec < ZRAMToolApp.iProcessLimit && iRec < recentCount; iRec++) {
                 Intent intent = recentTasks.get(iRec).baseIntent;
                 sRecentPackageName = intent.getComponent().getPackageName();
-                Log.d(TAG, "-> cleanRecents() \"" + sRecentPackageName + "\"" + " " + "\"" + sProcName + "\"");
-                if (sRecentPackageName == sProcName) {
+                //Log.d(TAG, "-> cleanRecents() \"" + sRecentPackageName + "\"" + " " + "\"" + sProcName + "\"");
+                if (sRecentPackageName.equals(sProcName)) {
                     bProcIsInRecentLimit = true;
-                    Log.d(TAG, "sRecentPackageName == sProcName NOT killBackgroundProcesses= " + sProcName);
+                    //Log.d(TAG, "sRecentPackageName == sProcName NOT killBackgroundProcesses= " + sProcName);
                 }
-
             }
-            if (bProcIsInRecentLimit==false) {
+            if (bProcIsInRecentLimit == false) {
                 activityManager.killBackgroundProcesses(sProcName);
-                //          Log.d(TAG, "killBackgroundProcesses= " + sProcName);
+                //   Log.d(TAG, "killBackgroundProcesses= " + sProcName);
             } else {
-                //      Log.d(TAG, "NOT killBackgroundProcesses= " + sProcName);
-
+                //   Log.d(TAG, "NOT killBackgroundProcesses= " + sProcName);
             }
         }
 /*
@@ -320,14 +318,3 @@ public class NotificationService extends Service {
 */
     }
 }
-/*
-ActivityManager activityManager = (ActivityManager) this.getSystemService(Context
-        .ACTIVITY_SERVICE);
-List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
-for (int i = 0; i < procInfos.size(); i++) {
-        //if (procInfos.get(i).processName.equals("com.android.music")) {
-        //Toast.makeText(null, "music is running",
-        //      Toast.LENGTH_LONG).show();
-        activityManager.killBackgroundProcesses(procInfos.get(i).processName);
-        }
-*/
