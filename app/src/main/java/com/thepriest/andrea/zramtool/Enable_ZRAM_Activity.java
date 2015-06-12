@@ -3,6 +3,7 @@ package com.thepriest.andrea.zramtool;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class Enable_ZRAM_Activity extends ActionBarActivity {
+public class Enable_ZRAM_Activity extends AppCompatActivity {
     private static final String TAG = Enable_ZRAM_Activity.class.getSimpleName();
     Switch switchZRAM;
     Button buttonApply;
@@ -28,7 +29,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         //this.setTheme(R.style.Black);
         //setProgressBarVisibility(false);
@@ -367,6 +368,7 @@ public class Enable_ZRAM_Activity extends ActionBarActivity {
             //if (ZRAMToolApp.bShowNotification) NotificationService.iRefreshFrequency = 3600000;
             //setProgressBarIndeterminate(true);
             setProgressBarIndeterminateVisibility(true);
+            setSupportProgressBarIndeterminateVisibility(true);
             buttonApply.setText(getString(R.string.Disabling_ZRAM));
             buttonApply.setEnabled(false);
             // Log.d(TAG, "On pre Exceute......");
