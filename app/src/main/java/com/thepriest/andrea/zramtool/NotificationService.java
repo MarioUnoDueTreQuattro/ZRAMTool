@@ -276,16 +276,33 @@ public class NotificationService extends Service {
 
     private void cleanRecents() {
         final ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        final List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();    //
         final List<ActivityManager.RecentTaskInfo> recentTasks = activityManager.getRecentTasks(30, 0);
-        final int count = recentTasks.size();
+        final int recentCount = recentTasks.size();
+        final int procCount = procInfos.size();
+        String sProcName = "";
+        boolean bProcIsInRecentLimit = true;
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
-        Log.d(TAG, "cleanRecents() count= " + count + " limit is "+ ZRAMToolApp.iProcessLimit);
-        if (count > ZRAMToolApp.iProcessLimit)
-            for (int i = ZRAMToolApp.iProcessLimit; i < count; i++) {
+        Log.d(TAG, "cleanRecents() count= " + recentCount + " limit is " + ZRAMToolApp.iProcessLimit);
+        for (int i = 0; i < procCount; i++) {
+            //if (procInfos.get(i).processName.equals("com.android.music")) {
+            //Toast.makeText(null, "music is running",
+            //      Toast.LENGTH_LONG).show();
+            sProcName = procInfos.get(i).processName;
+            bProcIsInRecentLimit = false;
+            for (int iRec = 0; i < ZRAMToolApp.iProcessLimit; iRec++) {
+                Intent intent = recentTasks.get(iRec).baseIntent;
+                String recentPackageName = intent.getComponent().getPackageName();
+                if (recentPackageName == sProcName) bProcIsInRecentLimit = true;
+            }
+            if (!bProcIsInRecentLimit) activityManager.killBackgroundProcesses(sProcName);
+        }
+        if (recentCount > ZRAMToolApp.iProcessLimit)
+            for (int i = ZRAMToolApp.iProcessLimit; i < recentCount; i++) {
                 Intent intent = recentTasks.get(i).baseIntent;
-                String packageName = intent.getComponent().getPackageName();
-                Log.d(TAG, "cleanRecents() " + packageName);
-                activityManager.killBackgroundProcesses(packageName);
+                String recentPackageName = intent.getComponent().getPackageName();
+                Log.d(TAG, "cleanRecents() " + recentPackageName);
+                activityManager.killBackgroundProcesses(recentPackageName);
             }
     }
 }
