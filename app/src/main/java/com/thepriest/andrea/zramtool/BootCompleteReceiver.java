@@ -25,7 +25,7 @@ public class BootCompleteReceiver extends BroadcastReceiver {
 
                 Log.d("boot completed", "auto restart true");
 
-                Intent i = new Intent(context, MainActivity.class);
+                Intent i = new Intent(context, NotificationService.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
 
