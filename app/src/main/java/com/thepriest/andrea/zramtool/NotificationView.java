@@ -119,7 +119,8 @@ public class NotificationView extends Activity {
             //      Toast.LENGTH_LONG).show();
             activityManager.killBackgroundProcesses(procInfos.get(i).processName);
         }
-        Toast.makeText(getApplicationContext(), "Memory cleaned.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.Memory_cleaned), Toast.LENGTH_LONG).show();
         return;
     }
+
 }

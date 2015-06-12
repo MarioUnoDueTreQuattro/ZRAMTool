@@ -289,3 +289,14 @@ public class NotificationService extends Service {
             }
     }
 }
+/*
+ActivityManager activityManager = (ActivityManager) this.getSystemService(Context
+        .ACTIVITY_SERVICE);
+List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
+for (int i = 0; i < procInfos.size(); i++) {
+        //if (procInfos.get(i).processName.equals("com.android.music")) {
+        //Toast.makeText(null, "music is running",
+        //      Toast.LENGTH_LONG).show();
+        activityManager.killBackgroundProcesses(procInfos.get(i).processName);
+        }
+*/
