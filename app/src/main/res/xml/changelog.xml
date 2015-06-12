@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
     <release
+        version="1.44"
+        versioncode="1440">
+        <change>Added option, linked to the "auto clean drop cache" to limit number of recent app, execeeding apps will be killed.</change>
+    </release>
+    <release
         version="1.43"
         versioncode="143">
         <change>Added option to auto-clean drop cache with configurable limit in MB.</change>

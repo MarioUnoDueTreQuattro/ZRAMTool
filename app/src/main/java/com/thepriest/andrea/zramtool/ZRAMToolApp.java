@@ -39,6 +39,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public static int iMemory[] = new int[5];
     public static int memory[] = new int[5];
     public static int iMemoryLimitToDropCache;
+    public static int iProcessLimit;
 
     /**
      * Called when the application is starting, before any activity, service,
@@ -87,6 +88,13 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         ipref = Integer.parseInt(prefString);
         iMemoryLimitToDropCache = ipref;
         Log.d(TAG, "memory_limit_to_drop_cache= " + iMemoryLimitToDropCache);
+        prefString = prefs.getString("process_limit", "30");
+        ipref = Integer.parseInt(prefString);
+        iProcessLimit = ipref;
+        Log.d(TAG, "process_limit= " + iMemoryLimitToDropCache);
+        /**
+         * set language
+         */
         sLanguage = prefs.getString("language", "en");
         Locale locale = new Locale(sLanguage);
         Locale.setDefault(locale);
@@ -145,6 +153,12 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         prefString = prefs.getString("memory_limit_to_drop_cache", "128");
         ipref = Integer.parseInt(prefString);
         iMemoryLimitToDropCache = ipref;
+        prefString = prefs.getString("process_limit", "30");
+        ipref = Integer.parseInt(prefString);
+        iProcessLimit = ipref;
+        /**
+         * language
+         */
         sLanguage = prefs.getString("language", "en");
         Locale locale = new Locale(sLanguage);
         Locale.setDefault(locale);

@@ -115,8 +115,8 @@
     <string name="title_edittext_MemoryLimitToDropCache">Memory limit to "drop cache"</string>
     <string name="summary_edittext_MemoryLimitToDropCache">Limit in MB</string>
     <string name="dialog_title_MemoryLimitToDropCache">Limit in MB</string>
-    <string name="title_edittext_process_limit"></string>
-    <string name="summary_edittext_process_limit"></string>
-    <string name="dialog_title_process_limit"></string>
+    <string name="title_edittext_process_limit">Limit to processes</string>
+    <string name="summary_edittext_process_limit">Process limit</string>
+    <string name="dialog_title_process_limit">Limit to processes</string>
 
 </resources>

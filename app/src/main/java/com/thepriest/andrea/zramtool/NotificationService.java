@@ -277,16 +277,15 @@ public class NotificationService extends Service {
 
     private void cleanRecents() {
         // final  PackageManager manager = getPackageManager();
-        int MAX_RECENT_TASKS = 30;
         final ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         final List<ActivityManager.RecentTaskInfo> recentTasks = activityManager.getRecentTasks(
-                MAX_RECENT_TASKS, 0);
+                30, 0);
         final int count = recentTasks.size();
                 //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
         Log.d(TAG, "cleanRecents() count= " + count );
 
-        if (count>8)
-        for (int i = 8; i< count; i++) {
+        if (count>ZRAMToolApp.iProcessLimit)
+        for (int i = ZRAMToolApp.iProcessLimit; i< count; i++) {
             Intent intent = recentTasks.get(i).baseIntent;
             String packageName = intent.getComponent().getPackageName();
             Log.d(TAG, "cleanRecents() " + packageName );
