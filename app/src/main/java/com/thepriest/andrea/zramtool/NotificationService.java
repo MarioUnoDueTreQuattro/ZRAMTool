@@ -294,9 +294,20 @@ public class NotificationService extends Service {
             for (int iRec = 0; iRec < ZRAMToolApp.iProcessLimit && iRec < recentCount; iRec++) {
                 Intent intent = recentTasks.get(iRec).baseIntent;
                 sRecentPackageName = intent.getComponent().getPackageName();
-                if (sRecentPackageName == sProcName) bProcIsInRecentLimit = true;
+                Log.d(TAG, "-> cleanRecents() \"" + sRecentPackageName + "\"" + " " + "\"" + sProcName + "\"");
+                if (sRecentPackageName == sProcName) {
+                    bProcIsInRecentLimit = true;
+                    Log.d(TAG, "sRecentPackageName == sProcName NOT killBackgroundProcesses= " + sProcName);
+                }
+
             }
-            if (!bProcIsInRecentLimit) activityManager.killBackgroundProcesses(sProcName);
+            if (bProcIsInRecentLimit==false) {
+                activityManager.killBackgroundProcesses(sProcName);
+                //          Log.d(TAG, "killBackgroundProcesses= " + sProcName);
+            } else {
+                //      Log.d(TAG, "NOT killBackgroundProcesses= " + sProcName);
+
+            }
         }
 /*
         if (recentCount > ZRAMToolApp.iProcessLimit)
