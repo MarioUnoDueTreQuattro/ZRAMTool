@@ -250,8 +250,8 @@ public class NotificationService extends Service {
                     else setNotification();
                     if (ZRAMToolApp.iTotalFreeMemory < ZRAMToolApp.iMemoryLimitToDropCache && ZRAMToolApp.bEnableDropCache && iCounter > 5) {
                         iCounter = 0;
-                        cleanDropCache();
                         cleanRecents();
+                        cleanDropCache();
                     }
                     Updater.sleep(ZRAMToolApp.iRefreshFrequency);
                     if (!running) return;
