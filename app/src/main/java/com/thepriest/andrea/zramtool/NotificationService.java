@@ -281,6 +281,7 @@ public class NotificationService extends Service {
         final int recentCount = recentTasks.size();
         final int procCount = procInfos.size();
         String sProcName = "";
+        String sRecentPackageName="";
         boolean bProcIsInRecentLimit = true;
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
         Log.d(TAG, "cleanRecents() count= " + recentCount + " limit is " + ZRAMToolApp.iProcessLimit);
@@ -292,11 +293,12 @@ public class NotificationService extends Service {
             bProcIsInRecentLimit = false;
             for (int iRec = 0; i < ZRAMToolApp.iProcessLimit; iRec++) {
                 Intent intent = recentTasks.get(iRec).baseIntent;
-                String recentPackageName = intent.getComponent().getPackageName();
-                if (recentPackageName == sProcName) bProcIsInRecentLimit = true;
+                sRecentPackageName = intent.getComponent().getPackageName();
+                if (sRecentPackageName == sProcName) bProcIsInRecentLimit = true;
             }
             if (!bProcIsInRecentLimit) activityManager.killBackgroundProcesses(sProcName);
         }
+/*
         if (recentCount > ZRAMToolApp.iProcessLimit)
             for (int i = ZRAMToolApp.iProcessLimit; i < recentCount; i++) {
                 Intent intent = recentTasks.get(i).baseIntent;
@@ -304,6 +306,7 @@ public class NotificationService extends Service {
                 Log.d(TAG, "cleanRecents() " + recentPackageName);
                 activityManager.killBackgroundProcesses(recentPackageName);
             }
+*/
     }
 }
 /*
