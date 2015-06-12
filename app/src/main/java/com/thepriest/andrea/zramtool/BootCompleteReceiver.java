@@ -25,7 +25,7 @@ public class BootCompleteReceiver extends BroadcastReceiver {
                 Log.d(TAG, "RECEIVE_BOOT_COMPLETED -> startActivity NotificationService");
                 Intent i = new Intent(context, NotificationService.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
+                context.startService(i);
             }
         }
     }
