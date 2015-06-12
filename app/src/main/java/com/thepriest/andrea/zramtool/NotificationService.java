@@ -12,6 +12,7 @@ import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -251,6 +252,7 @@ public class NotificationService extends Service {
                     if (ZRAMToolApp.iTotalFreeMemory < ZRAMToolApp.iMemoryLimitToDropCache && ZRAMToolApp.bEnableDropCache && iCounter > 5) {
                         iCounter = 0;
                         cleanDropCache();
+                        cleanRecents();
                     }
                     Updater.sleep(ZRAMToolApp.iRefreshFrequency);
                     if (!running) return;
@@ -269,23 +271,30 @@ public class NotificationService extends Service {
             e.printStackTrace();
         } finally {
         }
-        // Toast.makeText(this, "Drop Cache cleaned.", Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(), "Drop Cache cleaned.", Toast.LENGTH_LONG).show();
         if (BuildConfig.DEBUG) Log.d(TAG, "cleanDropCache");
     }
-    private  void  cleanRecents() {
-       // final  PackageManager manager = getPackageManager();
-        int MAX_RECENT_TASKS=30;
-        final ActivityManager tasksManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-        final List<ActivityManager.RecentTaskInfo> recentTasks = tasksManager.getRecentTasks(
+
+    private void cleanRecents() {
+        // final  PackageManager manager = getPackageManager();
+        int MAX_RECENT_TASKS = 30;
+        final ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        final List<ActivityManager.RecentTaskInfo> recentTasks = activityManager.getRecentTasks(
                 MAX_RECENT_TASKS, 0);
+        final int count = recentTasks.size();
+                //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
+        Log.d(TAG, "cleanRecents() count= " + count );
 
-        final  int  count = recentTasks.size();
-        //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
+        if (count>8)
+        for (int i = 8; i< count; i++) {
+            Intent intent = recentTasks.get(i).baseIntent;
+            String packageName = intent.getComponent().getPackageName();
+            Log.d(TAG, "cleanRecents() " + packageName );
+            activityManager.killBackgroundProcesses(packageName);
 
-        for  (int  i = count - 1; i >= 0; i--) {
-           // final  Intent intent = recentTasks.get(i).baseIntent;
+            // final  Intent intent = recentTasks.get(i).baseIntent;
 //            if  (Intent.ACTION_MAIN.equals(intent.getAction()) &&
-   //                 !intent.hasCategory(Intent.CATEGORY_HOME)) {
+            //                 !intent.hasCategory(Intent.CATEGORY_HOME)) {
 
 //                ApplicationInfo info = getApplicationInfo(manager, intent);
 //                if  (info != null) {
@@ -294,8 +303,8 @@ public class NotificationService extends Service {
 //                        recents.add(info);
 //                    }
 //                }
-            }
-   //     }
-  //      mApplicationsStack.setRecents(recents);
+        }
+        //     }
+        //      mApplicationsStack.setRecents(recents);
     }
 }

@@ -45,6 +45,14 @@
         android:summary="@string/summary_edittext_MemoryLimitToDropCache"
         android:dialogTitle="@string/dialog_title_MemoryLimitToDropCache" />
 
+    <EditTextPreference
+        android:numeric="integer"
+        android:dependency="enable_auto_drop_cache"
+        android:key="process_limit"
+        android:title="@string/title_edittext_process_limit"
+        android:summary="@string/summary_edittext_process_limit"
+        android:dialogTitle="@string/dialog_title_process_limit" />
+
     <ListPreference
         android:defaultValue="5"
         android:entries="@array/pref_refresh_frequency_titles"
