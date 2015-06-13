@@ -57,4 +57,6 @@
 	<string name="dialog_title_process_limit">Limite dei processi</string>
 	<string name="summary_edittext_process_limit">Limite dei processi</string>
 	<string name="title_edittext_process_limit">Limite dei processi</string>
+	<string name="action_log">Visualizza registro</string>
+	<string name="title_activity_log_">Registro</string>
 </resources>

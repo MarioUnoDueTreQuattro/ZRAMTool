@@ -290,8 +290,8 @@ public class NotificationService extends Service {
         String sRecentPackageName = "";
         boolean bProcIsInRecentLimit = true;
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
-        ZRAMToolApp.appendLog("recentCount= " + recentCount + " - Process limit= " + ZRAMToolApp.iProcessLimit);
-        Log.d(TAG, "recentCount= " + recentCount + " - Process limit= " + ZRAMToolApp.iProcessLimit);
+        ZRAMToolApp.appendLog("recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
+        Log.d(TAG, "recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
         for (int i = 0; i < procCount; i++) {
             //if (procInfos.get(i).processName.equals("com.android.music")) {
             //Toast.makeText(null, "music is running",
@@ -305,13 +305,13 @@ public class NotificationService extends Service {
                 if (sRecentPackageName.equals(sProcName)) {
                     bProcIsInRecentLimit = true;
                     //Log.d(TAG, "sRecentPackageName == sProcName NOT killBackgroundProcesses= " + sProcName);
-                    ZRAMToolApp.appendLog("NOT kill " + sProcName);
+                    ZRAMToolApp.appendLog("NOT KILL " + sProcName);
 
                 }
             }
             if (bProcIsInRecentLimit == false) {
                 activityManager.killBackgroundProcesses(sProcName);
-                ZRAMToolApp.appendLog("KILL " + sProcName);
+                ZRAMToolApp.appendLog(sProcName);
 
                 //   Log.d(TAG, "killBackgroundProcesses= " + sProcName);
             } else {
