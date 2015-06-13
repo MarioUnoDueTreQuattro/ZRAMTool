@@ -266,6 +266,15 @@ public class NotificationService extends Service {
                         e.printStackTrace();
                     }
                 }
+                else{
+                    try {
+                        Updater.sleep(ZRAMToolApp.iRefreshFrequency);
+                        if (!running) return;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
             }
         }
     }
