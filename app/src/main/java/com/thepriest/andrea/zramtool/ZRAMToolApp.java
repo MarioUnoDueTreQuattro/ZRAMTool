@@ -23,7 +23,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     SharedPreferences prefs;
     static public int iRefreshFrequency;
     static public String sZRAMDirectory, sLanguage;
-    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit,bEnableDropCache;
+    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit, bEnableDropCache;
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
     static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory, iMinFreeMemory, iMaxFreeMemory;
@@ -40,6 +40,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public static int memory[] = new int[5];
     public static int iMemoryLimitToDropCache;
     public static int iProcessLimit;
+    public static String sLogText = "";
 
     /**
      * Called when the application is starting, before any activity, service,
@@ -55,6 +56,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         super.onCreate();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         Log.d(TAG, "onCreate");
+        sLogText = "ZRAMToolApp onCreate\n"+ sLogText;;
         iMinFreeMemory = 0;
         iMaxFreeMemory = 0;
         sZRAMDirectory = "/sys/devices/virtual/block";
@@ -82,7 +84,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "enable_advanced_notification= " + bShowAdvancedNotification);
         bDoubleBackToExit = prefs.getBoolean("double_back_to_exit", false);
         Log.d(TAG, "double_back_to_exit= " + bDoubleBackToExit);
-        bEnableDropCache= prefs.getBoolean("enable_auto_drop_cache", false);
+        bEnableDropCache = prefs.getBoolean("enable_auto_drop_cache", false);
         Log.d(TAG, "bEnableDropCache= " + bEnableDropCache);
         prefString = prefs.getString("memory_limit_to_drop_cache", "128");
         ipref = Integer.parseInt(prefString);
@@ -149,7 +151,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         }
         bShowAdvancedNotification = prefs.getBoolean("enable_advanced_notification", false);
         bDoubleBackToExit = prefs.getBoolean("double_back_to_exit", false);
-        bEnableDropCache= prefs.getBoolean("enable_auto_drop_cache", false);
+        bEnableDropCache = prefs.getBoolean("enable_auto_drop_cache", false);
         prefString = prefs.getString("memory_limit_to_drop_cache", "128");
         ipref = Integer.parseInt(prefString);
         iMemoryLimitToDropCache = ipref;

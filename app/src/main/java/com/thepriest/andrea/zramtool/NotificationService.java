@@ -244,6 +244,8 @@ public class NotificationService extends Service {
             //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
                 if (BuildConfig.DEBUG) Log.d(TAG, "NotificationService Updater run loop........");
+                ZRAMToolApp.sLogText = "NotificationService Updater run loop....." + "\n" + ZRAMToolApp.sLogText;
+                ;
                 iCounter++;
                 try {
                     if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
@@ -284,6 +286,7 @@ public class NotificationService extends Service {
         String sRecentPackageName = "";
         boolean bProcIsInRecentLimit = true;
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
+        ZRAMToolApp.sLogText = "cleanRecents() count= " + recentCount + " - Process limit is " + ZRAMToolApp.iProcessLimit + "\n" + ZRAMToolApp.sLogText;
         Log.d(TAG, "cleanRecents() count= " + recentCount + " - Process limit is " + ZRAMToolApp.iProcessLimit);
         for (int i = 0; i < procCount; i++) {
             //if (procInfos.get(i).processName.equals("com.android.music")) {
@@ -298,10 +301,15 @@ public class NotificationService extends Service {
                 if (sRecentPackageName.equals(sProcName)) {
                     bProcIsInRecentLimit = true;
                     //Log.d(TAG, "sRecentPackageName == sProcName NOT killBackgroundProcesses= " + sProcName);
+                    ZRAMToolApp.sLogText = "NOT kill " + sProcName + "\n" + ZRAMToolApp.sLogText;
+                    ;
+
                 }
             }
             if (bProcIsInRecentLimit == false) {
                 activityManager.killBackgroundProcesses(sProcName);
+                ZRAMToolApp.sLogText = "kill " + sProcName + "\n" + ZRAMToolApp.sLogText;
+
                 //   Log.d(TAG, "killBackgroundProcesses= " + sProcName);
             } else {
                 //   Log.d(TAG, "NOT killBackgroundProcesses= " + sProcName);

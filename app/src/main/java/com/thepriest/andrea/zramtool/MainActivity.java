@@ -331,6 +331,7 @@ public class MainActivity extends AppCompatActivity {
     private void tick() {
         if (!bShowNotification) ZRAMToolApp.updateStatus();
         //ZRAMToolApp.updateRAMStatus();
+        ZRAMToolApp.sLogText="tick() in MainActivity"+"\n"+ ZRAMToolApp.sLogText;
         printZRAMStatus();
         iUpdatesCount++;
         // textViewVFS_cache_pressure.setText(""+iUpdatesCount);
@@ -425,6 +426,10 @@ public class MainActivity extends AppCompatActivity {
         }
         if (id == R.id.action_configure_zram) {
             startActivity(new Intent(MainActivity.this, Enable_ZRAM_Activity.class));
+            return true;
+        }
+        if (id == R.id.action_log) {
+            startActivity(new Intent(this, Log_Activity.class));
             return true;
         }
 /*
