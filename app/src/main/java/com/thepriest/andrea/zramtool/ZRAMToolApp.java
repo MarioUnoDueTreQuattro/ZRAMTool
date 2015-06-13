@@ -23,7 +23,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     SharedPreferences prefs;
     static public int iRefreshFrequency;
     static public String sZRAMDirectory, sLanguage;
-    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit, bEnableDropCache;
+    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit, bEnableDropCache,bLog;
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
     static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory, iMinFreeMemory, iMaxFreeMemory;
@@ -56,7 +56,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         super.onCreate();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         Log.d(TAG, "onCreate");
-        appendLog("ZRAMToolApp::onCreate()");
+        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()");
         iMinFreeMemory = 0;
         iMaxFreeMemory = 0;
         sZRAMDirectory = "/sys/devices/virtual/block";
@@ -94,6 +94,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         ipref = Integer.parseInt(prefString);
         iProcessLimit = ipref;
         Log.d(TAG, "process_limit= " + iMemoryLimitToDropCache);
+        bLog = prefs.getBoolean("enable_log", false);
+        Log.d(TAG, "bLog= " + bLog);
         /**
          * set language
          */
@@ -125,7 +127,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Log.d(TAG, "onSharedPreferenceChanged -> key= " + key);
-        appendLog("ZRAMToolApp::onSharedPreferenceChanged()-> key= " + key);
+        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onSharedPreferenceChanged()-> key= " + key);
         sZRAMDirectory = "/sys/devices/virtual/block";
         // Read SharedPreferences
         // prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -164,9 +166,10 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         prefString = prefs.getString("process_limit", "30");
         ipref = Integer.parseInt(prefString);
         iProcessLimit = ipref;
+        bLog = prefs.getBoolean("enable_log", false);
         /**
-         * language
-         */
+            * language
+            */
         sLanguage = prefs.getString("language", "en");
         Locale locale = new Locale(sLanguage);
         Locale.setDefault(locale);

@@ -249,7 +249,7 @@ public class NotificationService extends Service {
             //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
                 if (BuildConfig.DEBUG) Log.d(TAG, "NotificationService::run()");
-                ZRAMToolApp.appendLog("NotificationService::run()");
+                if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NotificationService::run()");
                 iCounter++;
                 try {
                     if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
@@ -290,8 +290,9 @@ public class NotificationService extends Service {
         String sRecentPackageName = "";
         boolean bProcIsInRecentLimit = true;
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
-        ZRAMToolApp.appendLog("recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
-        if (BuildConfig.DEBUG) Log.d(TAG, "recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
+        if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
+        if (BuildConfig.DEBUG)
+            Log.d(TAG, "recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
         for (int i = 0; i < procCount; i++) {
             //if (procInfos.get(i).processName.equals("com.android.music")) {
             //Toast.makeText(null, "music is running",
@@ -305,13 +306,13 @@ public class NotificationService extends Service {
                 if (sRecentPackageName.equals(sProcName)) {
                     bProcIsInRecentLimit = true;
                     //Log.d(TAG, "sRecentPackageName == sProcName NOT killBackgroundProcesses= " + sProcName);
-                    ZRAMToolApp.appendLog("NOT KILL " + sProcName);
+                    if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NOT KILL " + sProcName);
 
                 }
             }
             if (bProcIsInRecentLimit == false) {
                 activityManager.killBackgroundProcesses(sProcName);
-                ZRAMToolApp.appendLog(sProcName);
+                if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog(sProcName);
 
                 //   Log.d(TAG, "killBackgroundProcesses= " + sProcName);
             } else {
