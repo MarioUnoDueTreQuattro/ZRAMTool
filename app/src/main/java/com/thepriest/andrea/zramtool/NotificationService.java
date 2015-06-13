@@ -248,9 +248,9 @@ public class NotificationService extends Service {
             super.run();
             //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
-                if (BuildConfig.DEBUG) Log.d(TAG, "NotificationService::run()");
-                if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NotificationService::run()");
                 if (ZRAMToolApp.bScreenIsOn) {
+                    if (BuildConfig.DEBUG) Log.d(TAG, "NotificationService::run()");
+                    if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NotificationService::run()");
                     iCounter++;
                     try {
                         if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();

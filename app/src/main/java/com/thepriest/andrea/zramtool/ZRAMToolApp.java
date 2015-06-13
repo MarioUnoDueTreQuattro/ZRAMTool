@@ -57,6 +57,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     @Override
     public void onCreate() {
         super.onCreate();
+        bScreenIsOn=true;
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
