@@ -14,7 +14,7 @@
             enabled.
         </change>
         <change>Added option, linked to the "auto clean drop cache" to limit number of recent app,
-            execeeding apps will be killed.
+            exceeding apps will be killed.
         </change>
     </release>
     <release
