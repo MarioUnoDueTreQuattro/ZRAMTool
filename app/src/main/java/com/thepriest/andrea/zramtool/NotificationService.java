@@ -159,7 +159,12 @@ public class NotificationService extends Service {
             iZRAMUsage = ZRAMToolApp.iZRAMUsage;
             iMaximumZRAMUsage = ZRAMToolApp.iZRAMMaximumUsage;
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
-            appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
+            String sDrawable = "m";
+            int iDrawable = (ZRAMToolApp.iTotalFreeMemory / 5) * 5;
+            sDrawable += iDrawable;
+            int drawableResourceId = this.getResources().getIdentifier(sDrawable, "drawable", this.getPackageName());
+            appLaunch.setSmallIcon(drawableResourceId);
+//            appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
             //appLaunch.setContentText("Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
             //appLaunch.setContentTitle("ZRAM used: " + iZRAMUsage + " - Max ZRAM: " + iMaximumZRAMUsage);
             appLaunch.setContentText(getString(R.string.Total_Free) + ZRAMToolApp.iTotalFreeMemory + getString(R.string._Free) + ZRAMToolApp.iFreeMemory + getString(R.string._Cached) + ZRAMToolApp.iCachedMemory + getString(R.string._Buffers) + ZRAMToolApp.iBuffersMemory);
