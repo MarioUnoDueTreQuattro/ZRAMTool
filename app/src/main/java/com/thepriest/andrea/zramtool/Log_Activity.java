@@ -18,6 +18,7 @@ public class Log_Activity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_);
         editTextLog = (TextView) findViewById(R.id.editTextLog);
+        editTextLog.setKeyListener(null);
         buttonClear = (Button) findViewById(R.id.buttonClear);
         buttonClear.setOnClickListener(new View.OnClickListener() {
 
