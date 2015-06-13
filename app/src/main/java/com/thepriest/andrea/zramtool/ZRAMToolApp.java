@@ -56,7 +56,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         super.onCreate();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         Log.d(TAG, "onCreate");
-        sLogText = "ZRAMToolApp onCreate\n"+ sLogText;;
+        appendLog("ZRAMToolApp onCreate");
         iMinFreeMemory = 0;
         iMaxFreeMemory = 0;
         sZRAMDirectory = "/sys/devices/virtual/block";
@@ -103,6 +103,11 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Configuration config = new Configuration();
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
+    }
+
+    public static void appendLog(String sText) {
+        sLogText = sText + "\n" + sLogText;
 
     }
 

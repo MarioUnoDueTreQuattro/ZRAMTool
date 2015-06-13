@@ -331,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
     private void tick() {
         if (!bShowNotification) ZRAMToolApp.updateStatus();
         //ZRAMToolApp.updateRAMStatus();
-        ZRAMToolApp.sLogText="tick() in MainActivity"+"\n"+ ZRAMToolApp.sLogText;
+        ZRAMToolApp.appendLog("tick() in MainActivity");
         printZRAMStatus();
         iUpdatesCount++;
         // textViewVFS_cache_pressure.setText(""+iUpdatesCount);
