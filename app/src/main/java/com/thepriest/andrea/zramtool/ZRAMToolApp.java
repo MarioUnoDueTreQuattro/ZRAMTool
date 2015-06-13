@@ -23,7 +23,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     SharedPreferences prefs;
     static public int iRefreshFrequency;
     static public String sZRAMDirectory, sLanguage;
-    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit, bEnableDropCache,bLog;
+    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit, bEnableDropCache, bLog;
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
     static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory, iMinFreeMemory, iMaxFreeMemory;
@@ -167,10 +167,11 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         ipref = Integer.parseInt(prefString);
         iProcessLimit = ipref;
         bLog = prefs.getBoolean("enable_log", false);
-        if (bLog=false) sLogText=getString(R.string.log_disabled); else sLogText=getString(R.string.log_enabled);
+        if (bLog == false) sLogText = getString(R.string.log_disabled);
+        else sLogText = getString(R.string.log_enabled);
         /**
-            * language
-            */
+         * language
+         */
         sLanguage = prefs.getString("language", "en");
         Locale locale = new Locale(sLanguage);
         Locale.setDefault(locale);
