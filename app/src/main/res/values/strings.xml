@@ -60,7 +60,7 @@
     <string name="title_activity_log_">Log</string>
     <string name="clear_log">Clear</string>
     <string name="update_log">Update</string>
-    <string name="log_disabled">\n\nLog disabled.</string>
-    <string name="log_enabled">\n\nLog enabled.</string>
+    <string name="log_disabled">\nLog disabled.</string>
+    <string name="log_enabled">\nLog enabled.</string>
 
 </resources>
