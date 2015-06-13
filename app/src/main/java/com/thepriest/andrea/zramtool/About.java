@@ -1,5 +1,7 @@
 package com.thepriest.andrea.zramtool;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Debug;
 import android.support.v7.app.ActionBarActivity;
@@ -22,7 +24,7 @@ import java.io.Reader;
 public class About extends ActionBarActivity {
     private static final String TAG = About.class.getSimpleName();
     TextView textUp;//, textViewAppName;
-    Button buttonClose,buttonChangelog;
+    Button buttonClose, buttonChangelog;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -33,18 +35,28 @@ public class About extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  this.setTheme(R.style.Black);
+        //  this.setTheme(R.style.Black);
         setContentView(R.layout.activity_about);
         this.setTitle(R.string.app_name);
 /*
         textViewAppName = (TextView) findViewById(R.id.textViewAppName);
         textViewAppName.setText("");
 */
+        PackageInfo pinfo = null;
+        try {
+            pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        int versionCode = pinfo.versionCode;
+        String versionName = pinfo.versionName;
         textUp = (TextView) findViewById(R.id.textUp);
-        int versionCode = BuildConfig.VERSION_CODE;
+        //int versionCode = BuildConfig.VERSION_CODE;
         String aboutText = getString(R.string.programming_version_info);
-        String versionName = BuildConfig.VERSION_NAME;
+        //String versionName = BuildConfig.VERSION_NAME;
         aboutText += versionName;
+        aboutText += getString(R.string.version_code);
+        aboutText += versionCode;
         aboutText += getString(R.string.kernel_version) + getKernelVersion() + "\n";
         //aboutText+="\n\n" + "zram (also called zRAM and, initially, compcache) is a Linux kernel feature that provides a form of virtual memory compression.";
         textUp.setText(aboutText);

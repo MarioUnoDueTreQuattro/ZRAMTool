@@ -64,4 +64,5 @@
 	<string name="pref_title_enable_log">Abilita registro</string>
 	<string name="log_disabled">\nLog disabilitato.</string>
 	<string name="log_enabled">\nLog abilitato.</string>
+	<string name="version_code">"\nCodice versione: "</string>
 </resources>

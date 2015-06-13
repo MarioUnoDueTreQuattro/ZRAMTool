@@ -62,5 +62,6 @@
     <string name="update_log">Update</string>
     <string name="log_disabled">\nLog disabled.</string>
     <string name="log_enabled">\nLog enabled.</string>
+    <string name="version_code">"\nVersion code: "</string>
 
 </resources>
