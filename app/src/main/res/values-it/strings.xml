@@ -62,6 +62,6 @@
 	<string name="clear_log">Pulisci</string>
 	<string name="update_log">Aggiorna</string>
 	<string name="pref_title_enable_log">Abilita registro</string>
-	<string name="log_disabled">Log disabilitato.\n\n</string>
-	<string name="log_enabled">Log abilitato.\n\n</string>
+	<string name="log_disabled">\n\nLog disabilitato.</string>
+	<string name="log_enabled">\n\nLog abilitato.</string>
 </resources>
