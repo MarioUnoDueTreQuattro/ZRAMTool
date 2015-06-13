@@ -839,9 +839,9 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             }
             mounts.close();
         } catch (FileNotFoundException e) {
-            Log.d(TAG, "Cannot find ZRAM...");
+            if (BuildConfig.DEBUG) Log.d(TAG, "Cannot find ZRAM...");
         } catch (IOException e) {
-            Log.d(TAG, "Ran into problems reading...");
+            if (BuildConfig.DEBUG) Log.d(TAG, "Ran into problems reading...");
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: Could not parse " + nfe);
         }

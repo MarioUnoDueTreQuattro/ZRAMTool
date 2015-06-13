@@ -291,7 +291,7 @@ public class NotificationService extends Service {
         boolean bProcIsInRecentLimit = true;
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
         ZRAMToolApp.appendLog("recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
-        Log.d(TAG, "recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
+        if (BuildConfig.DEBUG) Log.d(TAG, "recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
         for (int i = 0; i < procCount; i++) {
             //if (procInfos.get(i).processName.equals("com.android.music")) {
             //Toast.makeText(null, "music is running",
