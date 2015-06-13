@@ -61,4 +61,5 @@
 	<string name="title_activity_log_">Registro</string>
 	<string name="clear_log">Pulisci</string>
 	<string name="update_log">Aggiorna</string>
+	<string name="pref_title_enable_log">Abilita registro</string>
 </resources>
