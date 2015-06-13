@@ -48,10 +48,10 @@
 	<string name="Free">"Libera: "</string>
 	<string name="Total_Free">"Libera totale: "</string>
 	<string name="_Free">" - Libera: "</string>
-	<string name="Maximum_free_memory">"Livello massimo di memoria libera: "</string>
-	<string name="Minimum_free_memory">"Livello minimo di memoria libera: "</string>
+	<string name="Maximum_free_memory">"Memoria libera massima: "</string>
+	<string name="Minimum_free_memory">"Memoria libera minima: "</string>
 	<string name="RAM_Status">RAM </string>
-	<string name="programming_version_info">"Programmazione: ThePriest\nMade in Italy\n\nVersione: "</string>
+	<string name="programming_version_info">"Programmazione: ThePriest\n\nVersione: "</string>
 	<string name="kernel_version">"\n\nVersione del Kernel: "</string>
 	<string name="action_configure_zram">Configura ZRAM</string>
 	<string name="dialog_title_process_limit">Limite dei processi</string>
@@ -64,5 +64,5 @@
 	<string name="pref_title_enable_log">Abilita registro</string>
 	<string name="log_disabled">\nLog disabilitato.</string>
 	<string name="log_enabled">\nLog abilitato.</string>
-	<string name="version_code">"\nCodice versione: "</string>
+	<string name="version_code">"\n\nCodice versione: "</string>
 </resources>

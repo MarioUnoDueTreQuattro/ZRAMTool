@@ -55,13 +55,13 @@
     <string name="Minimum_free_memory">"Minimum free memory: "</string>
     <string name="Maximum_free_memory">"Maximum free memory: "</string>
     <string name="RAM_Status">RAM</string>
-    <string name="programming_version_info">"Programming: ThePriest\nMade in Italy\n\nVersion: "</string>
+    <string name="programming_version_info">"Programming: ThePriest\n\nVersion: "</string>
     <string name="kernel_version">"\n\nKernel version: "</string>
     <string name="title_activity_log_">Log</string>
     <string name="clear_log">Clear</string>
     <string name="update_log">Update</string>
     <string name="log_disabled">\nLog disabled.</string>
     <string name="log_enabled">\nLog enabled.</string>
-    <string name="version_code">"\nVersion code: "</string>
+    <string name="version_code">"\n\nVersion code: "</string>
 
 </resources>
