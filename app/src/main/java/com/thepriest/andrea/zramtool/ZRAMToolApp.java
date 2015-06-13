@@ -56,7 +56,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         super.onCreate();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         Log.d(TAG, "onCreate");
-        appendLog("ZRAMToolApp onCreate");
+        appendLog("ZRAMToolApp::onCreate()");
         iMinFreeMemory = 0;
         iMaxFreeMemory = 0;
         sZRAMDirectory = "/sys/devices/virtual/block";
@@ -125,6 +125,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Log.d(TAG, "onSharedPreferenceChanged -> key= " + key);
+        appendLog("ZRAMToolApp::onSharedPreferenceChanged()-> key= " + key);
         sZRAMDirectory = "/sys/devices/virtual/block";
         // Read SharedPreferences
         // prefs = PreferenceManager.getDefaultSharedPreferences(this);

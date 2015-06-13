@@ -248,15 +248,15 @@ public class NotificationService extends Service {
             super.run();
             //            if (BuildConfig.DEBUG) Log.d(TAG, "Updater run");
             while (true) {
-                if (BuildConfig.DEBUG) Log.d(TAG, "NotificationService Updater run loop........");
-                ZRAMToolApp.appendLog("NotificationService Updater run loop.....");
+                if (BuildConfig.DEBUG) Log.d(TAG, "NotificationService::run()");
+                ZRAMToolApp.appendLog("NotificationService::run()");
                 iCounter++;
                 try {
                     if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
                     else setNotification();
                     if (ZRAMToolApp.iTotalFreeMemory < ZRAMToolApp.iMemoryLimitToDropCache && ZRAMToolApp.bEnableDropCache && iCounter > 5) {
                         iCounter = 0;
-                        cleanRecents();
+                        cleanMemoryKeepingRecents();
                         cleanDropCache();
                     }
                     Updater.sleep(ZRAMToolApp.iRefreshFrequency);
@@ -280,7 +280,7 @@ public class NotificationService extends Service {
         if (BuildConfig.DEBUG) Log.d(TAG, "cleanDropCache");
     }
 
-    private void cleanRecents() {
+    private void cleanMemoryKeepingRecents() {
         ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();    //
         List<ActivityManager.RecentTaskInfo> recentTasks = activityManager.getRecentTasks(30, 0);
@@ -290,8 +290,8 @@ public class NotificationService extends Service {
         String sRecentPackageName = "";
         boolean bProcIsInRecentLimit = true;
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
-        ZRAMToolApp.appendLog("cleanRecents() count= " + recentCount + " - Process limit is " + ZRAMToolApp.iProcessLimit);
-        Log.d(TAG, "cleanRecents() count= " + recentCount + " - Process limit is " + ZRAMToolApp.iProcessLimit);
+        ZRAMToolApp.appendLog("recentCount= " + recentCount + " - Process limit= " + ZRAMToolApp.iProcessLimit);
+        Log.d(TAG, "recentCount= " + recentCount + " - Process limit= " + ZRAMToolApp.iProcessLimit);
         for (int i = 0; i < procCount; i++) {
             //if (procInfos.get(i).processName.equals("com.android.music")) {
             //Toast.makeText(null, "music is running",
@@ -301,7 +301,7 @@ public class NotificationService extends Service {
             for (int iRec = 0; iRec < ZRAMToolApp.iProcessLimit && iRec < recentCount; iRec++) {
                 Intent intent = recentTasks.get(iRec).baseIntent;
                 sRecentPackageName = intent.getComponent().getPackageName();
-                //Log.d(TAG, "-> cleanRecents() \"" + sRecentPackageName + "\"" + " " + "\"" + sProcName + "\"");
+                //Log.d(TAG, "-> cleanMemoryKeepingRecents() \"" + sRecentPackageName + "\"" + " " + "\"" + sProcName + "\"");
                 if (sRecentPackageName.equals(sProcName)) {
                     bProcIsInRecentLimit = true;
                     //Log.d(TAG, "sRecentPackageName == sProcName NOT killBackgroundProcesses= " + sProcName);
@@ -311,7 +311,7 @@ public class NotificationService extends Service {
             }
             if (bProcIsInRecentLimit == false) {
                 activityManager.killBackgroundProcesses(sProcName);
-                ZRAMToolApp.appendLog("kill " + sProcName);
+                ZRAMToolApp.appendLog("KILL " + sProcName);
 
                 //   Log.d(TAG, "killBackgroundProcesses= " + sProcName);
             } else {
@@ -323,7 +323,7 @@ public class NotificationService extends Service {
             for (int i = ZRAMToolApp.iProcessLimit; i < recentCount; i++) {
                 Intent intent = recentTasks.get(i).baseIntent;
                 String recentPackageName = intent.getComponent().getPackageName();
-                Log.d(TAG, "cleanRecents() " + recentPackageName);
+                Log.d(TAG, "cleanMemoryKeepingRecents() " + recentPackageName);
                 activityManager.killBackgroundProcesses(recentPackageName);
             }
 */
