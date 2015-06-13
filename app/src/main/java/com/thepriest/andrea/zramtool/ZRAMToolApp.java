@@ -1,7 +1,9 @@
 package com.thepriest.andrea.zramtool;
 
 import android.app.Application;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
@@ -23,7 +25,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     SharedPreferences prefs;
     static public int iRefreshFrequency;
     static public String sZRAMDirectory, sLanguage;
-    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit, bEnableDropCache, bLog;
+    static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit, bEnableDropCache, bLog,bScreenIsOn;
     static public int iDiskNum;
     static public int iZRAMSize, iZRAMComprDataSize, iZRAMTotalMemoryUsed, iZRAMMaximumUsage;
     static public int iFreeMemory, iCachedMemory, iBuffersMemory, iTotalFreeMemory, iTotalMemory, iMinFreeMemory, iMaxFreeMemory;
@@ -41,6 +43,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public static int iMemoryLimitToDropCache;
     public static int iProcessLimit;
     public static String sLogText = "";
+    static public BroadcastReceiver mReceiver;
 
     /**
      * Called when the application is starting, before any activity, service,
@@ -55,6 +58,10 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public void onCreate() {
         super.onCreate();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
+        IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+        filter.addAction(Intent.ACTION_SCREEN_OFF);
+        mReceiver = new ScreenReceiver();
+        registerReceiver(mReceiver, filter);
         Log.d(TAG, "onCreate");
         if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()");
         iMinFreeMemory = 0;

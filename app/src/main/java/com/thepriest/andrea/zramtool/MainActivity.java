@@ -329,12 +329,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void tick() {
-        if (!bShowNotification) ZRAMToolApp.updateStatus();
+        if (ZRAMToolApp.bScreenIsOn) {
+            if (!bShowNotification) ZRAMToolApp.updateStatus();
         //ZRAMToolApp.updateRAMStatus();
         if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("MainActivity::tick()");
         printZRAMStatus();
         iUpdatesCount++;
-        // textViewVFS_cache_pressure.setText(""+iUpdatesCount);
+        // textViewVFS_cache_pressure.setText(""+iUpdatesCount);}
+        }
     }
 
     /**

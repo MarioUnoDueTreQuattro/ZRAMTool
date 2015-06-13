@@ -250,19 +250,21 @@ public class NotificationService extends Service {
             while (true) {
                 if (BuildConfig.DEBUG) Log.d(TAG, "NotificationService::run()");
                 if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NotificationService::run()");
-                iCounter++;
-                try {
-                    if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
-                    else setNotification();
-                    if (ZRAMToolApp.iTotalFreeMemory < ZRAMToolApp.iMemoryLimitToDropCache && ZRAMToolApp.bEnableDropCache && iCounter > 5) {
-                        iCounter = 0;
-                        cleanMemoryKeepingRecents();
-                        cleanDropCache();
+                if (ZRAMToolApp.bScreenIsOn) {
+                    iCounter++;
+                    try {
+                        if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
+                        else setNotification();
+                        if (ZRAMToolApp.iTotalFreeMemory < ZRAMToolApp.iMemoryLimitToDropCache && ZRAMToolApp.bEnableDropCache && iCounter > 5) {
+                            iCounter = 0;
+                            cleanMemoryKeepingRecents();
+                            cleanDropCache();
+                        }
+                        Updater.sleep(ZRAMToolApp.iRefreshFrequency);
+                        if (!running) return;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                    Updater.sleep(ZRAMToolApp.iRefreshFrequency);
-                    if (!running) return;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
             }
         }
@@ -290,7 +292,8 @@ public class NotificationService extends Service {
         String sRecentPackageName = "";
         boolean bProcIsInRecentLimit = true;
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
-        if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
+        if (ZRAMToolApp.bLog)
+            ZRAMToolApp.appendLog("recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
         if (BuildConfig.DEBUG)
             Log.d(TAG, "recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
         for (int i = 0; i < procCount; i++) {
