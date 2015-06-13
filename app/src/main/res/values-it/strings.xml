@@ -59,4 +59,6 @@
 	<string name="title_edittext_process_limit">Limite dei processi</string>
 	<string name="action_log">Visualizza registro</string>
 	<string name="title_activity_log_">Registro</string>
+	<string name="clear_log">Pulisci</string>
+	<string name="update_log">Aggiorna</string>
 </resources>

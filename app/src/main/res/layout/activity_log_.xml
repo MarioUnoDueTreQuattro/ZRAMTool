@@ -20,15 +20,17 @@
             android:layout_height="wrap_content">
 
             <Button
+                style="@style/ButtonTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Clear"
+                android:text="@string/clear_log"
                 android:id="@+id/buttonClear"/>
 
             <Button
+                style="@style/ButtonTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Update"
+                android:text="@string/update_log"
                 android:id="@+id/buttonUpdate"/>
 
         </LinearLayout>

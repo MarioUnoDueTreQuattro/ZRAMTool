@@ -58,5 +58,7 @@
     <string name="programming_version_info">"Programming: ThePriest\nMade in Italy\n\nVersion: "</string>
     <string name="kernel_version">"\n\nKernel version: "</string>
     <string name="title_activity_log_">Log</string>
+    <string name="clear_log">Clear</string>
+    <string name="update_log">Update</string>
 
 </resources>
