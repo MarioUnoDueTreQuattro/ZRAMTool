@@ -227,9 +227,9 @@ public class SettingsActivity extends PreferenceActivity {
      */
     @Override
     protected void onPause() {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK |      Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+//        Intent intent = new Intent(this, MainActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK |      Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
         super.onPause();
     }
 
