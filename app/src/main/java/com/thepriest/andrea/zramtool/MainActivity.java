@@ -551,6 +551,7 @@ public class MainActivity extends AppCompatActivity {
             //if (procInfos.get(i).processName.equals("com.android.music")) {
             //Toast.makeText(null, "music is running",
             //      Toast.LENGTH_LONG).show();
+            //activityManager.restartPackage((procInfos.get(i)).processName);  // deprecated
             activityManager.killBackgroundProcesses(procInfos.get(i).processName);
         }
         Toast.makeText(getApplicationContext(), getString(R.string.Memory_cleaned), Toast.LENGTH_LONG).show();
