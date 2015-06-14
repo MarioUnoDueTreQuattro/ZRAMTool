@@ -446,7 +446,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public int getMemoryUsage() {
-        ActivityManager am = (ActivityManager) getSystemService("activity");
+        ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);//"activity");
         ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
         am.getMemoryInfo(mi);
         return (int) mi.availMem / 1024 / 1024;
