@@ -178,8 +178,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         ipref = Integer.parseInt(prefString);
         iProcessLimit = ipref;
         bLog = prefs.getBoolean("enable_log", false);
-        if (bLog == false) sLogText = getString(R.string.log_disabled) + "\n" + sLogText;
-        else sLogText = getString(R.string.log_enabled) + "\n" + sLogText;
+        if (bLog == false) sLogText = getString(R.string.log_disabled) + sLogText;
+        else sLogText = getString(R.string.log_enabled) + sLogText;
         /**
          * language
          */
