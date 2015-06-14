@@ -445,6 +445,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public int getMemoryUsage() {
+        ActivityManager am = (ActivityManager) getSystemService("activity");
+        ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
+        am.getMemoryInfo(mi);
+        return (int) mi.availMem / 1024 / 1024;
+    }
+
     public static int getTotalMemory() {
         String str1 = "/proc/meminfo";
         String str2;
@@ -507,6 +514,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void cleanMemoryAndDropCache() {
+        int freeMemBefore = getMemoryUsage();
         ActivityManager activityManager = (ActivityManager) this.getSystemService(Context
                 .ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
@@ -525,11 +533,12 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         } finally {
         }
-        Toast.makeText(getApplicationContext(), getString(R.string.Memory_and_Drop_Cache_cleaned), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.Memory_and_Drop_Cache_cleaned) + (getMemoryUsage() - freeMemBefore)+" MB", Toast.LENGTH_LONG).show();
         return;
     }
 
     private void cleanDropCache() {
+int freeMemBefore = getMemoryUsage();
         String result1 = "";
         try {
             result1 = Shell.sudo("sync");
@@ -539,11 +548,12 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         } finally {
         }
-        Toast.makeText(getApplicationContext(), "Drop Cache cleaned.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.drop_cache_cleaned) + (getMemoryUsage() - freeMemBefore)+" MB", Toast.LENGTH_LONG).show();
         return;
     }
 
     private void cleanMemory() {
+        int freeMemBefore = getMemoryUsage();
         ActivityManager activityManager = (ActivityManager) this.getSystemService(Context
                 .ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
@@ -554,7 +564,7 @@ public class MainActivity extends AppCompatActivity {
             //activityManager.restartPackage((procInfos.get(i)).processName);  // deprecated
             activityManager.killBackgroundProcesses(procInfos.get(i).processName);
         }
-        Toast.makeText(getApplicationContext(), getString(R.string.Memory_cleaned), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.Memory_cleaned) + (getMemoryUsage() - freeMemBefore)+" MB", Toast.LENGTH_LONG).show();
         return;
     }
 

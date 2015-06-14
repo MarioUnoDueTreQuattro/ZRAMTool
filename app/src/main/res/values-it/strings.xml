@@ -31,8 +31,8 @@
 	<string name="ZRAM_disabled">ZRAM disabilitato.</string>
 	<string name="Tap_back_button">Toccare il pulsante indietro due volte per nascondere.\nUsa il pulsante di uscita per uscire.</string>
 	<string name="Use_Exit_button_to_exit">Utilizzare il pulsante Uscita per uscire.</string>
-	<string name="Memory_and_Drop_Cache_cleaned">Memoria e Drop Cache puliti.</string>
-	<string name="Memory_cleaned">Memoria pulita.</string>
+	<string name="Memory_and_Drop_Cache_cleaned">"Memoria e Drop Cache puliti... "</string>
+	<string name="Memory_cleaned">"Memoria pulita... "</string>
 	<string name="Launched_ZRAMTool_background_service">Lanciato servizio in background di ZRAMTool per l\'aggiornamento della notifica ...</string>
 	<string name="ZRAM_compressed">"Dimensione compressa dei dati: "</string>
 	<string name="ZRAM_original">"Dimensione originale dei dati: "</string>
@@ -65,4 +65,5 @@
 	<string name="log_disabled">\nLog disabilitato.</string>
 	<string name="log_enabled">\nLog abilitato.</string>
 	<string name="version_code">"\n\nCodice versione: "</string>
+	<string name="drop_cache_cleaned">"Drop Cache pulita... "</string>
 </resources>

@@ -37,8 +37,8 @@
     <string name="ZRAM_disabled">ZRAM disabled.</string>
     <string name="Tap_back_button">Tap back button twice to hide.\nUse Exit button to exit.</string>
     <string name="Use_Exit_button_to_exit">Use Exit button to exit.</string>
-    <string name="Memory_and_Drop_Cache_cleaned">Memory and Drop Cache cleaned.</string>
-    <string name="Memory_cleaned">Memory cleaned.</string>
+    <string name="Memory_and_Drop_Cache_cleaned">"Memory and Drop Cache cleaned... "</string>
+    <string name="Memory_cleaned">"Memory cleaned... "</string>
     <string name="Launched_ZRAMTool_background_service">Launched ZRAMTool background service to update notification...</string>
     <string name="Maximum_ZRAM_usage">"Maximum ZRAM usage: "</string>
     <string name="Total_size_all_disks">"Total size (all disks): "</string>
@@ -63,5 +63,6 @@
     <string name="log_disabled">\nLog disabled.</string>
     <string name="log_enabled">\nLog enabled.</string>
     <string name="version_code">"\n\nVersion code: "</string>
+    <string name="drop_cache_cleaned">"Drop Cache cleaned... "</string>
 
 </resources>
