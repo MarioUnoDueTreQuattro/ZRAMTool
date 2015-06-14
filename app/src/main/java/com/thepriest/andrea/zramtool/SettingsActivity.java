@@ -82,15 +82,15 @@ public class SettingsActivity extends PreferenceActivity {
         // to reflect the new value, per the Android Design guidelines.
         //bindPreferenceSummaryToValue(findPreference("example_text"));
         //bindPreferenceSummaryToValue(findPreference("example_list"));
-      //  bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
-       // bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+        //  bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
+        // bindPreferenceSummaryToValue(findPreference("sync_frequency"));
         //bindPreferenceSummaryToValue(findPreference("double_back_to_exit"));
-       // bindPreferenceSummaryToValue(findPreference("MemoryLimitToDropCache"));
+        // bindPreferenceSummaryToValue(findPreference("MemoryLimitToDropCache"));
         bindPreferenceSummaryToValue(findPreference("memory_limit_to_drop_cache"));
         bindPreferenceSummaryToValue(findPreference("process_limit"));
         bindPreferenceSummaryToValue(findPreference("refresh_frequency"));
         bindPreferenceSummaryToValue(findPreference("pref_ZRAM_directory"));
-       // bindPreferenceSummaryToValue(findPreference("enable_auto_drop_cache"));
+        // bindPreferenceSummaryToValue(findPreference("enable_auto_drop_cache"));
 
     }
 
@@ -230,7 +230,7 @@ public class SettingsActivity extends PreferenceActivity {
 //        Intent intent = new Intent(this, MainActivity.class);
 //        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK |      Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //        startActivity(intent);
-        ZRAMToolApp.appendLog("Finishing settings (onPause)");
+        if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("Finishing settings (onPause)");
         finish();
         super.onPause();
     }
@@ -294,7 +294,7 @@ public class SettingsActivity extends PreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-           // bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
+            // bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
         }
     }
 
@@ -313,8 +313,8 @@ public class SettingsActivity extends PreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-       //     bindPreferenceSummaryToValue(findPreference("double_back_to_exit"));
-          //  bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+            //     bindPreferenceSummaryToValue(findPreference("double_back_to_exit"));
+            //  bindPreferenceSummaryToValue(findPreference("sync_frequency"));
         }
     }
 }
