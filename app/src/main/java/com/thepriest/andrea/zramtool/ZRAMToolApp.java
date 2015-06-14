@@ -120,9 +120,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public static void appendLog(String sText) {
         Time currentTime = new Time();
         currentTime.setToNow();
-        sText=currentTime.toString() +"" +sText;
+        sText = currentTime.format("%H:%M:%S") + " " + sText;
         sLogText = sText + "\n" + sLogText;
-
     }
 
 
