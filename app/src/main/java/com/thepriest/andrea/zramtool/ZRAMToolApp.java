@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
 import android.preference.PreferenceManager;
+import android.text.format.Time;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -117,6 +118,9 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     }
 
     public static void appendLog(String sText) {
+        Time currentTime = new Time();
+        currentTime.setToNow();
+        sText=currentTime.toString() +"" +sText;
         sLogText = sText + "\n" + sLogText;
 
     }
