@@ -250,7 +250,7 @@ public class NotificationService extends Service {
             while (true) {
                 if (ZRAMToolApp.bScreenIsOn) {
                     if (BuildConfig.DEBUG) Log.d(TAG, "NotificationService::run()");
-                    if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NotificationService::run()",4);
+                    //if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NotificationService::run()",4);
                     iCounter++;
                     try {
                         if (ZRAMToolApp.bShowAdvancedNotification) setNotification2();
