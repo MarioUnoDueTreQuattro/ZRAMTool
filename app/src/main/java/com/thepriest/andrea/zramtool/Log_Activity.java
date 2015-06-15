@@ -6,20 +6,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 
 public class Log_Activity extends ActionBarActivity {
     Button buttonClear,buttonUpdate;
-    TextView editTextLog;
+    WebView editTextLog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_);
-        editTextLog = (TextView) findViewById(R.id.editTextLog);
-        editTextLog.setKeyListener(null);
+        editTextLog = (WebView) findViewById(R.id.editTextLog);
+        //editTextLog.setKeyListener(null);
         buttonClear = (Button) findViewById(R.id.buttonClear);
         buttonClear.setOnClickListener(new View.OnClickListener() {
 
@@ -36,22 +35,30 @@ public class Log_Activity extends ActionBarActivity {
                 updateLog();
             }
         });
-        editTextLog.setText(ZRAMToolApp.sLogText);
+        editTextLog.loadData(ZRAMToolApp.sLogText,"text/html", "utf-8");
     }
 
     private void updateLog() {
-        editTextLog.setText( ZRAMToolApp.sLogText);
+        editTextLog.loadData(getStyle()+ ZRAMToolApp.sLogText, "text/html", "utf-8");
     }
 
     private void clearLog() {
-        editTextLog.setText("");
+        editTextLog.loadData(getStyle(), "text/html", "utf-8");
         ZRAMToolApp.sLogText="";
     }
 
-   public void append(String sText)
-   {
-       editTextLog.append(sText);
-   }
+    private String getStyle() {
+        return
+                "<style type=\"text/css\">"
+                        +"body {background-color: #222222; }"
+                        +"h1 {color: #bebebe; }"
+                        +"li {color: #bebebe; }"
+                        +"ul {color: #bebebe; }"
+                        + "h1 { margin-left: 0px; font-size: 16pt; }"
+                        + "li { margin-left: 0px; font-size: 8pt; }"
+                        + "ul { padding-left: 30px;}"
+                        + "</style>";
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

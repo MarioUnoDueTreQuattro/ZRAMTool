@@ -8,8 +8,10 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
 import android.preference.PreferenceManager;
+import android.text.Html;
 import android.text.format.Time;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -122,6 +124,13 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
         sLogText = sText + "\n" + sLogText;
+    }
+    public static void appendLog(String sText, int iType) {
+        Time currentTime = new Time();
+        currentTime.setToNow();
+        sText = currentTime.format("%H:%M:%S") + " " + sText;
+        sLogText = sText + "\n" + sLogText;
+        sLogText = Html.toHtml(Html.fromHtml("<u> <font color=\"#FF0000\"> some text </font> </u>"));
     }
 
 

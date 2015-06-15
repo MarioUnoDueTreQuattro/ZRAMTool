@@ -60,8 +60,8 @@
     <string name="title_activity_log_">Log</string>
     <string name="clear_log">Clear</string>
     <string name="update_log">Update</string>
-    <string name="log_disabled">\nLog disabled.</string>
-    <string name="log_enabled">\nLog enabled.</string>
+    <string name="log_disabled">Log disabled.\n</string>
+    <string name="log_enabled">Log enabled.\n</string>
     <string name="version_code">"\n\nVersion code: "</string>
     <string name="drop_cache_cleaned">"Drop Cache cleaned... "</string>
 
