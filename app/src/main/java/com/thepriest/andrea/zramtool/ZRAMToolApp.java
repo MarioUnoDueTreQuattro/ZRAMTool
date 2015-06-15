@@ -123,12 +123,12 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     private static String getCSSStyle() {
         return
                 "<style type=\"text/css\">"
-                        + "body {background-color: #222222; }"
+                        + "body {background-color: #000000; }"
                         + "h1 {color: #bebebe; }"
                         + "li {color: #bebebe; }"
                         + "ul {color: #bebebe; }"
                         + "h1 { margin-left: 0px; font-size: 16pt; }"
-                        + "li { margin-left: 0px; font-size: 8pt; }"
+                        + "li { margin-left: 0px; font-size: 6pt; }"
                         + "ul { padding-left: 30px;}"
                         + "</style>";
     }
@@ -137,8 +137,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Time currentTime = new Time();
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
-        String sClose = "</font><font color=\"#FFFFFF\"></font><br><br>";
-        String sWhiteColor =  "<font color=\"#FFFFFF\">"; //white
+        String sClose = "</font><font color=\"#FFFFFF\"></font>";
+        String sWhiteColor =  "<br><font color=\"#FFFFFF\">"; //white
         sLogText = sWhiteColor + sText + "\n" + sLogText + sClose;
     }
 
@@ -146,11 +146,12 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Time currentTime = new Time();
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
-        String sClose = "</font><font color=\"#FFFFFF\"></font><br><br>";
-        String sWhiteColor =  "<font color=\"#FFFFFF\">"; //white
-        String sType1Color =  "<font color=\"#FF0000\">"; //red
-        String sType2Color =  "<font color=\"#00FF00\">"; //green
-        String sType3Color =  "<font color=\"#0000FF\">"; //blue
+        String sClose = "</font><font color=\"#FFFFFF\"></font>";
+        String sWhiteColor =  "<br><font color=\"#FFFFFF\">"; //white
+        String sGrayColor =  "<br><font color=\"#444444\">"; //gray
+        String sType1Color =  "<br><font color=\"#FF0000\">"; //red
+        String sType2Color =  "<br><font color=\"#00FF00\">"; //green
+        String sType3Color =  "<br><font color=\"#0000FF\">"; //blue
   //      sLogText = sText + "\n" + sLogText;
         switch (iType) {
             case 1:
@@ -162,9 +163,12 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
             case 3:
                 sLogText = sType3Color + sText + "\n" + sLogText + sClose;
                 break;
-            default:
-                sLogText = sText + "\n" + sLogText;
+            case 4:
+                sLogText = sGrayColor + sText + "\n" + sLogText + sClose;
                 break;
+            default:
+                break;
+
         }
     }
     //       sLogText = Html.toHtml(Html.fromHtml("<u> <font color=\"#FF0000\"> some text </font> </u>"));

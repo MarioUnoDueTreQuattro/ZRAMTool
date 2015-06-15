@@ -50,12 +50,12 @@ public class Log_Activity extends ActionBarActivity {
     private String getCSSStyle() {
         return
                 "<style type=\"text/css\">"
-                        +"body {background-color: #222222; }"
+                        +"body {background-color: #000000; }"
                         +"h1 {color: #bebebe; }"
                         +"li {color: #bebebe; }"
                         +"ul {color: #bebebe; }"
                         + "h1 { margin-left: 0px; font-size: 16pt; }"
-                        + "li { margin-left: 0px; font-size: 8pt; }"
+                        + "li { margin-left: 0px; font-size: 6pt; }"
                         + "ul { padding-left: 30px;}"
                         + "</style>";
     }
