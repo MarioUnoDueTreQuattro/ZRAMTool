@@ -11,8 +11,9 @@ import android.widget.Button;
 
 
 public class Log_Activity extends ActionBarActivity {
-    Button buttonClear,buttonUpdate;
+    Button buttonClear, buttonUpdate;
     WebView editTextLog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,30 +36,33 @@ public class Log_Activity extends ActionBarActivity {
                 updateLog();
             }
         });
-        editTextLog.loadData(ZRAMToolApp.sLogText,"text/html", "utf-8");
+        editTextLog.loadData(ZRAMToolApp.sLogText, "text/html", "utf-8");
     }
 
     private void updateLog() {
+        editTextLog.loadUrl("about:blank");
         editTextLog.loadData(ZRAMToolApp.sLogText, "text/html", "utf-8");
     }
 
     private void clearLog() {
+        editTextLog.loadUrl("about:blank");
         editTextLog.loadData(getCSSStyle(), "text/html", "utf-8");
-        ZRAMToolApp.sLogText=getCSSStyle();
+        ZRAMToolApp.sLogText = getCSSStyle();
     }
 
     private String getCSSStyle() {
         return
                 "<style type=\"text/css\">"
-                        +"body {background-color: #000000; }"
-                        +"h1 {color: #bebebe; }"
-                        +"li {color: #bebebe; }"
-                        +"ul {color: #bebebe; }"
+                        + "body {background-color: #000000; }"
+                        + "h1 {color: #bebebe; }"
+                        + "li {color: #bebebe; }"
+                        + "ul {color: #bebebe; }"
                         + "h1 { margin-left: 0px; font-size: 16pt; }"
                         + "li { margin-left: 0px; font-size: 6pt; }"
                         + "ul { padding-left: 30px;}"
                         + "</style>";
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

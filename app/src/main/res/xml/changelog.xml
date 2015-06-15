@@ -4,6 +4,7 @@
         version="1.45"
         versioncode="145">
         <change>Added ScreenReceiver to save power when screen is off.</change>
+        <change>Log activity use colors.</change>
         <change>Fixed bugs.</change>
     </release>
     <release
