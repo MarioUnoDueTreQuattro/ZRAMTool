@@ -143,8 +143,9 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public static void clearLog() {
         ZRAMToolApp.sLogText = getCSSStyle();
     }
+
     public static void appendLog(String sText) {
-        if(sLogText.length()>(1048576)) clearLog(); // Size is 1 MB, 1024 KB?
+        if (sLogText.length() > (1048576)) clearLog(); // Size is 1 MB, 1024 KB?
         Time currentTime = new Time();
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
@@ -171,7 +172,6 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                 break;
             default:
                 break;
-
         }
     }
     //       sLogText = Html.toHtml(Html.fromHtml("<u> <font color=\"#FF0000\"> some text </font> </u>"));
