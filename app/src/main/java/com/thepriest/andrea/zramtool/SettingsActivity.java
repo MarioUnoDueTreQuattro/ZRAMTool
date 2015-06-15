@@ -17,6 +17,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
+import android.util.Log;
 
 
 import java.util.List;
@@ -33,6 +34,7 @@ import java.util.List;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class SettingsActivity extends PreferenceActivity {
+    private static final String TAG = PreferenceActivity.class.getSimpleName();
     /**
      * Determines whether to always show the simplified settings UI, where
      * settings are presented in a single list. When false, settings are shown
@@ -230,9 +232,16 @@ public class SettingsActivity extends PreferenceActivity {
 //        Intent intent = new Intent(this, MainActivity.class);
 //        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK |      Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //        startActivity(intent);
-        if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("Finishing settings (onPause)");
+       // if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("Finishing settings (onPause)");
         finish();
         super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG, "onDestroy");
+        if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("PreferenceActivity::onDestroy()",4);
+        super.onDestroy();
     }
 
     /**

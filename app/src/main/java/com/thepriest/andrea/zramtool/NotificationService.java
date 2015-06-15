@@ -94,7 +94,7 @@ public class NotificationService extends Service {
     @Override
     public synchronized void onDestroy() {
         Log.d(TAG, "onDestroy");
-        if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NotificationService::onDestroy()");
+        if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NotificationService::onDestroy()",4);
         super.onDestroy();
         updater.running = false;
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

@@ -107,7 +107,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "process_limit= " + iMemoryLimitToDropCache);
         bLog = prefs.getBoolean("enable_log", false);
         Log.d(TAG, "bLog= " + bLog);
-        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()");
+        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()",4);
         /**
          * set language
          */
@@ -227,8 +227,10 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         ipref = Integer.parseInt(prefString);
         iProcessLimit = ipref;
         bLog = prefs.getBoolean("enable_log", false);
-        if (bLog == false) ZRAMToolApp.appendLog(getString(R.string.log_disabled));
-        else ZRAMToolApp.appendLog(getString(R.string.log_enabled));
+        if (key.equals("enable_log")) {
+            if (bLog == false) ZRAMToolApp.appendLog(getString(R.string.log_disabled));
+            else ZRAMToolApp.appendLog(getString(R.string.log_enabled));
+        }
         /**
          * language
          */
