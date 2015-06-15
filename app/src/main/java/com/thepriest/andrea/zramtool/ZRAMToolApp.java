@@ -8,10 +8,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
 import android.preference.PreferenceManager;
-import android.text.Html;
 import android.text.format.Time;
 import android.util.Log;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,6 +22,10 @@ import java.util.Locale;
  * Created by Andrea on 29/05/2015.
  */
 public class ZRAMToolApp extends Application implements OnSharedPreferenceChangeListener {
+    public enum LogColor {
+        WHITE, RED, GREEN, BLUE, GRAY
+    }
+
     private static final String TAG = ZRAMToolApp.class.getSimpleName();
     SharedPreferences prefs;
     static public int iRefreshFrequency;
@@ -57,6 +59,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
 //    holo blue light = 33b5e5 ( rgb: 51, 181, 229 )
 //    holo blue dark = 0099cc ( rgb: 0, 153 204 )
 //    holo blue bright = 00ddff ( rgb: 0, 221, 255 )﻿
+
     /**
      * Called when the application is starting, before any activity, service,
      * or receiver objects (excluding content providers) have been created.
