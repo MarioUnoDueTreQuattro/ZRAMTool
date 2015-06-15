@@ -131,6 +131,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
         String sClose = "</font>";
+        String sWhiteColor = "<font color=\"#FFFFFF\">"; //white
         String sType1Color = "<font color=\"#FF0000\">"; //red
         String sType2Color = "<font color=\"#00FF00\">"; //green
         String sType3Color = "<font color=\"#0000FF\">"; //blue
