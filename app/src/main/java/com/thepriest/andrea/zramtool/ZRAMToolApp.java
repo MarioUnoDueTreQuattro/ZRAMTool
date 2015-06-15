@@ -61,6 +61,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public void onCreate() {
         super.onCreate();
         bScreenIsOn = true;
+        sLogText=getCSSStyle();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -119,36 +120,52 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
 
     }
 
+    private static String getCSSStyle() {
+        return
+                "<style type=\"text/css\">"
+                        + "body {background-color: #222222; }"
+                        + "h1 {color: #bebebe; }"
+                        + "li {color: #bebebe; }"
+                        + "ul {color: #bebebe; }"
+                        + "h1 { margin-left: 0px; font-size: 16pt; }"
+                        + "li { margin-left: 0px; font-size: 8pt; }"
+                        + "ul { padding-left: 30px;}"
+                        + "</style>";
+    }
+
     public static void appendLog(String sText) {
         Time currentTime = new Time();
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
-        sLogText = sText + "\n" + sLogText;
+        String sClose = "</font><font color=\"#FFFFFF\"></font><br><br>";
+        String sWhiteColor =  "<font color=\"#FFFFFF\">"; //white
+        sLogText = sWhiteColor + sText + "\n" + sLogText + sClose;
     }
 
     public static void appendLog(String sText, int iType) {
         Time currentTime = new Time();
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
-        String sClose = "</font>";
-        String sWhiteColor = "<font color=\"#FFFFFF\">"; //white
-        String sType1Color = "<font color=\"#FF0000\">"; //red
-        String sType2Color = "<font color=\"#00FF00\">"; //green
-        String sType3Color = "<font color=\"#0000FF\">"; //blue
-        sLogText = sText + "\n" + sLogText;
+        String sClose = "</font><font color=\"#FFFFFF\"></font><br><br>";
+        String sWhiteColor =  "<font color=\"#FFFFFF\">"; //white
+        String sType1Color =  "<font color=\"#FF0000\">"; //red
+        String sType2Color =  "<font color=\"#00FF00\">"; //green
+        String sType3Color =  "<font color=\"#0000FF\">"; //blue
+  //      sLogText = sText + "\n" + sLogText;
         switch (iType) {
             case 1:
+                sLogText = sType1Color + sText + "\n" + sLogText + sClose;
                 break;
             case 2:
+                sLogText = sType2Color + sText + "\n" + sLogText + sClose;
                 break;
             case 3:
+                sLogText = sType3Color + sText + "\n" + sLogText + sClose;
                 break;
             default:
                 sLogText = sText + "\n" + sLogText;
                 break;
         }
-
-
     }
     //       sLogText = Html.toHtml(Html.fromHtml("<u> <font color=\"#FF0000\"> some text </font> </u>"));
 
@@ -206,8 +223,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         ipref = Integer.parseInt(prefString);
         iProcessLimit = ipref;
         bLog = prefs.getBoolean("enable_log", false);
-        if (bLog == false) sLogText = getString(R.string.log_disabled) + sLogText;
-        else sLogText = getString(R.string.log_enabled) + sLogText;
+        if (bLog == false) ZRAMToolApp.appendLog(getString(R.string.log_disabled;
+        else ZRAMToolApp.appendLog(getString(R.string.log_enabled));
         /**
          * language
          */

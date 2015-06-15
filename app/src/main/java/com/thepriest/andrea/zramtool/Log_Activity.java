@@ -39,15 +39,15 @@ public class Log_Activity extends ActionBarActivity {
     }
 
     private void updateLog() {
-        editTextLog.loadData(getStyle()+ ZRAMToolApp.sLogText, "text/html", "utf-8");
+        editTextLog.loadData(ZRAMToolApp.sLogText, "text/html", "utf-8");
     }
 
     private void clearLog() {
-        editTextLog.loadData(getStyle(), "text/html", "utf-8");
-        ZRAMToolApp.sLogText="";
+        editTextLog.loadData(getCSSStyle(), "text/html", "utf-8");
+        ZRAMToolApp.sLogText=getCSSStyle();
     }
 
-    private String getStyle() {
+    private String getCSSStyle() {
         return
                 "<style type=\"text/css\">"
                         +"body {background-color: #222222; }"
