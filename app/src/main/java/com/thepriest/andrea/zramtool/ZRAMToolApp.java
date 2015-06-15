@@ -47,11 +47,12 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public static int iProcessLimit;
     public static String sLogText = "";
     static public BroadcastReceiver mReceiver;
-    public static String sWhiteColor =  "<br><font color=\"#FFFFFF\">"; //white
-    public static   String sGrayColor =  "<br><font color=\"#444444\">"; //gray
-    public static   String sType1Color =  "<br><font color=\"#FF0000\">"; //red
-    public static   String sType2Color =  "<br><font color=\"#00FF00\">"; //green
-    public static    String sType3Color =  "<br><font color=\"#0000FF\">"; //blue
+    public static String sWhiteColor = "<br><font color=\"#FFFFFF\">"; //white
+    public static String sGrayColor = "<br><font color=\"#444444\">"; //gray
+    public static String sType1Color = "<br><font color=\"#FF0000\">"; //red
+    public static String sType2Color = "<br><font color=\"#00FF00\">"; //green
+    public static String sType3Color = "<br><font color=\"#0000FF\">"; //blue
+    public static String sClose = "</font><font color=\"#FFEEEE\"></font>";
 
 
     /**
@@ -68,7 +69,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         super.onCreate();
         Log.d(TAG, "onCreate");
         bScreenIsOn = true;
-        sLogText=getCSSStyle();
+        sLogText = getCSSStyle();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -113,7 +114,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "process_limit= " + iMemoryLimitToDropCache);
         bLog = prefs.getBoolean("enable_log", false);
         Log.d(TAG, "bLog= " + bLog);
-        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()",4);
+        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()", 4);
         /**
          * set language
          */
@@ -143,7 +144,6 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Time currentTime = new Time();
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
-        String sClose = "</font><font color=\"#FFFFFF\"></font>";
         sLogText = sWhiteColor + sText + "\n" + sLogText + sClose;
     }
 
@@ -151,8 +151,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Time currentTime = new Time();
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
-        String sClose = "</font><font color=\"#FFFFFF\"></font>";
-  //      sLogText = sText + "\n" + sLogText;
+        //      sLogText = sText + "\n" + sLogText;
         switch (iType) {
             case 1:
                 sLogText = sType1Color + sText + "\n" + sLogText + sClose;
