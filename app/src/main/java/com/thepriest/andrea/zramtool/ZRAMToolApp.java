@@ -48,13 +48,15 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public static String sLogText = "";
     static public BroadcastReceiver mReceiver;
     public static String sWhiteColor = "<br><font color=\"#FFFFFF\">"; //white
-    public static String sGrayColor = "<br><font color=\"#444444\">"; //gray
+    public static String sGrayColor = "<br><font color=\"#666666\">"; //gray
     public static String sType1Color = "<br><font color=\"#FF0000\">"; //red
     public static String sType2Color = "<br><font color=\"#00FF00\">"; //green
-    public static String sType3Color = "<br><font color=\"#0000FF\">"; //blue
+    public static String sType3Color = "<br><font color=\"#0099cc\">"; //blue
     public static String sClose = "</font><font color=\"#FFEEEE\"></font>";
 
-
+//    holo blue light = 33b5e5 ( rgb: 51, 181, 229 )
+//    holo blue dark = 0099cc ( rgb: 0, 153 204 )
+//    holo blue bright = 00ddff ( rgb: 0, 221, 255 )﻿
     /**
      * Called when the application is starting, before any activity, service,
      * or receiver objects (excluding content providers) have been created.
