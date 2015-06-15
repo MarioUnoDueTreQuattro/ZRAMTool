@@ -47,6 +47,12 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public static int iProcessLimit;
     public static String sLogText = "";
     static public BroadcastReceiver mReceiver;
+    public static String sWhiteColor =  "<br><font color=\"#FFFFFF\">"; //white
+    public static   String sGrayColor =  "<br><font color=\"#444444\">"; //gray
+    public static   String sType1Color =  "<br><font color=\"#FF0000\">"; //red
+    public static   String sType2Color =  "<br><font color=\"#00FF00\">"; //green
+    public static    String sType3Color =  "<br><font color=\"#0000FF\">"; //blue
+
 
     /**
      * Called when the application is starting, before any activity, service,
@@ -138,7 +144,6 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
         String sClose = "</font><font color=\"#FFFFFF\"></font>";
-        String sWhiteColor =  "<br><font color=\"#FFFFFF\">"; //white
         sLogText = sWhiteColor + sText + "\n" + sLogText + sClose;
     }
 
@@ -147,11 +152,6 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
         String sClose = "</font><font color=\"#FFFFFF\"></font>";
-        String sWhiteColor =  "<br><font color=\"#FFFFFF\">"; //white
-        String sGrayColor =  "<br><font color=\"#444444\">"; //gray
-        String sType1Color =  "<br><font color=\"#FF0000\">"; //red
-        String sType2Color =  "<br><font color=\"#00FF00\">"; //green
-        String sType3Color =  "<br><font color=\"#0000FF\">"; //blue
   //      sLogText = sText + "\n" + sLogText;
         switch (iType) {
             case 1:
