@@ -125,26 +125,31 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         sText = currentTime.format("%H:%M:%S") + " " + sText;
         sLogText = sText + "\n" + sLogText;
     }
+
     public static void appendLog(String sText, int iType) {
         Time currentTime = new Time();
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
-        String sType1Color="<font color=\"#FF0000\">";
-        String sType2Color="<font color=\"#00FF00\">";
-        String sType3Color="<font color=\"#0000FF\">";
+        String sClose = "</font>";
+        String sType1Color = "<font color=\"#FF0000\">"; //red
+        String sType2Color = "<font color=\"#00FF00\">"; //green
+        String sType3Color = "<font color=\"#0000FF\">"; //blue
         sLogText = sText + "\n" + sLogText;
-switch (iType){
-    case 1:
-        break;
-    default:
-        sLogText = sText + "\n" + sLogText;
-        break;
-}
+        switch (iType) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                sLogText = sText + "\n" + sLogText;
+                break;
+        }
 
 
-}
- //       sLogText = Html.toHtml(Html.fromHtml("<u> <font color=\"#FF0000\"> some text </font> </u>"));
-
+    }
+    //       sLogText = Html.toHtml(Html.fromHtml("<u> <font color=\"#FF0000\"> some text </font> </u>"));
 
 
     /**
