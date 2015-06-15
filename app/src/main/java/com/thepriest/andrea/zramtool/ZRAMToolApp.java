@@ -60,6 +60,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.d(TAG, "onCreate");
         bScreenIsOn = true;
         sLogText=getCSSStyle();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
@@ -67,8 +68,6 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         mReceiver = new ScreenReceiver();
         registerReceiver(mReceiver, filter);
-        Log.d(TAG, "onCreate");
-        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()");
         iMinFreeMemory = 0;
         iMaxFreeMemory = 0;
         sZRAMDirectory = "/sys/devices/virtual/block";
@@ -108,6 +107,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "process_limit= " + iMemoryLimitToDropCache);
         bLog = prefs.getBoolean("enable_log", false);
         Log.d(TAG, "bLog= " + bLog);
+        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()");
         /**
          * set language
          */
