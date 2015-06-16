@@ -15,7 +15,7 @@ public class LogHelper {
     private static final String sType2Color = "<br><font color=\"#00FF00\">"; //green
     private static final String sType3Color = "<br><font color=\"#0099cc\">"; //blue
     private static final String sClose = "</font><font color=\"#FFEEEE\"></font>";
-//    public static final int LOG_COLOR_WHITE =0;
+    //    public static final int LOG_COLOR_WHITE =0;
 //    public static final int LOG_COLOR_RED =1;
 //    public static final int LOG_COLOR_GREEN =2;
 //    public static final int LOG_COLOR_BLUE =3;
