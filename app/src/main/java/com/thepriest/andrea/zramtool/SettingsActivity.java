@@ -2,7 +2,6 @@ package com.thepriest.andrea.zramtool;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -12,7 +11,6 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
@@ -240,7 +238,7 @@ public class SettingsActivity extends PreferenceActivity {
     @Override
     protected void onDestroy() {
         Log.d(TAG, "onDestroy");
-        if (ZRAMToolApp.bLog) ZRAMToolApp._logHelper.appendLog("PreferenceActivity::onDestroy()", LogHelper.LogColor.GRAY);
+        if (ZRAMToolApp.bLog) ZRAMToolApp.mLogHelper.appendLog("PreferenceActivity::onDestroy()", LogHelper.LogColor.GRAY);
         super.onDestroy();
     }
 

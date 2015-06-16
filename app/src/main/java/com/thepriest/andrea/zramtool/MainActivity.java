@@ -323,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         Log.d(TAG, "onDestroy()");
  //       if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("MainActivity::onDestroy()", ZRAMToolApp.LogColor.GRAY);
-        if (ZRAMToolApp.bLog) ZRAMToolApp._logHelper.appendLog("MainActivity::onDestroy()", LogHelper.LogColor.GRAY);
+        if (ZRAMToolApp.bLog) ZRAMToolApp.mLogHelper.appendLog("MainActivity::onDestroy()", LogHelper.LogColor.GRAY);
         mHandler = null;
         super.onDestroy();
         //Debug.stopMethodTracing();

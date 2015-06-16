@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
 import android.preference.PreferenceManager;
-import android.text.format.Time;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -22,7 +21,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
 
     private static final String TAG = ZRAMToolApp.class.getSimpleName();
     SharedPreferences prefs;
-    public static LogHelper _logHelper;
+    public static LogHelper mLogHelper;
     static public int iRefreshFrequency;
     static public String sZRAMDirectory, sLanguage;
     static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit, bEnableDropCache, bLog, bScreenIsOn;
@@ -70,7 +69,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "onCreate");
         bScreenIsOn = true;
         sLogText = getCSSStyle();
-        _logHelper.clearLog();
+        mLogHelper.clearLog();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -115,7 +114,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "process_limit= " + iMemoryLimitToDropCache);
         bLog = prefs.getBoolean("enable_log", false);
         Log.d(TAG, "bLog= " + bLog);
-        if (ZRAMToolApp.bLog) _logHelper.appendLog("ZRAMToolApp::onCreate()", LogHelper.LogColor.GRAY);
+        if (ZRAMToolApp.bLog) mLogHelper.appendLog("ZRAMToolApp::onCreate()", LogHelper.LogColor.GRAY);
         /**
          * set language
          */
@@ -155,7 +154,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Log.d(TAG, "onSharedPreferenceChanged -> key= " + key);
-        if (ZRAMToolApp.bLog) _logHelper.appendLog("ZRAMToolApp::onSharedPreferenceChanged()-> key= " + key);
+        if (ZRAMToolApp.bLog) mLogHelper.appendLog("ZRAMToolApp::onSharedPreferenceChanged()-> key= " + key);
         sZRAMDirectory = "/sys/devices/virtual/block";
         // Read SharedPreferences
         // prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -196,8 +195,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         iProcessLimit = ipref;
         bLog = prefs.getBoolean("enable_log", false);
         if (key.equals("enable_log")) {
-            if (bLog == false) _logHelper.appendLog(getString(R.string.log_disabled));
-            else _logHelper.appendLog(getString(R.string.log_enabled));
+            if (bLog == false) mLogHelper.appendLog(getString(R.string.log_disabled));
+            else mLogHelper.appendLog(getString(R.string.log_enabled));
         }
         /**
          * language
