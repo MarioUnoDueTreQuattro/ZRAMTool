@@ -116,7 +116,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "process_limit= " + iMemoryLimitToDropCache);
         bLog = prefs.getBoolean("enable_log", false);
         Log.d(TAG, "bLog= " + bLog);
-        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()", 4);
+        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()", LogColor.GRAY);
         /**
          * set language
          */
@@ -154,22 +154,22 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         sLogText = sWhiteColor + sText + "\n" + sLogText + sClose;
     }
 
-    public static void appendLog(String sText, int iType) {
+    public static void appendLog(String sText, LogColor iType) {
         Time currentTime = new Time();
         currentTime.setToNow();
         sText = currentTime.format("%H:%M:%S") + " " + sText;
         //      sLogText = sText + "\n" + sLogText;
         switch (iType) {
-            case 1:
+            case RED:
                 sLogText = sType1Color + sText + "\n" + sLogText + sClose;
                 break;
-            case 2:
+            case GREEN:
                 sLogText = sType2Color + sText + "\n" + sLogText + sClose;
                 break;
-            case 3:
+            case BLUE:
                 sLogText = sType3Color + sText + "\n" + sLogText + sClose;
                 break;
-            case 4:
+            case GRAY:
                 sLogText = sGrayColor + sText + "\n" + sLogText + sClose;
                 break;
             default:

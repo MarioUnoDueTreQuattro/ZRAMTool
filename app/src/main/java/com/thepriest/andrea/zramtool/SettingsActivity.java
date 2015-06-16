@@ -240,7 +240,7 @@ public class SettingsActivity extends PreferenceActivity {
     @Override
     protected void onDestroy() {
         Log.d(TAG, "onDestroy");
-        if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("PreferenceActivity::onDestroy()",4);
+        if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("PreferenceActivity::onDestroy()", ZRAMToolApp.LogColor.GRAY);
         super.onDestroy();
     }
 
