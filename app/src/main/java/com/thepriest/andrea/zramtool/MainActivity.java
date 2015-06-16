@@ -525,6 +525,13 @@ public class MainActivity extends AppCompatActivity {
             //      Toast.LENGTH_LONG).show();
             activityManager.killBackgroundProcesses(procInfos.get(i).processName);
         }
+/*
+        List<ActivityManager.RunningServiceInfo> serviceInfos = activityManager.getRunningServices(10);
+        for (int i = 0; i < serviceInfos.size(); i++) {
+            activityManager.killBackgroundProcesses(serviceInfos.get(i).process);
+            ZRAMToolApp.appendLog(serviceInfos.get(i).process,ZRAMToolApp.LogColor.RED);
+        }
+*/
         String result1 = "";
         try {
             result1 = Shell.sudo("sync");
@@ -565,6 +572,12 @@ int freeMemBefore = getMemoryUsage();
             //activityManager.restartPackage((procInfos.get(i)).processName);  // deprecated
             activityManager.killBackgroundProcesses(procInfos.get(i).processName);
         }
+/*
+        List<ActivityManager.RunningServiceInfo> serviceInfos = activityManager.getRunningServices(10);
+        for (int i = 0; i < serviceInfos.size(); i++) {
+            activityManager.killBackgroundProcesses(serviceInfos.get(i).process);
+        }
+*/
         Toast.makeText(getApplicationContext(), getString(R.string.Memory_cleaned) + (getMemoryUsage() - freeMemBefore)+" MB", Toast.LENGTH_LONG).show();
         return;
     }

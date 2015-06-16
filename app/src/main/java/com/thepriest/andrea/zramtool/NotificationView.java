@@ -13,10 +13,6 @@ import android.widget.Toast;
 
 import java.util.List;
 
-/**
- * Created by Andrea on 06/06/2015.
- */
-
 public class NotificationView extends Activity {
     Button buttonCleanMemory, buttonCleanDropCache, buttonCleanAll;
     String title;
@@ -82,6 +78,12 @@ public class NotificationView extends Activity {
             //      Toast.LENGTH_LONG).show();
             activityManager.killBackgroundProcesses(procInfos.get(i).processName);
         }
+/*
+        List<ActivityManager.RunningServiceInfo> serviceInfos = activityManager.getRunningServices(10);
+        for (int i = 0; i < serviceInfos.size(); i++) {
+            activityManager.killBackgroundProcesses(serviceInfos.get(i).process);
+        }
+*/
         String result1 = "";
         try {
             result1 = Shell.sudo("sync");
@@ -119,6 +121,13 @@ public class NotificationView extends Activity {
             //      Toast.LENGTH_LONG).show();
             activityManager.killBackgroundProcesses(procInfos.get(i).processName);
         }
+/*
+        List<ActivityManager.RunningServiceInfo> serviceInfos = activityManager.getRunningServices(10);
+        for (int i = 0; i < serviceInfos.size(); i++) {
+            activityManager.killBackgroundProcesses(serviceInfos.get(i).process);
+        }
+*/
+
         Toast.makeText(getApplicationContext(), getString(R.string.Memory_cleaned), Toast.LENGTH_LONG).show();
         return;
     }
