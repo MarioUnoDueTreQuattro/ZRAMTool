@@ -15,7 +15,7 @@ android {
         applicationId "com.thepriest.andrea.zramtool"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1457
+        versionCode 1458
         versionName '1.45'
         signingConfig signingConfigs.config
     }
