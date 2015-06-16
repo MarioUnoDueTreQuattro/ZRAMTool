@@ -19,12 +19,10 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class ZRAMToolApp extends Application implements OnSharedPreferenceChangeListener {
-    public enum LogColor {
-        WHITE, RED, GREEN, BLUE, GRAY
-    }
 
     private static final String TAG = ZRAMToolApp.class.getSimpleName();
     SharedPreferences prefs;
+    public static LogHelper _logHelper;
     static public int iRefreshFrequency;
     static public String sZRAMDirectory, sLanguage;
     static public boolean bShowNotification, bShowAdvancedNotification, bDoubleBackToExit, bEnableDropCache, bLog, bScreenIsOn;
@@ -72,6 +70,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "onCreate");
         bScreenIsOn = true;
         sLogText = getCSSStyle();
+        _logHelper.clearLog();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -116,7 +115,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         Log.d(TAG, "process_limit= " + iMemoryLimitToDropCache);
         bLog = prefs.getBoolean("enable_log", false);
         Log.d(TAG, "bLog= " + bLog);
-        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onCreate()", LogColor.GRAY);
+        if (ZRAMToolApp.bLog) _logHelper.appendLog("ZRAMToolApp::onCreate()", LogHelper.LogColor.GRAY);
         /**
          * set language
          */
@@ -142,42 +141,6 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                         + "</style>";
     }
 
-    public static void clearLog() {
-        ZRAMToolApp.sLogText = getCSSStyle();
-    }
-
-    public static void appendLog(String sText) {
-        if (sLogText.length() > (1048576)) clearLog(); // Size is 1 MB, 1024 KB?
-        Time currentTime = new Time();
-        currentTime.setToNow();
-        sText = currentTime.format("%H:%M:%S") + " " + sText;
-        sLogText = sWhiteColor + sText + "\n" + sLogText + sClose;
-    }
-
-    public static void appendLog(String sText, LogColor iType) {
-        Time currentTime = new Time();
-        currentTime.setToNow();
-        sText = currentTime.format("%H:%M:%S") + " " + sText;
-        //      sLogText = sText + "\n" + sLogText;
-        switch (iType) {
-            case RED:
-                sLogText = sType1Color + sText + "\n" + sLogText + sClose;
-                break;
-            case GREEN:
-                sLogText = sType2Color + sText + "\n" + sLogText + sClose;
-                break;
-            case BLUE:
-                sLogText = sType3Color + sText + "\n" + sLogText + sClose;
-                break;
-            case GRAY:
-                sLogText = sGrayColor + sText + "\n" + sLogText + sClose;
-                break;
-            default:
-                break;
-        }
-    }
-    //       sLogText = Html.toHtml(Html.fromHtml("<u> <font color=\"#FF0000\"> some text </font> </u>"));
-
 
     /**
      * Called when a shared preference is changed, added, or removed. This
@@ -192,7 +155,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Log.d(TAG, "onSharedPreferenceChanged -> key= " + key);
-        if (ZRAMToolApp.bLog) appendLog("ZRAMToolApp::onSharedPreferenceChanged()-> key= " + key);
+        if (ZRAMToolApp.bLog) _logHelper.appendLog("ZRAMToolApp::onSharedPreferenceChanged()-> key= " + key);
         sZRAMDirectory = "/sys/devices/virtual/block";
         // Read SharedPreferences
         // prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -233,8 +196,8 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         iProcessLimit = ipref;
         bLog = prefs.getBoolean("enable_log", false);
         if (key.equals("enable_log")) {
-            if (bLog == false) ZRAMToolApp.appendLog(getString(R.string.log_disabled));
-            else ZRAMToolApp.appendLog(getString(R.string.log_enabled));
+            if (bLog == false) _logHelper.appendLog(getString(R.string.log_disabled));
+            else _logHelper.appendLog(getString(R.string.log_enabled));
         }
         /**
          * language

@@ -94,7 +94,7 @@ public class NotificationService extends Service {
     @Override
     public synchronized void onDestroy() {
         Log.d(TAG, "onDestroy");
-        if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NotificationService::onDestroy()", ZRAMToolApp.LogColor.GRAY);
+        if (ZRAMToolApp.bLog) ZRAMToolApp._logHelper.appendLog("NotificationService::onDestroy()", LogHelper.LogColor.GRAY);
         super.onDestroy();
         updater.running = false;
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -303,7 +303,7 @@ public class NotificationService extends Service {
         boolean bProcIsInRecentLimit = true;
         //final  ArrayList<ApplicationInfo> recents = new  ArrayList<ApplicationInfo>();
         if (ZRAMToolApp.bLog)
-            ZRAMToolApp.appendLog("recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit, ZRAMToolApp.LogColor.RED);
+            ZRAMToolApp._logHelper.appendLog("recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit, LogHelper.LogColor.RED);
         if (BuildConfig.DEBUG)
             Log.d(TAG, "recentCount= " + recentCount + " ..... Process limit= " + ZRAMToolApp.iProcessLimit);
         for (int i = 0; i < procCount; i++) {
@@ -319,13 +319,13 @@ public class NotificationService extends Service {
                 if (sRecentPackageName.equals(sProcName)) {
                     bProcIsInRecentLimit = true;
                     //Log.d(TAG, "sRecentPackageName == sProcName NOT killBackgroundProcesses= " + sProcName);
-                    if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("NOT KILL " + sProcName, ZRAMToolApp.LogColor.GREEN);
+                    if (ZRAMToolApp.bLog) ZRAMToolApp._logHelper.appendLog("NOT KILL " + sProcName, LogHelper.LogColor.GREEN);
 
                 }
             }
             if (bProcIsInRecentLimit == false) {
                 activityManager.killBackgroundProcesses(sProcName);
-                if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog(sProcName, ZRAMToolApp.LogColor.BLUE);
+                if (ZRAMToolApp.bLog) ZRAMToolApp._logHelper.appendLog(sProcName, LogHelper.LogColor.BLUE);
 
                 //   Log.d(TAG, "killBackgroundProcesses= " + sProcName);
             } else {

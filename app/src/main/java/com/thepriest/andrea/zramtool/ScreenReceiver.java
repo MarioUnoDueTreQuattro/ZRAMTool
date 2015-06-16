@@ -13,12 +13,12 @@ public class ScreenReceiver extends BroadcastReceiver {
             // do whatever you need to do here
             ZRAMToolApp.bScreenIsOn = false;
             bScreenOn = false;
-            if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("ZRAMToolApp.bScreenIsOn=false;");
+            if (ZRAMToolApp.bLog) ZRAMToolApp._logHelper.appendLog("ZRAMToolApp.bScreenIsOn=false;");
         } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
             // and do whatever you need to do here
             ZRAMToolApp.bScreenIsOn = true;
             bScreenOn = true;
-            if (ZRAMToolApp.bLog) ZRAMToolApp.appendLog("ZRAMToolApp.bScreenIsOn=true;");
+            if (ZRAMToolApp.bLog) ZRAMToolApp._logHelper.appendLog("ZRAMToolApp.bScreenIsOn=true;");
         }
     }
 }

@@ -36,12 +36,12 @@ public class Log_Activity extends ActionBarActivity {
                 updateLog();
             }
         });
-        editTextLog.loadData(ZRAMToolApp.sLogText, "text/html", "utf-8");
+        editTextLog.loadData(ZRAMToolApp._logHelper.sLogText, "text/html", "utf-8");
     }
 
     private void updateLog() {
         editTextLog.loadUrl("about:blank");
-        editTextLog.loadData(ZRAMToolApp.sLogText, "text/html", "utf-8");
+        editTextLog.loadData(ZRAMToolApp._logHelper.sLogText, "text/html", "utf-8");
     }
 
     private void clearLog() {

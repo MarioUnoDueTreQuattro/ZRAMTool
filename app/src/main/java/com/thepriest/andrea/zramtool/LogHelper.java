@@ -4,7 +4,7 @@ import android.text.format.Time;
 
 public class LogHelper {
 
-    public enum LogColor {
+    public static enum LogColor {
         WHITE, RED, GREEN, BLUE, GRAY
     }
 
