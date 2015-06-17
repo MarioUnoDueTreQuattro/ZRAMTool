@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
     <release
+        version="1.46"
+        versioncode="1460">
+        <change>New notification icons (from 0 to 999 MB).</change>
+    </release>
+    <release
         version="1.45"
         versioncode="145">
         <change>Added ScreenReceiver to save power when screen is off.</change>
