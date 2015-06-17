@@ -160,10 +160,11 @@ public class NotificationService extends Service {
             iZRAMUsage = ZRAMToolApp.iZRAMUsage;
             iMaximumZRAMUsage = ZRAMToolApp.iZRAMMaximumUsage;
             NotificationCompat.Builder appLaunch = new NotificationCompat.Builder(this);
-            String sDrawable = "m";
-            int iDrawable = (ZRAMToolApp.iTotalFreeMemory / 5) * 5;
+            String sDrawable = "mb";
+            int iDrawable = (ZRAMToolApp.iTotalFreeMemory);// / 5) * 5;
             sDrawable += iDrawable;
             int drawableResourceId = this.getResources().getIdentifier(sDrawable, "drawable", this.getPackageName());
+            //if (drawableResourceId==0) Log.d(TAG,"drawableResourceId NOT FOUND");
             appLaunch.setSmallIcon(drawableResourceId);
 //            appLaunch.setSmallIcon(R.drawable.ic_launcher_48);
             //appLaunch.setContentText("Total Free: " + ZRAMToolApp.iTotalFreeMemory + " - Free: " + ZRAMToolApp.iFreeMemory + " - Cached: " + ZRAMToolApp.iCachedMemory + " - Buffers: " + ZRAMToolApp.iBuffersMemory);
