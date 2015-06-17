@@ -41,7 +41,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
     public static int memory[] = new int[5];
     public static int iMemoryLimitToDropCache;
     public static int iProcessLimit;
-    public static String sLogText = "";
+    //public static String sLogText = "";
     static public BroadcastReceiver mReceiver;
     public static String sWhiteColor = "<br><font color=\"#FFFFFF\">"; //white
     public static String sGrayColor = "<br><font color=\"#666666\">"; //gray
@@ -68,7 +68,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
         super.onCreate();
         Log.d(TAG, "onCreate");
         bScreenIsOn = true;
-        sLogText = getCSSStyle();
+        //sLogText = getCSSStyle();
         mLogHelper.clearLog();
         //if (BuildConfig.DEBUG) Log.d(TAG, "The log msg");
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
@@ -127,6 +127,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
 
     }
 
+/*
     private static String getCSSStyle() {
         return
                 "<style type=\"text/css\">"
@@ -139,6 +140,7 @@ public class ZRAMToolApp extends Application implements OnSharedPreferenceChange
                         + "ul { padding-left: 30px;}"
                         + "</style>";
     }
+*/
 
 
     /**

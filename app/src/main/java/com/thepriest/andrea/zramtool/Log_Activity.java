@@ -45,11 +45,13 @@ public class Log_Activity extends ActionBarActivity {
     }
 
     private void clearLog() {
-        editTextLog.loadUrl("about:blank");
-        editTextLog.loadData(getCSSStyle(), "text/html", "utf-8");
-        ZRAMToolApp.sLogText = getCSSStyle();
+        //editTextLog.loadUrl("about:blank");
+        //editTextLog.loadData(getCSSStyle(), "text/html", "utf-8");
+        ZRAMToolApp.mLogHelper.clearLog();
+        editTextLog.loadData(ZRAMToolApp.mLogHelper.getLogText(), "text/html", "utf-8");
     }
 
+/*
     private String getCSSStyle() {
         return
                 "<style type=\"text/css\">"
@@ -62,6 +64,7 @@ public class Log_Activity extends ActionBarActivity {
                         + "ul { padding-left: 30px;}"
                         + "</style>";
     }
+*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

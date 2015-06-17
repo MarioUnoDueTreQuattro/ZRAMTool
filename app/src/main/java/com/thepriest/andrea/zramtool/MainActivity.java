@@ -26,10 +26,10 @@ import java.util.List;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-    private static boolean b_isActivityVisible;
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static boolean b_isActivityVisible;
     private static final int TIME_INTERVAL = 2000; // used for onBackPressed()
-    private long mBackPressed;
+    private long mBackPressedMillis;
     //Timer timer = new Timer();
     //RefreshTask refreshTask;
     //ScrollView scrollView;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (ZRAMToolApp.bDoubleBackToExit) {
-            if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+            if (mBackPressedMillis + TIME_INTERVAL > System.currentTimeMillis()) {
                 //super.onBackPressed();
 //            if (bShowNotification) moveTaskToBack(true);
 //            else super.onBackPressed();
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), getString(R.string.Tap_back_button), Toast.LENGTH_LONG).show();
             }
-            mBackPressed = System.currentTimeMillis();
+            mBackPressedMillis = System.currentTimeMillis();
         } else {
             Toast.makeText(getApplicationContext(), getString(R.string.Use_Exit_button_to_exit), Toast.LENGTH_LONG).show();
             super.onBackPressed();
@@ -726,6 +726,7 @@ int freeMemBefore = getMemoryUsage();
             exception.printStackTrace();
         }
         //Shell shell = new Shell();
+/*
         String result1 = "";
         String result2 = "";
         String result3 = "";
@@ -734,6 +735,7 @@ int freeMemBefore = getMemoryUsage();
         int r2num = 0;
         int r3num = 0;
         int r4num = 0;
+*/
 
         iZRAMSize = ZRAMToolApp.iZRAMSize;
         textViewTotalSize.setText(getString(R.string.ZRAM_size) + iZRAMSize + " MB");

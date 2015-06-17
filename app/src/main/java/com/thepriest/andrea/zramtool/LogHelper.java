@@ -22,6 +22,10 @@ public class LogHelper {
 //    public static final int LOG_COLOR_GRAY =4;
     private static String sLogText = "";
 
+    public static void setLogText(String text) {
+        sLogText = text;
+    }
+
     public static String getLogText() {
         return sLogText;
     }
@@ -33,7 +37,7 @@ public class LogHelper {
                         + "h1 {color: #bebebe; }"
                         + "li {color: #bebebe; }"
                         + "ul {color: #bebebe; }"
-                        + "h1 { margin-left: 0px; font-size: 16pt; }"
+                        + "h1 { margin-left: 0px; font-size: 24pt; }"
                         + "li { margin-left: 0px; font-size: 6pt; }"
                         + "ul { padding-left: 30px;}"
                         + "</style>";
