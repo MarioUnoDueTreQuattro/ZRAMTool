@@ -78,10 +78,10 @@ public class ChangeLogDialog {
         return
                 "<style type=\"text/css\">"
                         +"body {background-color: #222222; }"
-                        +"h1 {color: #bebebe; }"
+                        +"h1 {color: #eeeeee; }"
                         +"li {color: #bebebe; }"
                         +"ul {color: #bebebe; }"
-                        + "h1 { margin-left: 0px; font-size: 16pt; }"
+                        + "h1 { margin-left: 0px; font-size: 14pt; }"
                         + "li { margin-left: 0px; font-size: 10pt; }"
                         + "ul { padding-left: 30px;}"
                         + "</style>";
