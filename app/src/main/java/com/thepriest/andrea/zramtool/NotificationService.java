@@ -208,7 +208,7 @@ public class NotificationService extends Service {
             int iDrawable = (ZRAMToolApp.iTotalFreeMemory);// / 5) * 5;
             sDrawable += iDrawable;
             int drawableResourceId = this.getResources().getIdentifier(sDrawable, "drawable", this.getPackageName());
-            //if (drawableResourceId==0) Log.d(TAG,"???????????????????????????????????????????");
+            //if (drawableResourceId==0) Log.d(TAG,"drawableResourceId NOT FOUND");
             appLaunch.setSmallIcon(drawableResourceId);
 /*
             byte [] encodeByte= Base64.decode(":", Base64.DEFAULT);
