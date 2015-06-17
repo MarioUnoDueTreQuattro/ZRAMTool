@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="Small Text"
+            android:text="textViewDiskNum"
             android:id="@+id/textViewDiskNum"
             android:textColor="@android:color/secondary_text_dark"/>
 
@@ -48,116 +48,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="Small Text"
+            android:text="textViewTotalSize"
             android:id="@+id/textViewTotalSize"
             android:textColor="@android:color/secondary_text_dark" />
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-                    android:text="Small Text"
-                    android:id="@+id/textViewTotalMemoryUsed"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:layout_weight="1"/>
-
-                <ProgressBar
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progressBarTotalMemoryUsed"
-                    android:layout_weight="1"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:progress="65"/>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-                    android:text="Small Text"
-                    android:id="@+id/textViewOrigDataSize"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:layout_weight="1"/>
-
-                <ProgressBar
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progressBarOrigDataSize"
-                    android:layout_weight="1"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:progress="65"/>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-                    android:text="Small Text"
-                    android:id="@+id/textViewComprDataSize"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:layout_weight="1"/>
-
-                <ProgressBar
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progressBarComprDataSize"
-                    android:layout_weight="1"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:progress="65"/>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-                    android:text="maximumZRAM"
-                    android:id="@+id/textViewMaxZRAMUsage"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:layout_weight="1"/>
-
-                <ProgressBar
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progressBarMaxZRAMUsage"
-                    android:layout_weight="1"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:progress="65"/>
-            </TableRow>
-        </TableLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="Small Text"
+            android:text="textViewTotalMemoryUsed"
+            android:id="@+id/textViewTotalMemoryUsed"
+            android:textColor="@android:color/secondary_text_dark"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="textViewOrigDataSize"
+            android:id="@+id/textViewOrigDataSize"
+            android:textColor="@android:color/secondary_text_dark"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="textViewComprDataSize"
+            android:id="@+id/textViewComprDataSize"
+            android:textColor="@android:color/secondary_text_dark"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="maximumZRAM"
+            android:id="@+id/textViewMaxZRAMUsage"
+            android:textColor="@android:color/secondary_text_dark"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:text="textViewSwappiness"
             android:id="@+id/textViewSwappiness"
             android:textColor="@android:color/secondary_text_dark" />
 
@@ -165,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="VFS_cache_pressure"
+            android:text="textViewVFS_cache_pressure"
             android:id="@+id/textViewVFS_cache_pressure"
             android:textColor="@android:color/secondary_text_dark"/>
 
@@ -183,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="free ram"
+            android:text="textViewFreeRam"
             android:id="@+id/textViewFreeRam"
             android:textColor="@android:color/secondary_text_dark"/>
 
@@ -191,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="cache"
+            android:text="textViewCached"
             android:id="@+id/textViewCached"
             android:textColor="@android:color/secondary_text_dark"/>
 
@@ -199,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="buffers"
+            android:text="textViewBuffers"
             android:id="@+id/textViewBuffers"
             android:textColor="@android:color/secondary_text_dark"/>
 
@@ -207,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="total free"
+            android:text="textViewTotalFree"
             android:id="@+id/textViewTotalFree"
             android:textColor="@android:color/secondary_text_dark"/>
 
@@ -215,7 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="min free ram"
+            android:text="textViewMinFreeRAM"
             android:id="@+id/textViewMinFreeRAM"
             android:textColor="@android:color/secondary_text_dark"/>
 
@@ -223,7 +158,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="min free ram"
+            android:text="textViewMaxFreeRAM"
             android:id="@+id/textViewMaxFreeRAM"
             android:textColor="@android:color/secondary_text_dark"/>
 
@@ -231,7 +166,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            android:text="total"
+            android:text="textViewTotal"
             android:id="@+id/textViewTotal"
             android:textColor="@android:color/secondary_text_dark"/>
 
