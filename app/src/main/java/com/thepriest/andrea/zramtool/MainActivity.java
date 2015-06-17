@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             textViewBuffers, textViewCached, textViewTotalFree, textViewTotal, textViewMinFreeRAM, textViewMaxFreeRAM;
     TextView textViewDiskNum, textViewVFS_cache_pressure, textViewMaxZRAMUsage;
     Button buttonDisableZRAM, buttonEnableZRAM, buttonCleanMemory, buttonCleanDropCache, buttonCleanAll;
-    ProgressBar progressBarTotalMemoryUsed, progressBarOrigDataSize, progressBarComprDataSize, progressBarMaxZRAMUsage;
+    //ProgressBar progressBarTotalMemoryUsed, progressBarOrigDataSize, progressBarComprDataSize, progressBarMaxZRAMUsage;
     static public int iSwappiness, iZRAMSize, iDiskNum, iVFSCachePressure, iZRAMUsage, iMaximumZRAMUsage;
     static public int iRefreshFrequency;
     static public String sZRAMDirectory;
@@ -159,10 +159,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        scrollView = (ScrollView) findViewById(R.id.scrollView);
 //        scrollView.setBackgroundColor(R.color.bright_foreground_material_light);
+/*
         progressBarTotalMemoryUsed = (ProgressBar) findViewById(R.id.progressBarTotalMemoryUsed);
         progressBarOrigDataSize = (ProgressBar) findViewById(R.id.progressBarOrigDataSize);
         progressBarComprDataSize = (ProgressBar) findViewById(R.id.progressBarComprDataSize);
         progressBarMaxZRAMUsage = (ProgressBar) findViewById(R.id.progressBarMaxZRAMUsage);
+*/
         textViewFreeRam = (TextView) findViewById(R.id.textViewFreeRam);
         textViewBuffers = (TextView) findViewById(R.id.textViewBuffers);
         textViewCached = (TextView) findViewById(R.id.textViewCached);
@@ -748,13 +750,13 @@ int freeMemBefore = getMemoryUsage();
         textViewCached.setText("Cache: " + ZRAMToolApp.iCachedMemory + " MB");
         textViewBuffers.setText("Buffers: " + ZRAMToolApp.iBuffersMemory + " MB");
         textViewTotalFree.setText(getString(R.string.Total_free_memory) + ZRAMToolApp.iTotalFreeMemory + " MB");
-
         textViewMinFreeRAM.setText(getString(R.string.Minimum_free_memory) + ZRAMToolApp.iMinFreeMemory + " MB");
         textViewMaxFreeRAM.setText(getString(R.string.Maximum_free_memory) + ZRAMToolApp.iMaxFreeMemory + " MB");
         textViewTotal.setText(getString(R.string.Total_memory) + ZRAMToolApp.iTotalMemory + " MB");
         iZRAMUsage = ZRAMToolApp.iZRAMUsage;
         if (iZRAMUsage > iMaximumZRAMUsage) iMaximumZRAMUsage = iZRAMUsage;
         textViewMaxZRAMUsage.setText(getString(R.string.Maximum_ZRAM_usage) + ZRAMToolApp.iZRAMMaximumUsage + " MB");
+/*
         progressBarTotalMemoryUsed.setMax(iZRAMSize);
         progressBarOrigDataSize.setMax(iZRAMSize);
         progressBarComprDataSize.setMax(iZRAMSize);
@@ -763,6 +765,7 @@ int freeMemBefore = getMemoryUsage();
         progressBarOrigDataSize.setProgress(ZRAMToolApp.iZRAMUsage);
         progressBarComprDataSize.setProgress(ZRAMToolApp.iZRAMComprDataSize);
         progressBarMaxZRAMUsage.setProgress(ZRAMToolApp.iZRAMMaximumUsage);
+*/
         // progressBarTotalMemoryUsed, progressBarOrigDataSize,progressBarComprDataSize,progressBarMaxZRAMUsage
 /*
         if (bShowNotification) {
