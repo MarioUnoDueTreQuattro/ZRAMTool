@@ -81,7 +81,7 @@ public class ChangeLogDialog {
                         +"h1 {color: #bebebe; }"
                         +"li {color: #bebebe; }"
                         +"ul {color: #bebebe; }"
-                        + "h1 { margin-left: 0px; font-size: 14pt; }"
+                        + "h1 { margin-left: 0px; font-size: 16pt; }"
                         + "li { margin-left: 0px; font-size: 10pt; }"
                         + "ul { padding-left: 30px;}"
                         + "</style>";

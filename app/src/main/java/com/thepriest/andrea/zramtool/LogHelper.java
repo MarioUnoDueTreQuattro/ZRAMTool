@@ -37,7 +37,7 @@ public class LogHelper {
                         + "h1 {color: #bebebe; }"
                         + "li {color: #bebebe; }"
                         + "ul {color: #bebebe; }"
-                        + "h1 { margin-left: 0px; font-size: 24pt; }"
+                        + "h1 { margin-left: 0px; font-size: 12pt; }"
                         + "li { margin-left: 0px; font-size: 6pt; }"
                         + "ul { padding-left: 30px;}"
                         + "</style>";
