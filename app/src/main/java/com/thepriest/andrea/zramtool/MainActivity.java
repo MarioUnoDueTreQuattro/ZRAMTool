@@ -657,7 +657,6 @@ int freeMemBefore = getMemoryUsage();
     }
 
     private void printZRAMStatus() {
-
 /*
        try
         {
